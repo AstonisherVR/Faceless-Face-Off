@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cicfopi26jdj"]
+
+[node name="Player" type="Node2D"]
+
+[node name="Flashlight" type="Node2D" parent="."]
+
+[node name="Hammer" type="Node2D" parent="."]
+
+[node name="Scissors" type="Node2D" parent="."]

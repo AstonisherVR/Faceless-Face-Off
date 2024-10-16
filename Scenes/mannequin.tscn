@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d04408vvn85lb"]
+
+[node name="Mannequin" type="Node2D"]
+
+[node name="Mask 1 Neutral" type="Node2D" parent="."]
+
+[node name="Node 2 Sad" type="Node2D" parent="."]
+
+[node name="Node 3 Happy" type="Node2D" parent="."]
+
+[node name="Mask 4 Angry" type="Node2D" parent="."]
