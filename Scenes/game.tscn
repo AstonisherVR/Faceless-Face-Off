@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://crmx17xh0cm5o"]
+[gd_scene load_steps=5 format=3 uid="uid://bf4ytfd2qojaq"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_h0t6p"]
+[ext_resource type="PackedScene" uid="uid://cjkpk06h3i6m2" path="res://Scenes/house.tscn" id="2_3ic8r"]
+[ext_resource type="PackedScene" uid="uid://cicfopi26jdj" path="res://Scenes/player.tscn" id="3_owglr"]
+[ext_resource type="PackedScene" uid="uid://d04408vvn85lb" path="res://Scenes/mannequin.tscn" id="4_p70qw"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_h0t6p")
+
+[node name="House" parent="." instance=ExtResource("2_3ic8r")]
+
+[node name="Player" parent="." instance=ExtResource("3_owglr")]
+
+[node name="Mannequin" parent="." node_paths=PackedStringArray("test_kill_label", "marker_points") instance=ExtResource("4_p70qw")]
+test_kill_label = NodePath("../Test Kill Label")
+marker_points = [NodePath("../House/Spawn Point 0"), NodePath("../House/Spawn Point 1"), NodePath("../House/Spawn Point 2"), NodePath("../House/Spawn Point 3")]
+
+[node name="Test Kill Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[editable path="House"]
+[editable path="Player"]
+[editable path="Mannequin"]

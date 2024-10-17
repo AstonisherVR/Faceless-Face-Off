@@ -1,9 +1,23 @@
-[gd_scene format=3 uid="uid://cicfopi26jdj"]
+[gd_scene load_steps=2 format=3 uid="uid://cicfopi26jdj"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_a0vwr"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_a0vwr")
 
 [node name="Flashlight" type="Node2D" parent="."]
 
 [node name="Hammer" type="Node2D" parent="."]
 
 [node name="Scissors" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.1, 1.1)
+limit_left = -110
+limit_top = -80
+limit_right = 110
+limit_bottom = 80
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 1.1
+rotation_smoothing_enabled = true
