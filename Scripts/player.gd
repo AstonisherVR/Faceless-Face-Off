@@ -16,3 +16,12 @@ func _process(delta: float) -> void:
 		flashlight.position = get_global_mouse_position() 
 	else:
 		flashlight.hide()
+
+
+func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
+	print("Flashing Enemy Head")
+
+#
+#func _on_flashlight_area_2d_area_exited(area: Area2D) -> void:
+	#if !area.is_in_group("Enemy"):
+		#print("Not Flashing Enemy Head")

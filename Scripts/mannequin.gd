@@ -20,9 +20,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#print(kill_value)
-	print(z_index)
+	#print(z_index)
+	pass
 
 func _on_movement_timer_timeout() -> void:
+	var movement_chance = randi_range(0, 900)
 	var enemy_ai_pos = randi_range(0, 4)
 	if enemy_ai_pos != 0:
 		kill_timer.start()
@@ -56,4 +58,4 @@ func change_sprites(number):
 		mannequin_forawrd_sprite.show()
 
 func change_ordering(number):
-	z_index = 0
+	z_index = number

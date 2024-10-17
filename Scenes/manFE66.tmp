@@ -29,9 +29,7 @@ one_shot = true
 [node name="Mannequin Stand" type="Sprite2D" parent="."]
 texture = ExtResource("1_oxbv5")
 
-[node name="Head Stand Area2D" type="Area2D" parent="Mannequin Stand" groups=["Enemy Head"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Head Stand Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand" groups=["Enemy Head"]]
 position = Vector2(-4, -45)
 shape = SubResource("CircleShape2D_3mpf1")
 
@@ -43,9 +41,7 @@ wait_time = 0.2
 position = Vector2(0, -14)
 texture = ExtResource("3_aue6j")
 
-[node name="Head Forward Area2D" type="Area2D" parent="Mannequin Forawrd" groups=["Enemy Head"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Head Forward Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd" groups=["Enemy Head"]]
 position = Vector2(0, -19)
 shape = SubResource("CircleShape2D_dd1qo")
 

@@ -27,6 +27,10 @@ window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
 mouse_cursor/custom_image="res://2D Sprites/Mouse Cursor White Dot.png"
 
+[global_group]
+
+"Enemy Head"=""
+
 [input]
 
 L_Click={
