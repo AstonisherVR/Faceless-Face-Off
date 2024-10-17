@@ -16,4 +16,3 @@ func _process(delta: float) -> void:
 		flashlight.position = get_global_mouse_position() 
 	else:
 		flashlight.hide()
-		flashlight.position.x = -111111

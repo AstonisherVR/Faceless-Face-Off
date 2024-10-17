@@ -9,6 +9,7 @@ extends Node2D
 
 var can_kill := false
 var kill_value: float
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	change_ordering(-1)
@@ -18,7 +19,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(kill_value)
+	#print(kill_value)
+	print(z_index)
 
 func _on_movement_timer_timeout() -> void:
 	var enemy_ai_pos = randi_range(0, 4)
