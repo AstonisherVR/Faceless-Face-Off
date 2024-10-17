@@ -1,11 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cicfopi26jdj"]
+[gd_scene load_steps=3 format=3 uid="uid://cicfopi26jdj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a0vwr"]
+[ext_resource type="Texture2D" uid="uid://c5htbmyq6gpes" path="res://2D Sprites/Light Point.png" id="2_nx43k"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_a0vwr")
 
 [node name="Flashlight" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Flashlight"]
+color = Color(0.850303, 0.910267, 0.904366, 1)
+energy = 8.0
+texture = ExtResource("2_nx43k")
+texture_scale = 1.25
 
 [node name="Hammer" type="Node2D" parent="."]
 
