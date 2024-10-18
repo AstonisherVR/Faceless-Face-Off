@@ -57,7 +57,7 @@ z_index = 5
 
 [node name="PointLight2D" type="PointLight2D" parent="Flashlight"]
 color = Color(0.850303, 0.910267, 0.904366, 1)
-energy = 2.5
+energy = 1.75
 texture = ExtResource("2_nx43k")
 texture_scale = 1.55
 

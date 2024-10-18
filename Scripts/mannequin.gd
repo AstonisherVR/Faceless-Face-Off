@@ -1,18 +1,17 @@
 extends Node2D
 
-
 # I like to export the variables 
-# so that when I press a dot next to the variable "movement_timer." 
-# GoDot will show me a list of all the things that I can do. 
+## so that when I press a dot next to the variable "movement_timer." 
+### GoDot will show me a list of all the things that I can do. 
 enum Stages {STAGE_0, STAGE_1_1, STAGE_1_2, STAGE_2, STAGE_3, STAGE_KILL}	 # These are the stages of the enemy.
 
 @export var mannequin_stand_sprite: Sprite2D
 @export var mannequin_forawrd_sprite: Sprite2D
-@export var movement_timer: Timer
-@export var kill_countdown: Timer
-@export var marker_points: Array[Marker2D] = []	# Those are the positions of wwhere the enemy can go.
-@export var agression_level := 1	# This is how agressive the enemy is. Will change durning the night.
-@export var current_stage := Stages.STAGE_0
+@export var movement_timer: Timer	# This is how often the enemy has a chance to move. Changing the time changes how often it moves.
+@export var kill_countdown: Timer	# Countdown until the enemy will kill.
+@export var marker_points: Array[Marker2D]	# Those are the positions of where the enemy can go.
+@export var agression_level: int	# This is how agressive the enemy is. Will change durning the night.
+@export var current_stage := Stages.STAGE_0	
 
 func _ready() -> void:
 	set_z_ordering(-1)
