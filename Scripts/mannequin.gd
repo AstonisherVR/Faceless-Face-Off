@@ -7,11 +7,12 @@ enum Stages {STAGE_0, STAGE_1_1, STAGE_1_2, STAGE_2, STAGE_3, STAGE_KILL}	 # The
 
 @export var mannequin_stand_sprite: Sprite2D
 @export var mannequin_forawrd_sprite: Sprite2D
-@export var movement_timer: Timer	# This is how often the enemy has a chance to move. Changing the time changes how often it moves.
+@export var movement_timer: Timer	# This makes the enemy move. 
 @export var kill_countdown: Timer	# Countdown until the enemy will kill.
 @export var marker_points: Array[Marker2D]	# Those are the positions of where the enemy can go.
 @export var agression_level: int	# This is how agressive the enemy is. Will change durning the night.
-@export var current_stage := Stages.STAGE_0	
+@export var attack_frequency: int	# This is the time for how often the enemy has a chance to move. Changing it makes the enemy move more often.
+@export var current_stage := Stages.STAGE_0
 
 func _ready() -> void:
 	set_z_ordering(-2)
@@ -23,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_movement_timer_timeout() -> void: # When the timer is done, the enemy has a chance to move.
 	update_ai_pos()
+	movement_timer.wait_time = attack_frequency
 	movement_timer.start()
 
 func _on_kill_countdown_timeout() -> void:

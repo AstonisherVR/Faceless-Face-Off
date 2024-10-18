@@ -9,8 +9,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mpf1"]
 radius = 15.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dd1qo"]
-radius = 24.5153
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_py4bi"]
+radius = 30.0
+height = 84.0
 
 [node name="Mannequin" type="Node2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "movement_timer", "kill_countdown")]
 script = ExtResource("1_6tuu8")
@@ -27,41 +28,44 @@ position = Vector2(-5, -49)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Head Stand Area2D"]
 shape = SubResource("CircleShape2D_3mpf1")
+metadata/_edit_lock_ = true
 
 [node name="Small Masks" type="Node2D" parent="Mannequin Stand"]
 position = Vector2(-5, -49)
 
 [node name="Small Node 2 Sad" type="Node2D" parent="Mannequin Stand/Small Masks"]
+metadata/_edit_lock_ = true
 
 [node name="HappyMaskSmol" type="Sprite2D" parent="Mannequin Stand/Small Masks"]
 texture = ExtResource("3_kp5jt")
+metadata/_edit_lock_ = true
 
 [node name="Small Mask 4 Angry" type="Node2D" parent="Mannequin Stand/Small Masks"]
+metadata/_edit_lock_ = true
 
 [node name="Mannequin Forawrd" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, -14)
-scale = Vector2(1.55, 1.55)
 texture = ExtResource("3_aue6j")
 
 [node name="Head Forward Area2D" type="Area2D" parent="Mannequin Forawrd" groups=["Enemy Head"]]
+position = Vector2(0, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Head Forward Area2D"]
-position = Vector2(0, -19)
-shape = SubResource("CircleShape2D_dd1qo")
+shape = SubResource("CapsuleShape2D_py4bi")
+metadata/_edit_lock_ = true
 
 [node name="Big Masks" type="Node2D" parent="Mannequin Forawrd"]
-position = Vector2(0, -16.129)
-scale = Vector2(0.645161, 0.645161)
+position = Vector2(0, -34)
 
 [node name="Big Node 2 Sad" type="Node2D" parent="Mannequin Forawrd/Big Masks"]
+metadata/_edit_lock_ = true
 
 [node name="HappyMask" type="Sprite2D" parent="Mannequin Forawrd/Big Masks"]
 texture = ExtResource("2_g2lh7")
+metadata/_edit_lock_ = true
 
 [node name="Big Mask 4 Angry" type="Node2D" parent="Mannequin Forawrd/Big Masks"]
-
-[node name="Small Masks" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Movement Timer" type="Timer" parent="."]
 process_callback = 0
