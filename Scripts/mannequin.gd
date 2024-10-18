@@ -13,7 +13,7 @@ var char_levels : Array
 @export var marker_points: Array[Marker2D] = []
 
 @export var agression_level := 1	# This is how agressive the enemy is.
-var current_stage := Stages.STAGE_0
+@export var current_stage := Stages.STAGE_0
 
 func _ready() -> void:
 	set_z_ordering(-1)
@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 
 func _on_movement_timer_timeout() -> void: # When the timer is done, the enemy has a chance to move.
 	update_ai_pos()
+	movement_timer.start()
 
 func update_ai_pos():
 	if (agression_level >= randi()%20+1):
@@ -32,7 +33,7 @@ func update_ai_pos():
 			Stages.STAGE_0:
 				ai_move()
 				set_sprite(0)
-				set_z_ordering(0)
+				set_z_ordering(-1)
 			Stages.STAGE_1_1:
 				ai_move()
 			Stages.STAGE_1_2:
@@ -46,11 +47,10 @@ func update_ai_pos():
 				kill_player()
 
 func ai_move():
-	print("current_stage before", current_stage)
 	current_stage += 1
-	print("current_stage after",current_stage)
-	position = marker_points[int(current_stage) % 5].position
-	movement_timer.start()
+	if marker_points[current_stage]:
+		position = marker_points[current_stage].position
+	print(marker_points[current_stage])
 
 func kill_player():
 	test_kill_label.text = "Dead. GG"

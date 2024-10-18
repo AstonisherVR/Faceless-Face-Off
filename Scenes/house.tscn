@@ -42,7 +42,7 @@ position = Vector2(-79, 48)
 [node name="Point 1_2" type="Marker2D" parent="."]
 position = Vector2(76, 52)
 
-[node name="Point 3" type="Marker2D" parent="."]
+[node name="Point 2" type="Marker2D" parent="."]
 
-[node name="Point 4" type="Marker2D" parent="."]
+[node name="Point 3" type="Marker2D" parent="."]
 position = Vector2(0, 23)
