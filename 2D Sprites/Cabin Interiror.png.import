@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2kk27b7i6so8"
-path="res://.godot/imported/Mouse Cursor White Dot.png-527450ce6cf2417deeffd600bad16b18.ctex"
+uid="uid://b3ggruvurg00q"
+path="res://.godot/imported/Cabin Interiror.png-50c5f5fdb55bdc463a3d9a5914d083ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Mouse Cursor White Dot.png"
-dest_files=["res://.godot/imported/Mouse Cursor White Dot.png-527450ce6cf2417deeffd600bad16b18.ctex"]
+source_file="res://2D Sprites/Cabin Interiror.png"
+dest_files=["res://.godot/imported/Cabin Interiror.png-50c5f5fdb55bdc463a3d9a5914d083ed.ctex"]
 
 [params]
 
