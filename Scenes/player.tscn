@@ -53,6 +53,7 @@ hammer = NodePath("Hammer")
 items_animation = NodePath("Items Animation")
 
 [node name="Flashlight" type="Node2D" parent="."]
+z_index = 5
 
 [node name="PointLight2D" type="PointLight2D" parent="Flashlight"]
 color = Color(0.850303, 0.910267, 0.904366, 1)

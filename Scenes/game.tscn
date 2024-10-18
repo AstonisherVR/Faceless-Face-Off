@@ -9,7 +9,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hayf1"]
 shader = ExtResource("5_flpld")
 shader_parameter/yaxis = null
-shader_parameter/fov = Vector2(0.25, 0.4)
+shader_parameter/fov = Vector2(0.24, 0.33)
 shader_parameter/stretch = Vector2(43, 28)
 
 [node name="Game" type="Node2D"]
@@ -19,13 +19,18 @@ script = ExtResource("1_h0t6p")
 
 [node name="Player" parent="." instance=ExtResource("3_owglr")]
 
-[node name="Mannequin" parent="." instance=ExtResource("4_p70qw")]
+[node name="Mannequin" parent="." node_paths=PackedStringArray("test_kill_label", "marker_points") instance=ExtResource("4_p70qw")]
+position = Vector2(256, 0)
+test_kill_label = NodePath("../Test Kill Label")
+marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1_1"), NodePath("../House/Point 1_2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]
+agression_level = 100
 
 [node name="Test Kill Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.259294, 0.259294, 0.259294, 1)
 
 [node name="Distortion" type="ColorRect" parent="."]
