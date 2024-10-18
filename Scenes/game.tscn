@@ -22,7 +22,7 @@ script = ExtResource("1_h0t6p")
 [node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points") instance=ExtResource("4_p70qw")]
 position = Vector2(256, 0)
 marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1_1"), NodePath("../House/Point 1_2"), NodePath("../House/Point 2"), NodePath("../House/Point 3")]
-agression_level = 8
+agression_level = 17
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.151276, 0.151276, 0.151276, 1)

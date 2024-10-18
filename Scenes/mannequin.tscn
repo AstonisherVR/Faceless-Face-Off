@@ -7,13 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://tghli0jam1w3" path="res://2D Sprites/Enemy Sprites/Happy Mask Smol.png" id="3_kp5jt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mpf1"]
-radius = 17.0294
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dd1qo"]
 radius = 24.5153
 
 [node name="Mannequin" type="Node2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "movement_timer", "kill_countdown")]
-z_index = -2
 script = ExtResource("1_6tuu8")
 mannequin_stand_sprite = NodePath("Mannequin Stand")
 mannequin_forawrd_sprite = NodePath("Mannequin Forawrd")
@@ -24,9 +23,9 @@ kill_countdown = NodePath("Kill Countdown")
 texture = ExtResource("1_oxbv5")
 
 [node name="Head Stand Area2D" type="Area2D" parent="Mannequin Stand" groups=["Enemy Head"]]
+position = Vector2(-5, -49)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Head Stand Area2D"]
-position = Vector2(-4, -45)
 shape = SubResource("CircleShape2D_3mpf1")
 
 [node name="Small Masks" type="Node2D" parent="Mannequin Stand"]

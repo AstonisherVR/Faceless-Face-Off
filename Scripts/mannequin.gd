@@ -14,7 +14,7 @@ enum Stages {STAGE_0, STAGE_1_1, STAGE_1_2, STAGE_2, STAGE_3, STAGE_KILL}	 # The
 @export var current_stage := Stages.STAGE_0	
 
 func _ready() -> void:
-	set_z_ordering(-1)
+	set_z_ordering(-2)
 	movement_timer.start()
 	set_sprite(0)
 
