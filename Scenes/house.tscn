@@ -37,12 +37,13 @@ texture = SubResource("GradientTexture2D_a50k6")
 position = Vector2(256, 0)
 
 [node name="Point 1_1" type="Marker2D" parent="."]
-position = Vector2(-79, 48)
+position = Vector2(-80, 50)
 
 [node name="Point 1_2" type="Marker2D" parent="."]
-position = Vector2(76, 52)
+position = Vector2(77, 47)
 
 [node name="Point 2" type="Marker2D" parent="."]
+position = Vector2(0, 7)
 
 [node name="Point 3" type="Marker2D" parent="."]
 position = Vector2(0, 23)

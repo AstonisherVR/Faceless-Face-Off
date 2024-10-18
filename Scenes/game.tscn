@@ -19,18 +19,12 @@ script = ExtResource("1_h0t6p")
 
 [node name="Player" parent="." instance=ExtResource("3_owglr")]
 
-[node name="Mannequin" parent="." node_paths=PackedStringArray("test_kill_label", "marker_points") instance=ExtResource("4_p70qw")]
+[node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points") instance=ExtResource("4_p70qw")]
 position = Vector2(256, 0)
-test_kill_label = NodePath("../Test Kill Label")
 marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1_1"), NodePath("../House/Point 1_2"), NodePath("../House/Point 2"), NodePath("../House/Point 3")]
 agression_level = 100
 
-[node name="Test Kill Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.259294, 0.259294, 0.259294, 1)
 
 [node name="Distortion" type="ColorRect" parent="."]
@@ -39,6 +33,17 @@ offset_left = -140.0
 offset_top = -96.0
 offset_right = 140.0
 offset_bottom = 96.0
+
+[node name="Test Kill Label" type="Label" parent="."]
+z_index = 22
+offset_left = -86.0
+offset_top = -33.0
+offset_right = 98.0
+offset_bottom = 99.0
+theme_override_colors/font_color = Color(1, 1, 0.25098, 1)
+theme_override_font_sizes/font_size = 41
+text = "text
+"
 
 [editable path="House"]
 [editable path="Player"]

@@ -73,8 +73,9 @@ z_index = 5
 texture = ExtResource("3_wwfu7")
 
 [node name="PointLight2D" type="PointLight2D" parent="Hammer/Sprite2D"]
-energy = 1.2
+energy = 0.75
 texture = ExtResource("3_wwfu7")
+texture_scale = 0.95
 
 [node name="Scissors" type="Node2D" parent="."]
 

@@ -10,12 +10,13 @@ radius = 17.0294
 [sub_resource type="CircleShape2D" id="CircleShape2D_dd1qo"]
 radius = 24.5153
 
-[node name="Mannequin" type="Node2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "movement_timer")]
+[node name="Mannequin" type="Node2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "movement_timer", "kill_countdown")]
 z_index = -2
 script = ExtResource("1_6tuu8")
 mannequin_stand_sprite = NodePath("Mannequin Stand")
 mannequin_forawrd_sprite = NodePath("Mannequin Forawrd")
 movement_timer = NodePath("Movement Timer")
+kill_countdown = NodePath("Kill Countdown")
 
 [node name="Mask 1 Neutral" type="Node2D" parent="."]
 
@@ -49,4 +50,9 @@ texture = ExtResource("3_aue6j")
 position = Vector2(0, -19)
 shape = SubResource("CircleShape2D_dd1qo")
 
+[node name="Kill Countdown" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="Movement Timer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="Kill Countdown" to="." method="_on_kill_countdown_timeout"]
