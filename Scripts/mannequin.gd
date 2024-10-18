@@ -19,8 +19,8 @@ func _ready() -> void:
 	set_sprite(0)
 
 func _physics_process(delta: float) -> void:
-	print(kill_countdown.time_left)
-	
+	pass
+
 func _on_movement_timer_timeout() -> void: # When the timer is done, the enemy has a chance to move.
 	update_ai_pos()
 	movement_timer.start()
@@ -42,7 +42,7 @@ func update_ai_pos():
 			Stages.STAGE_2:
 				ai_move()
 				set_sprite(1)
-				set_z_ordering(1)
+				set_z_ordering(4)
 			Stages.STAGE_3:
 				if kill_countdown.time_left == 0:
 					kill_countdown.start()
@@ -53,7 +53,6 @@ func ai_move():
 	current_stage += 1
 	if marker_points[current_stage]:
 		position = marker_points[current_stage].position
-	print(marker_points[current_stage])
 
 func kill_player():
 	pass

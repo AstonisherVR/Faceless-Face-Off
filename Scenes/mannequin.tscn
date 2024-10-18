@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d04408vvn85lb"]
+[gd_scene load_steps=8 format=3 uid="uid://d04408vvn85lb"]
 
 [ext_resource type="Script" path="res://Scripts/mannequin.gd" id="1_6tuu8"]
 [ext_resource type="Texture2D" uid="uid://hi0le3ek4121" path="res://2D Sprites/Enemy Sprites/Mannequin Creature.png" id="1_oxbv5"]
+[ext_resource type="Texture2D" uid="uid://ntiqvktgvhku" path="res://2D Sprites/Enemy Sprites/Happy Mask.png" id="2_g2lh7"]
 [ext_resource type="Texture2D" uid="uid://drubhpab7yk0g" path="res://2D Sprites/Enemy Sprites/Mannequin Creature Front2.png" id="3_aue6j"]
+[ext_resource type="Texture2D" uid="uid://tghli0jam1w3" path="res://2D Sprites/Enemy Sprites/Happy Mask Smol.png" id="3_kp5jt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mpf1"]
 radius = 17.0294
@@ -18,18 +20,6 @@ mannequin_forawrd_sprite = NodePath("Mannequin Forawrd")
 movement_timer = NodePath("Movement Timer")
 kill_countdown = NodePath("Kill Countdown")
 
-[node name="Mask 1 Neutral" type="Node2D" parent="."]
-
-[node name="Node 2 Sad" type="Node2D" parent="."]
-
-[node name="Node 3 Happy" type="Node2D" parent="."]
-
-[node name="Mask 4 Angry" type="Node2D" parent="."]
-
-[node name="Movement Timer" type="Timer" parent="."]
-process_callback = 0
-one_shot = true
-
 [node name="Mannequin Stand" type="Sprite2D" parent="."]
 texture = ExtResource("1_oxbv5")
 
@@ -39,7 +29,18 @@ texture = ExtResource("1_oxbv5")
 position = Vector2(-4, -45)
 shape = SubResource("CircleShape2D_3mpf1")
 
+[node name="Small Masks" type="Node2D" parent="Mannequin Stand"]
+position = Vector2(-5, -49)
+
+[node name="Small Node 2 Sad" type="Node2D" parent="Mannequin Stand/Small Masks"]
+
+[node name="HappyMaskSmol" type="Sprite2D" parent="Mannequin Stand/Small Masks"]
+texture = ExtResource("3_kp5jt")
+
+[node name="Small Mask 4 Angry" type="Node2D" parent="Mannequin Stand/Small Masks"]
+
 [node name="Mannequin Forawrd" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -14)
 scale = Vector2(1.55, 1.55)
 texture = ExtResource("3_aue6j")
@@ -49,6 +50,23 @@ texture = ExtResource("3_aue6j")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Head Forward Area2D"]
 position = Vector2(0, -19)
 shape = SubResource("CircleShape2D_dd1qo")
+
+[node name="Big Masks" type="Node2D" parent="Mannequin Forawrd"]
+position = Vector2(0, -16.129)
+scale = Vector2(0.645161, 0.645161)
+
+[node name="Big Node 2 Sad" type="Node2D" parent="Mannequin Forawrd/Big Masks"]
+
+[node name="HappyMask" type="Sprite2D" parent="Mannequin Forawrd/Big Masks"]
+texture = ExtResource("2_g2lh7")
+
+[node name="Big Mask 4 Angry" type="Node2D" parent="Mannequin Forawrd/Big Masks"]
+
+[node name="Small Masks" type="Node2D" parent="."]
+
+[node name="Movement Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
 
 [node name="Kill Countdown" type="Timer" parent="."]
 wait_time = 3.0

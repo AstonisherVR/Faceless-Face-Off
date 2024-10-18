@@ -9,7 +9,7 @@ radius = 21.0
 
 [sub_resource type="Animation" id="Animation_1i4ng"]
 resource_name = "Hammer Boink"
-length = 0.2
+length = 0.1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,8 +18,8 @@ tracks/0/path = NodePath("Hammer/Sprite2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(0.000970057, 0.000970057, 0.000970057),
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(0.0321365, 0.0321365, 0.0321365),
 "update": 0,
 "values": [0.0, -0.872665, 0.0]
 }
@@ -53,13 +53,13 @@ hammer = NodePath("Hammer")
 items_animation = NodePath("Items Animation")
 
 [node name="Flashlight" type="Node2D" parent="."]
-z_index = 5
+z_index = 6
 
 [node name="PointLight2D" type="PointLight2D" parent="Flashlight"]
 color = Color(0.850303, 0.910267, 0.904366, 1)
-energy = 1.75
+range_z_min = -4096
 texture = ExtResource("2_nx43k")
-texture_scale = 1.55
+texture_scale = 2.0
 
 [node name="Flashlight Area2D" type="Area2D" parent="Flashlight"]
 
@@ -76,8 +76,6 @@ texture = ExtResource("3_wwfu7")
 energy = 0.75
 texture = ExtResource("3_wwfu7")
 texture_scale = 0.95
-
-[node name="Scissors" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.1, 1.1)
