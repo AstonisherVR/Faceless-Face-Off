@@ -111,6 +111,7 @@ texture = ExtResource("4_uh3rm")
 shape = SubResource("CircleShape2D_qtc36")
 
 [node name="Dog Whistle" type="Node2D" parent="."]
+z_index = 6
 
 [node name="DogWhistle" type="Sprite2D" parent="Dog Whistle"]
 texture = ExtResource("5_jw66l")
