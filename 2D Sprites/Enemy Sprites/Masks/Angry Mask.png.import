@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ntiqvktgvhku"
-path="res://.godot/imported/Happy Mask.png-954e7fe70db8ae0e6146bb62b6e17b5e.ctex"
+uid="uid://boh3ipucpruax"
+path="res://.godot/imported/Angry Mask.png-77e93f2819a775b6325d296e392274fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Enemy Sprites/Happy Mask.png"
-dest_files=["res://.godot/imported/Happy Mask.png-954e7fe70db8ae0e6146bb62b6e17b5e.ctex"]
+source_file="res://2D Sprites/Enemy Sprites/Masks/Angry Mask.png"
+dest_files=["res://.godot/imported/Angry Mask.png-77e93f2819a775b6325d296e392274fa.ctex"]
 
 [params]
 

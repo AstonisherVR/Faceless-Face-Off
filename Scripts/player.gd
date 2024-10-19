@@ -38,13 +38,5 @@ func handle_items():
 		if Input.is_action_just_pressed("R_Click"): 
 			items_animation.play("Hammer Boink")
 			#hammer_sfx.play()
-			print("Hammer Boink")
 	#elif selected_item == Items.OTHER:
 		#hammer.hide()
-
-func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
-	print("Flashing Enemy Head")
-
-#func _on_flashlight_area_2d_area_exited(area: Area2D) -> void:
-	#if !area.is_in_group("Enemy"):
-		#print("Not Flashing Enemy Head")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cicfopi26jdj"]
+[gd_scene load_steps=9 format=3 uid="uid://cicfopi26jdj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a0vwr"]
 [ext_resource type="Texture2D" uid="uid://c5htbmyq6gpes" path="res://2D Sprites/Player & Items Sprites/Light Point.png" id="2_nx43k"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8knm5"]
 radius = 21.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1h8jy"]
+radius = 20.025
 
 [sub_resource type="Animation" id="Animation_1i4ng"]
 resource_name = "Hammer Boink"
@@ -62,6 +65,8 @@ texture = ExtResource("2_nx43k")
 texture_scale = 2.0
 
 [node name="Flashlight Area2D" type="Area2D" parent="Flashlight"]
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flashlight/Flashlight Area2D"]
 shape = SubResource("CircleShape2D_8knm5")
@@ -71,6 +76,13 @@ z_index = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="Hammer"]
 texture = ExtResource("3_wwfu7")
+
+[node name="Hammer Area2D" type="Area2D" parent="Hammer/Sprite2D"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hammer/Sprite2D/Hammer Area2D"]
+shape = SubResource("CircleShape2D_1h8jy")
 
 [node name="PointLight2D" type="PointLight2D" parent="Hammer/Sprite2D"]
 energy = 0.75
@@ -92,6 +104,3 @@ rotation_smoothing_enabled = true
 libraries = {
 "": SubResource("AnimationLibrary_cht2w")
 }
-
-[connection signal="area_entered" from="Flashlight/Flashlight Area2D" to="." method="_on_flashlight_area_2d_area_entered"]
-[connection signal="area_exited" from="Flashlight/Flashlight Area2D" to="." method="_on_flashlight_area_2d_area_exited"]
