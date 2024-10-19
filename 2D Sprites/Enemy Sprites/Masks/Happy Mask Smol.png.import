@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dponi722p2rf"
-path="res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"
+uid="uid://bwnmapgbp8clp"
+path="res://.godot/imported/Happy Mask Smol.png-a0484206344a1f044fe58d3a25834a3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Player & Items Sprites/Light Point.png"
-dest_files=["res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"]
+source_file="res://2D Sprites/Enemy Sprites/Masks/Happy Mask Smol.png"
+dest_files=["res://.godot/imported/Happy Mask Smol.png-a0484206344a1f044fe58d3a25834a3f.ctex"]
 
 [params]
 

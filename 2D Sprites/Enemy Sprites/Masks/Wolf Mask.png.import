@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwyvroqlwlld3"
-path="res://.godot/imported/Device Animation.png-8082be8034d89cbc516ca8eb9cdee0fb.ctex"
+uid="uid://bf1rqr1v6otjr"
+path="res://.godot/imported/Wolf Mask.png-c09647ba0e0fb2896fef4b8c4459c14b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Player & Items Sprites/Device Animation.png"
-dest_files=["res://.godot/imported/Device Animation.png-8082be8034d89cbc516ca8eb9cdee0fb.ctex"]
+source_file="res://2D Sprites/Enemy Sprites/Masks/Wolf Mask.png"
+dest_files=["res://.godot/imported/Wolf Mask.png-c09647ba0e0fb2896fef4b8c4459c14b.ctex"]
 
 [params]
 

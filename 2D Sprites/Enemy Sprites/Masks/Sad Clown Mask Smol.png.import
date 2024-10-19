@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tghli0jam1w3"
-path="res://.godot/imported/Happy Mask Smol.png-b32a59f3d2e0a30017d6d1d9d96605b8.ctex"
+uid="uid://bmc6ogmcqnfb"
+path="res://.godot/imported/Sad Clown Mask Smol.png-d63b64bdc5a79a45b27dd2e56f719212.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Enemy Sprites/Happy Mask Smol.png"
-dest_files=["res://.godot/imported/Happy Mask Smol.png-b32a59f3d2e0a30017d6d1d9d96605b8.ctex"]
+source_file="res://2D Sprites/Enemy Sprites/Masks/Sad Clown Mask Smol.png"
+dest_files=["res://.godot/imported/Sad Clown Mask Smol.png-d63b64bdc5a79a45b27dd2e56f719212.ctex"]
 
 [params]
 

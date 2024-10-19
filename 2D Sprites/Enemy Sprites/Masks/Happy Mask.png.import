@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dponi722p2rf"
-path="res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"
+uid="uid://ntiqvktgvhku"
+path="res://.godot/imported/Happy Mask.png-32482e086f2b8db10113485aba59f4a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Player & Items Sprites/Light Point.png"
-dest_files=["res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"]
+source_file="res://2D Sprites/Enemy Sprites/Masks/Happy Mask.png"
+dest_files=["res://.godot/imported/Happy Mask.png-32482e086f2b8db10113485aba59f4a6.ctex"]
 
 [params]
 

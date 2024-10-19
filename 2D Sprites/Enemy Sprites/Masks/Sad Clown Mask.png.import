@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dponi722p2rf"
-path="res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"
+uid="uid://ds61afednwq3p"
+path="res://.godot/imported/Sad Clown Mask.png-624b6ae82757e1c3b2f8f18eddb0b19f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Player & Items Sprites/Light Point.png"
-dest_files=["res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"]
+source_file="res://2D Sprites/Enemy Sprites/Masks/Sad Clown Mask.png"
+dest_files=["res://.godot/imported/Sad Clown Mask.png-624b6ae82757e1c3b2f8f18eddb0b19f.ctex"]
 
 [params]
 

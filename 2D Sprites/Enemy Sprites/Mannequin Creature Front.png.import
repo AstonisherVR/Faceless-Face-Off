@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ntiqvktgvhku"
-path="res://.godot/imported/Happy Mask.png-954e7fe70db8ae0e6146bb62b6e17b5e.ctex"
+uid="uid://drubhpab7yk0g"
+path="res://.godot/imported/Mannequin Creature Front.png-efbb09f72c7ab698957cc2603702bae4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Enemy Sprites/Happy Mask.png"
-dest_files=["res://.godot/imported/Happy Mask.png-954e7fe70db8ae0e6146bb62b6e17b5e.ctex"]
+source_file="res://2D Sprites/Enemy Sprites/Mannequin Creature Front.png"
+dest_files=["res://.godot/imported/Mannequin Creature Front.png-efbb09f72c7ab698957cc2603702bae4.ctex"]
 
 [params]
 

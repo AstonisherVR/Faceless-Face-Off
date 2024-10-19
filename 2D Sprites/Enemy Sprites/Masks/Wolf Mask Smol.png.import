@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dponi722p2rf"
-path="res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"
+uid="uid://dctcq2oio8l6s"
+path="res://.godot/imported/Wolf Mask Smol.png-51b59971cd4c5e185154a2ecf0599a1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Player & Items Sprites/Light Point.png"
-dest_files=["res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"]
+source_file="res://2D Sprites/Enemy Sprites/Masks/Wolf Mask Smol.png"
+dest_files=["res://.godot/imported/Wolf Mask Smol.png-51b59971cd4c5e185154a2ecf0599a1f.ctex"]
 
 [params]
 

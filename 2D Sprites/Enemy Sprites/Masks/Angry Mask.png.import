@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt0m6twj2aaee"
-path="res://.godot/imported/Device Animations.png-466ad3bda454e164e90a669b0a678201.ctex"
+uid="uid://boh3ipucpruax"
+path="res://.godot/imported/Angry Mask.png-77e93f2819a775b6325d296e392274fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Player & Items Sprites/Device Animations.png"
-dest_files=["res://.godot/imported/Device Animations.png-466ad3bda454e164e90a669b0a678201.ctex"]
+source_file="res://2D Sprites/Enemy Sprites/Masks/Angry Mask.png"
+dest_files=["res://.godot/imported/Angry Mask.png-77e93f2819a775b6325d296e392274fa.ctex"]
 
 [params]
 
