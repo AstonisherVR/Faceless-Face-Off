@@ -22,7 +22,7 @@ script = ExtResource("1_h0t6p")
 
 [node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points") instance=ExtResource("4_p70qw")]
 position = Vector2(256, 0)
-marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1_1"), NodePath("../House/Point 1_2"), NodePath("../House/Point 2"), NodePath("../House/Point 3")]
+marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1"), NodePath("../House/Point 2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]
 agression_level = 55
 attack_frequency = 1
 chance_to_mask = 2325

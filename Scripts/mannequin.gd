@@ -3,7 +3,7 @@ extends Node2D
 # I like to export the variables 
 ## so that when I press a dot next to the variable "movement_timer." 
 ### GoDot will show me a list of all the things that I can do.
-enum Stages {STAGE_0, STAGE_1_1, STAGE_1_2, STAGE_2, STAGE_3, STAGE_KILL}	 # These are the stages of the enemy.
+enum Stages {STAGE_0, STAGE_1, STAGE_2, STAGE_3, STAGE_4, STAGE_5_KILL}	 # These are the stages of the enemy.
 enum Masks {NO_MASK, NEUTRAL_MASK, HAPPY_MASK, SAD_MASK, WOLF_MASK}	# These are the masks that it can wear.
 
 @export var mannequin_stand_sprite: Sprite2D
@@ -45,7 +45,7 @@ func _on_movement_timer_timeout() -> void: # When the timer is done, the enemy h
 	movement_timer.start()
 
 func _on_kill_countdown_timeout() -> void:
-	current_stage = Stages.STAGE_KILL
+	current_stage = Stages.STAGE_5_KILL
 
 func update_ai():
 	if agression_level >= randi()%100+1:
@@ -54,33 +54,34 @@ func update_ai():
 				ai_move()
 				set_sprite(0)
 				set_z_ordering(-1)
-			Stages.STAGE_1_1:
-				ai_move()
-			Stages.STAGE_1_2:
+			Stages.STAGE_1:
 				ai_move()
 			Stages.STAGE_2:
 				ai_move()
+			Stages.STAGE_3:
+				ai_move()
 				set_sprite(1)
 				set_z_ordering(4)
-			Stages.STAGE_3:
-				if kill_countdown.time_left == 0:
+			Stages.STAGE_4:
+				if kill_countdown.time_left == 0: # This is to make sure the timer gets triggered only once.
 					kill_countdown.start()
-			Stages.STAGE_KILL:
+			Stages.STAGE_5_KILL:
 				kill_player()
-		if (chance_to_mask >= randi()%50+1) and (current_stage != Stages.STAGE_3 or Stages.STAGE_KILL):
+		if (chance_to_mask >= randi()%50+1) and (current_stage < 4):
 			current_mask = Masks.values().pick_random()
-			print(current_mask)
+			print("current_stage ", current_stage)
+			print("current_mask ", current_mask)
 			match current_mask:
 				Masks.NO_MASK:
-					set_current_mask(0, current_stage)
+					set_current_mask(Masks.NO_MASK, current_stage)
 				Masks.NEUTRAL_MASK:
-					set_current_mask(1, current_stage)
+					set_current_mask(Masks.NEUTRAL_MASK, current_stage)
 				Masks.HAPPY_MASK:
-					set_current_mask(2, current_stage)
+					set_current_mask(Masks.HAPPY_MASK, current_stage)
 				Masks.SAD_MASK:
-					set_current_mask(3, current_stage)
+					set_current_mask(Masks.SAD_MASK, current_stage)
 				Masks.WOLF_MASK:
-					set_current_mask(4, current_stage)
+					set_current_mask(Masks.WOLF_MASK, current_stage)
 func ai_move():
 	current_stage += 1
 	if marker_points[current_stage]:
@@ -100,7 +101,7 @@ func set_sprite(number):
 func set_z_ordering(number):
 	z_index = number
 
-func set_current_mask(current_mask_number: int, is_in_front: bool):
+func set_current_mask(current_mask_number: int, current_stage_number: int):
 	if current_mask_number == 0:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
@@ -110,7 +111,7 @@ func set_current_mask(current_mask_number: int, is_in_front: bool):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 1 and is_in_front == false:
+	elif current_mask_number == 1 and current_stage_number != 4:
 		small_neutral_mask.show()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -119,7 +120,7 @@ func set_current_mask(current_mask_number: int, is_in_front: bool):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 1 and is_in_front == true:
+	elif current_mask_number == 1 and current_stage_number == 4: 
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -128,7 +129,7 @@ func set_current_mask(current_mask_number: int, is_in_front: bool):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 2 and is_in_front == false:
+	elif current_mask_number == 2 and current_stage_number != 4:
 		small_neutral_mask.hide()
 		small_happy_mask.show()
 		small_sad_clown_mask.hide()
@@ -137,7 +138,7 @@ func set_current_mask(current_mask_number: int, is_in_front: bool):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 2 and is_in_front == true:
+	elif current_mask_number == 2 and current_stage_number == 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -146,7 +147,7 @@ func set_current_mask(current_mask_number: int, is_in_front: bool):
 		big_happy_mask.show()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 3 and is_in_front == false:
+	elif current_mask_number == 3 and current_stage_number != 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.show()
@@ -155,7 +156,7 @@ func set_current_mask(current_mask_number: int, is_in_front: bool):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 3 and is_in_front == true:
+	elif current_mask_number == 3 and current_stage_number == 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -164,7 +165,7 @@ func set_current_mask(current_mask_number: int, is_in_front: bool):
 		big_happy_mask.hide()
 		big_sad_clown_mask.show()
 		big_wolf_mask.hide()
-	elif current_mask_number == 4 and is_in_front == false:
+	elif current_mask_number == 4 and current_stage_number != 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -173,7 +174,7 @@ func set_current_mask(current_mask_number: int, is_in_front: bool):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 4 and is_in_front == true:
+	elif current_mask_number == 4 and current_stage_number == 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
