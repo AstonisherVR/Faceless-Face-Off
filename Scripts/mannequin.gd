@@ -91,7 +91,7 @@ func ai_move():
 
 func kill_player():
 	print_rich("[color=red][b]Game Over![/b][/color]")
-	get_tree().paused = true
+	#get_tree().paused = true
 
 
 func set_sprite(number):

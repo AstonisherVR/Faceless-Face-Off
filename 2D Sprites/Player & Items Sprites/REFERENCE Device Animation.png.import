@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3qeaioa4r8ll"
-path="res://.godot/imported/Ball.png-01873c943601c0c199918bba5e41855e.ctex"
+uid="uid://bj2m3byun1iu3"
+path="res://.godot/imported/REFERENCE Device Animation.png-b1f24d9d19139b1a2b1a0c4c153591b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Player & Items Sprites/Ball.png"
-dest_files=["res://.godot/imported/Ball.png-01873c943601c0c199918bba5e41855e.ctex"]
+source_file="res://2D Sprites/Player & Items Sprites/REFERENCE Device Animation.png"
+dest_files=["res://.godot/imported/REFERENCE Device Animation.png-b1f24d9d19139b1a2b1a0c4c153591b6.ctex"]
 
 [params]
 

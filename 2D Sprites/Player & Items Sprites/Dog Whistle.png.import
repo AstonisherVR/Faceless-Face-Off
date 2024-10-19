@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwyvroqlwlld3"
-path="res://.godot/imported/Device Animation.png-8082be8034d89cbc516ca8eb9cdee0fb.ctex"
+uid="uid://bmw754wlp5c4t"
+path="res://.godot/imported/Dog Whistle.png-27abb75147df06877d0fe6bda6108f9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Player & Items Sprites/Device Animation.png"
-dest_files=["res://.godot/imported/Device Animation.png-8082be8034d89cbc516ca8eb9cdee0fb.ctex"]
+source_file="res://2D Sprites/Player & Items Sprites/Dog Whistle.png"
+dest_files=["res://.godot/imported/Dog Whistle.png-27abb75147df06877d0fe6bda6108f9e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dponi722p2rf"
-path="res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"
+uid="uid://cichdmty8c4nu"
+path="res://.godot/imported/Mirror.png-6a4ca6f8a14a98aa717a32d1e7a24e29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D Sprites/Player & Items Sprites/Light Point.png"
-dest_files=["res://.godot/imported/Light Point.png-ba7a48b307e66fcc0a0687c9d438f6a4.ctex"]
+source_file="res://2D Sprites/Player & Items Sprites/Mirror.png"
+dest_files=["res://.godot/imported/Mirror.png-6a4ca6f8a14a98aa717a32d1e7a24e29.ctex"]
 
 [params]
 
