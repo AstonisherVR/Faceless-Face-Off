@@ -63,32 +63,36 @@ func update_ai():
 				set_sprite(1)
 				set_z_ordering(4)
 			Stages.STAGE_4:
-				if kill_countdown.time_left == 0: # This is to make sure the timer gets triggered only once.
+				if kill_countdown.is_stopped(): # This is to make sure the timer gets triggered only once.
 					kill_countdown.start()
 			Stages.STAGE_5_KILL:
 				kill_player()
-		if (chance_to_mask >= randi()%50+1) and (current_stage < 4):
-			current_mask = Masks.values().pick_random()
-			print("current_stage ", current_stage)
-			print("current_mask ", current_mask)
-			match current_mask:
-				Masks.NO_MASK:
-					set_current_mask(Masks.NO_MASK, current_stage)
-				Masks.NEUTRAL_MASK:
-					set_current_mask(Masks.NEUTRAL_MASK, current_stage)
-				Masks.HAPPY_MASK:
-					set_current_mask(Masks.HAPPY_MASK, current_stage)
-				Masks.SAD_MASK:
-					set_current_mask(Masks.SAD_MASK, current_stage)
-				Masks.WOLF_MASK:
-					set_current_mask(Masks.WOLF_MASK, current_stage)
+		if kill_countdown.is_stopped():
+			if chance_to_mask >= randi()%50+1 and current_stage <= 4:
+				current_mask = Masks.values().pick_random()
+				print("current_stage ", current_stage)
+				print("current_mask ", current_mask)
+				match current_mask:
+					Masks.NO_MASK:
+						set_current_mask(Masks.NO_MASK, current_stage)
+					Masks.NEUTRAL_MASK:
+						set_current_mask(Masks.NEUTRAL_MASK, current_stage)
+					Masks.HAPPY_MASK:
+						set_current_mask(Masks.HAPPY_MASK, current_stage)
+					Masks.SAD_MASK:
+						set_current_mask(Masks.SAD_MASK, current_stage)
+					Masks.WOLF_MASK:
+						set_current_mask(Masks.WOLF_MASK, current_stage)
+
 func ai_move():
 	current_stage += 1
 	if marker_points[current_stage]:
 		position = marker_points[current_stage].position
 
 func kill_player():
-	print_rich("[color=green][b]Game Over![/b][/color]")
+	print_rich("[color=red][b]Game Over![/b][/color]")
+	get_tree().paused = true
+
 
 func set_sprite(number):
 	if number == 0:
@@ -111,7 +115,7 @@ func set_current_mask(current_mask_number: int, current_stage_number: int):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 1 and current_stage_number != 4:
+	elif current_mask_number == 1 and current_stage_number < 4:
 		small_neutral_mask.show()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -120,7 +124,7 @@ func set_current_mask(current_mask_number: int, current_stage_number: int):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 1 and current_stage_number == 4: 
+	elif current_mask_number == 1 and current_stage_number >= 4: 
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -129,7 +133,7 @@ func set_current_mask(current_mask_number: int, current_stage_number: int):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 2 and current_stage_number != 4:
+	elif current_mask_number == 2 and current_stage_number < 4:
 		small_neutral_mask.hide()
 		small_happy_mask.show()
 		small_sad_clown_mask.hide()
@@ -138,7 +142,7 @@ func set_current_mask(current_mask_number: int, current_stage_number: int):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 2 and current_stage_number == 4:
+	elif current_mask_number == 2 and current_stage_number >= 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -147,7 +151,7 @@ func set_current_mask(current_mask_number: int, current_stage_number: int):
 		big_happy_mask.show()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 3 and current_stage_number != 4:
+	elif current_mask_number == 3 and current_stage_number < 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.show()
@@ -156,7 +160,7 @@ func set_current_mask(current_mask_number: int, current_stage_number: int):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 3 and current_stage_number == 4:
+	elif current_mask_number == 3 and current_stage_number >= 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -165,7 +169,7 @@ func set_current_mask(current_mask_number: int, current_stage_number: int):
 		big_happy_mask.hide()
 		big_sad_clown_mask.show()
 		big_wolf_mask.hide()
-	elif current_mask_number == 4 and current_stage_number != 4:
+	elif current_mask_number == 4 and current_stage_number < 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()
@@ -174,7 +178,7 @@ func set_current_mask(current_mask_number: int, current_stage_number: int):
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.hide()
-	elif current_mask_number == 4 and current_stage_number == 4:
+	elif current_mask_number == 4 and current_stage_number >= 4:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()
 		small_sad_clown_mask.hide()

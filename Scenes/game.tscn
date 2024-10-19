@@ -28,9 +28,11 @@ attack_frequency = 1
 chance_to_mask = 2325
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.151276, 0.151276, 0.151276, 1)
 
 [node name="Distortion" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_hayf1")
 offset_left = -150.0
 offset_top = -110.0
