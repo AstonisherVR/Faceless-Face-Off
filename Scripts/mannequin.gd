@@ -88,11 +88,7 @@ func update_ai() -> void:
 						set_current_mask(Masks.WOLF_MASK, current_stage)
 
 func ai_move() -> void:
-	disable_collisions()
 	current_stage += 1
-	collisions[current_stage].disabled = false
-	print(current_mask)
-	print(collisions[current_mask])
 	if marker_points[current_stage]:
 		position = marker_points[current_stage].position
 
@@ -215,7 +211,20 @@ func set_current_mask(current_mask_number: int, current_stage_number: int) -> vo
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.show()
+	set_active_collisions(current_mask_number)
 
-func disable_collisions():
+func set_active_collisions(mask_number) -> void:
 	for collision_shape in collisions:
 		collision_shape.disabled = true
+	if mask_number == 1:
+		collisions[0].disabled = false
+		collisions[3].disabled = false
+		print(collisions[0], collisions[3])
+	elif mask_number == 2:
+		collisions[1].disabled = false
+		collisions[4].disabled = false
+		print(collisions[1], collisions[4])
+	elif mask_number == 3:
+		collisions[2].disabled = false
+		collisions[5].disabled = false
+		print(collisions[2], collisions[5])
