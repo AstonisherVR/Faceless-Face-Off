@@ -19,7 +19,7 @@ radius = 12.0
 radius = 30.0
 height = 84.0
 
-[node name="Mannequin" type="Node2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown")]
+[node name="Mannequin" type="CharacterBody2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown")]
 script = ExtResource("1_6tuu8")
 mannequin_stand_sprite = NodePath("Mannequin Stand")
 mannequin_forawrd_sprite = NodePath("Mannequin Forawrd")
