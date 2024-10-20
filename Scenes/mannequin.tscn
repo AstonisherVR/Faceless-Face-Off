@@ -18,7 +18,7 @@
 radius = 28.0
 height = 80.0
 
-[node name="Mannequin" type="CharacterBody2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown")]
+[node name="Mannequin" type="CharacterBody2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown", "collisions")]
 script = ExtResource("1_6tuu8")
 mannequin_stand_sprite = NodePath("Mannequin Stand")
 mannequin_forawrd_sprite = NodePath("Mannequin Forawrd")
@@ -32,6 +32,7 @@ big_sad_clown_mask = NodePath("Mannequin Forawrd/Big Masks/SadClownMask")
 big_wolf_mask = NodePath("Mannequin Forawrd/Big Masks/WolfMask")
 movement_timer = NodePath("Movement Timer")
 kill_countdown = NodePath("Kill Countdown")
+collisions = [NodePath("Mannequin Stand/Small Masks/NeutralMaskSmol/NeutralMaskSmol Area2D/NeutralMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/HappyMaskSmol/HappyMaskSmol Area2D/HappyMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/SadClownMaskSmol/SadClownMaskSmol Area2D/SadClownMaskSmol CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/NeutralMask/NeutralMask Area2D/NeutralMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/HappyMask/HappyMask Area2D/HappyMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/SadClownMask/SadClownMask Area2D/SadClownMask CollisionShape2D")]
 
 [node name="Mannequin Stand" type="Sprite2D" parent="."]
 visible = false
@@ -45,7 +46,12 @@ visible = false
 texture = ExtResource("3_hryjf")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/NeutralMaskSmol"]
+[node name="NeutralMaskSmol Area2D" type="Area2D" parent="Mannequin Stand/Small Masks/NeutralMaskSmol" groups=["Neutral Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="NeutralMaskSmol CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/NeutralMaskSmol/NeutralMaskSmol Area2D"]
 shape = SubResource("CircleShape2D_p86w2")
 metadata/_edit_lock_ = true
 
@@ -54,7 +60,12 @@ visible = false
 texture = ExtResource("4_j7q8v")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/HappyMaskSmol"]
+[node name="HappyMaskSmol Area2D" type="Area2D" parent="Mannequin Stand/Small Masks/HappyMaskSmol" groups=["Happy Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="HappyMaskSmol CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/HappyMaskSmol/HappyMaskSmol Area2D"]
 shape = SubResource("CircleShape2D_p86w2")
 metadata/_edit_lock_ = true
 
@@ -63,7 +74,12 @@ visible = false
 texture = ExtResource("5_as3ym")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/SadClownMaskSmol"]
+[node name="SadClownMaskSmol Area2D" type="Area2D" parent="Mannequin Stand/Small Masks/SadClownMaskSmol" groups=["Sad Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="SadClownMaskSmol CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/SadClownMaskSmol/SadClownMaskSmol Area2D"]
 shape = SubResource("CircleShape2D_p86w2")
 metadata/_edit_lock_ = true
 
@@ -85,7 +101,12 @@ position = Vector2(0, -5.5)
 texture = ExtResource("8_5ycia")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/NeutralMask"]
+[node name="NeutralMask Area2D" type="Area2D" parent="Mannequin Forawrd/Big Masks/NeutralMask" groups=["Neutral Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="NeutralMask CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/NeutralMask/NeutralMask Area2D"]
 shape = SubResource("CapsuleShape2D_7b56s")
 metadata/_edit_lock_ = true
 
@@ -94,7 +115,12 @@ visible = false
 texture = ExtResource("9_aw3gu")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/HappyMask"]
+[node name="HappyMask Area2D" type="Area2D" parent="Mannequin Forawrd/Big Masks/HappyMask" groups=["Happy Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="HappyMask CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/HappyMask/HappyMask Area2D"]
 shape = SubResource("CapsuleShape2D_7b56s")
 metadata/_edit_lock_ = true
 
@@ -104,7 +130,12 @@ position = Vector2(0, -3)
 texture = ExtResource("9_amvd5")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/SadClownMask"]
+[node name="SadClownMask Area2D" type="Area2D" parent="Mannequin Forawrd/Big Masks/SadClownMask" groups=["Sad Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="SadClownMask CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/SadClownMask/SadClownMask Area2D"]
 shape = SubResource("CapsuleShape2D_7b56s")
 metadata/_edit_lock_ = true
 

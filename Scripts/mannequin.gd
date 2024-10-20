@@ -6,6 +6,7 @@ extends CharacterBody2D
 enum Stages {STAGE_0, STAGE_1, STAGE_2, STAGE_3, STAGE_4, STAGE_5_KILL}	 # These are the stages of the enemy.
 enum Masks {NO_MASK, NEUTRAL_MASK, HAPPY_MASK, SAD_MASK, WOLF_MASK}	# These are the masks that it can wear.
 
+
 @export var mannequin_stand_sprite: Sprite2D
 @export var mannequin_forawrd_sprite: Sprite2D
 
@@ -22,6 +23,7 @@ enum Masks {NO_MASK, NEUTRAL_MASK, HAPPY_MASK, SAD_MASK, WOLF_MASK}	# These are 
 @export var movement_timer: Timer	# This makes the enemy move. 
 @export var kill_countdown: Timer	# Countdown until the enemy will kill.
 
+@export var collisions: Array [CollisionShape2D] # I need to have all the colisions so that I can manually enable/disable them.
 @export var marker_points: Array[Marker2D]	# Those are the positions of where the enemy can go.
 
 @export var agression_level: int	# This is how agressive the enemy is. Will change durning the night.
@@ -71,8 +73,8 @@ func update_ai() -> void:
 		if kill_countdown.is_stopped():
 			if chance_to_mask >= randi()%100+1 and current_stage <= 4:
 				current_mask = Masks.values().pick_random()
-				print("current_stage ", current_stage)
-				print("current_mask ", current_mask)
+				#print("current_stage ", current_stage)
+				#print("current_mask ", current_mask)
 				match current_mask:
 					Masks.NO_MASK:
 						set_current_mask(Masks.NO_MASK, current_stage)
@@ -86,7 +88,11 @@ func update_ai() -> void:
 						set_current_mask(Masks.WOLF_MASK, current_stage)
 
 func ai_move() -> void:
+	disable_collisions()
 	current_stage += 1
+	collisions[current_stage].disabled = false
+	print(current_mask)
+	print(collisions[current_mask])
 	if marker_points[current_stage]:
 		position = marker_points[current_stage].position
 
@@ -101,6 +107,7 @@ func flashed():
 
 func whistle_used():
 	print("MY EARS!")
+	player_defended()
 
 func no_movement_detected():
 	print("Good kid.") 
@@ -208,3 +215,7 @@ func set_current_mask(current_mask_number: int, current_stage_number: int) -> vo
 		big_happy_mask.hide()
 		big_sad_clown_mask.hide()
 		big_wolf_mask.show()
+
+func disable_collisions():
+	for collision_shape in collisions:
+		collision_shape.disabled = true

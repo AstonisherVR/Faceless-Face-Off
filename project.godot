@@ -33,7 +33,9 @@ mouse_cursor/custom_image="res://2D Sprites/Player & Items Sprites/Mouse Cursor 
 
 [global_group]
 
-"Enemy Head"=""
+"Neutral Masks"=""
+"Happy Masks"=""
+"Sad Masks"=""
 
 [input]
 

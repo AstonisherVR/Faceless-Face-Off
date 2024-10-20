@@ -46,7 +46,7 @@ func handle_items():
 		dog_whistle_sfx.playing = false
 		set_visible_item(selected_item)
 		hammer.position = get_global_mouse_position()
-		if Input.is_action_just_pressed("R_Click") or Input.is_action_pressed("L_Click"): 
+		if Input.is_action_just_pressed("R_Click") or Input.is_action_just_pressed("L_Click"): 
 			items_animation.play("Hammer Boink")
 			#hammer_sfx.play()
 		#interact_with_enemy(mannequin_enemy)
@@ -63,7 +63,7 @@ func handle_items():
 		if Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click"): 
 			dog_whistle_sfx.playing = true
 		else:
-			dog_whistle_sfx.playing = false
+			dog_whistle_sfx.playing = false 
 		interact_with_enemy(mannequin_enemy)
 
 func set_visible_item(number):
@@ -101,3 +101,6 @@ func interact_with_enemy(enemy):
 		enemy.Masks.WOLF_MASK:
 			if dog_whistle_sfx.playing == true:
 				enemy.whistle_used()
+
+func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
+	print(area.is_in_group("Neutral Masks"))

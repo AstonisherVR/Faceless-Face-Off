@@ -4,30 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://b3ggruvurg00q" path="res://2D Sprites/Cabin Interiror.png" id="2_m7yxk"]
 
 [sub_resource type="Gradient" id="Gradient_jycvv"]
-offsets = PackedFloat32Array(0.402597, 0.785714, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.143139, 0.143139, 0.143139, 1, 0.337662, 0.337662, 0.337662, 1)
+offsets = PackedFloat32Array(0.0445545, 0.341584, 0.579208, 0.905941)
+colors = PackedColorArray(0.0687982, 0.0687983, 0.0687982, 1, 0.122252, 0.122252, 0.122252, 1, 0.122252, 0.122252, 0.122252, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_a50k6"]
 gradient = SubResource("Gradient_jycvv")
 width = 256
 height = 192
 use_hdr = true
-fill_from = Vector2(0.834862, 0.752294)
-fill_to = Vector2(0.779817, 0)
+fill_from = Vector2(0.778196, 1)
+fill_to = Vector2(0.785714, 0.726817)
 
 [node name="House" type="Node2D"]
 script = ExtResource("1_d2eie")
 
-[node name="Door" type="Node2D" parent="."]
-
-[node name="Window 1" type="Node2D" parent="."]
-
-[node name="Window 2" type="Node2D" parent="."]
+[node name="Device" type="Node2D" parent="."]
 
 [node name="House" type="Sprite2D" parent="."]
 texture = ExtResource("2_m7yxk")
-
-[node name="Device" type="Node2D" parent="."]
 
 [node name="Backlight" type="Sprite2D" parent="."]
 z_index = -3
