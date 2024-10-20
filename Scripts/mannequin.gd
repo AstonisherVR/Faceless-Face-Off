@@ -36,9 +36,6 @@ func _ready() -> void:
 	set_sprite(0)
 	movement_timer.start()
 
-func _physics_process(delta: float) -> void:
-	pass
-
 func _on_movement_timer_timeout() -> void: # When the timer is done, the enemy has a chance to move.
 	update_ai()
 	movement_timer.wait_time = attack_frequency
@@ -47,7 +44,7 @@ func _on_movement_timer_timeout() -> void: # When the timer is done, the enemy h
 func _on_kill_countdown_timeout() -> void:
 	current_stage = Stages.STAGE_5_KILL
 
-func update_ai():
+func update_ai() -> void:
 	if agression_level >= randi()%100+1:
 		match current_stage:
 			Stages.STAGE_0:
@@ -88,7 +85,7 @@ func update_ai():
 					Masks.WOLF_MASK:
 						set_current_mask(Masks.WOLF_MASK, current_stage)
 
-func ai_move():
+func ai_move() -> void:
 	current_stage += 1
 	if marker_points[current_stage]:
 		position = marker_points[current_stage].position
@@ -108,11 +105,11 @@ func whistle_used():
 func no_movement_detected():
 	print("Good kid.") 
 
-func kill_player():
+func kill_player() -> void:
 	print_rich("[color=red][b]Game Over![/b][/color]")
 	#get_tree().paused = true
 
-func set_sprite(number):
+func set_sprite(number) -> void:
 	if number == 0:
 		mannequin_stand_sprite.show()
 		mannequin_forawrd_sprite.hide()
@@ -120,10 +117,10 @@ func set_sprite(number):
 		mannequin_stand_sprite.hide()
 		mannequin_forawrd_sprite.show()
 
-func set_z_ordering(number):
+func set_z_ordering(number) -> void:
 	z_index = number
 
-func set_current_mask(current_mask_number: int, current_stage_number: int):
+func set_current_mask(current_mask_number: int, current_stage_number: int) -> void:
 	if current_mask_number == 0:
 		small_neutral_mask.hide()
 		small_happy_mask.hide()

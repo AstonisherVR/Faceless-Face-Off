@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cicfopi26jdj"]
+[gd_scene load_steps=13 format=3 uid="uid://cicfopi26jdj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a0vwr"]
 [ext_resource type="Texture2D" uid="uid://dponi722p2rf" path="res://2D Sprites/Player & Items Sprites/Light Point.png" id="2_nx43k"]
 [ext_resource type="Texture2D" uid="uid://btody4qwb32uv" path="res://2D Sprites/Player & Items Sprites/Hammer.png" id="3_wwfu7"]
 [ext_resource type="Texture2D" uid="uid://cichdmty8c4nu" path="res://2D Sprites/Player & Items Sprites/Mirror.png" id="4_uh3rm"]
 [ext_resource type="Texture2D" uid="uid://bmw754wlp5c4t" path="res://2D Sprites/Player & Items Sprites/Dog Whistle.png" id="5_jw66l"]
+[ext_resource type="AudioStream" uid="uid://mvsarhe1ndg" path="res://SFX/Dog Whistle.wav" id="6_cl8oi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8knm5"]
 radius = 21.0
@@ -53,10 +54,11 @@ _data = {
 "RESET": SubResource("Animation_ptdmm")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera", "flashlight", "hammer", "mirror", "dog_whistle", "items_animation")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("dog_whistle_sfx", "camera", "flashlight", "hammer", "mirror", "dog_whistle", "items_animation")]
 collision_layer = 3
 collision_mask = 5
 script = ExtResource("1_a0vwr")
+dog_whistle_sfx = NodePath("AudioStreamPlayer2D")
 camera = NodePath("Camera2D")
 flashlight = NodePath("Flashlight")
 hammer = NodePath("Hammer")
@@ -134,3 +136,7 @@ rotation_smoothing_enabled = true
 libraries = {
 "": SubResource("AnimationLibrary_cht2w")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cl8oi")
+volume_db = -18.0

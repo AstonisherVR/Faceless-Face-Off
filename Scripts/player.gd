@@ -4,6 +4,7 @@ enum Items {FLASHLIGHT, HAMMER, MIRROR, DOG_WHISTLE}
 var selected_item := Items.FLASHLIGHT
 
 @export var mannequin_enemy: Node2D
+@export var dog_whistle_sfx: AudioStreamPlayer2D
 @export var camera: Camera2D
 @export var flashlight: Node2D
 @export var hammer: Node2D
@@ -49,6 +50,10 @@ func handle_items():
 	elif selected_item == Items.DOG_WHISTLE:
 		set_visible_item(selected_item)
 		dog_whistle.position = get_global_mouse_position()
+		if Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click"): 
+			dog_whistle_sfx.playing = true
+		else:
+			dog_whistle_sfx.playing = false
 
 func set_visible_item(number):
 	if number == 0:
