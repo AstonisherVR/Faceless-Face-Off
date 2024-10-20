@@ -104,6 +104,7 @@ func hammer_hit():
 
 func reflection_shown():
 	print("AHH! I'M HEDOUS!")
+	go_back()
 
 func flashed():
 	print("I CAN'T SEE!")

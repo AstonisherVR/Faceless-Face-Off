@@ -145,3 +145,4 @@ libraries = {
 
 [connection signal="area_entered" from="Flashlight/Flashlight Area2D" to="." method="_on_flashlight_area_2d_area_entered"]
 [connection signal="area_entered" from="Hammer/Hammer Sprite2D/Hammer Area2D" to="." method="_on_hammer_area_2d_area_entered"]
+[connection signal="area_entered" from="Mirror/Mirror Area2D" to="." method="_on_mirror_area_2d_area_entered"]

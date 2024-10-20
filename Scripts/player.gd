@@ -49,20 +49,17 @@ func handle_items():
 		if Input.is_action_just_pressed("R_Click") or Input.is_action_just_pressed("L_Click"): 
 			items_animation.play("Hammer Boink")
 			#hammer_sfx.play()
-		#interact_with_enemy(mannequin_enemy)
 
 	elif selected_item == Items.MIRROR:
 		dog_whistle_sfx.playing = false
 		set_visible_item(selected_item)
 		mirror.position = get_global_mouse_position()
-		#interact_with_enemy(mannequin_enemy)
 
 	elif selected_item == Items.DOG_WHISTLE:
 		set_visible_item(selected_item)
 		dog_whistle.position = get_global_mouse_position()
 		if Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click"): 
 			dog_whistle_sfx.playing = true
-			interact_with_enemy(mannequin_enemy)
 		else:
 			dog_whistle_sfx.playing = false 
 
@@ -97,11 +94,11 @@ func interact_with_enemy(enemy):
 			enemy.hammer_hit()
 		enemy.Masks.HAPPY_MASK:
 			enemy.flashed()
-		#enemy.Masks.SAD_MASK:
-			#enemy.reflection_shown()
-		enemy.Masks.WOLF_MASK:
-			if dog_whistle_sfx.playing == true:
-				enemy.whistle_used()
+		enemy.Masks.SAD_MASK:
+			enemy.reflection_shown()
+		#enemy.Masks.WOLF_MASK:
+			#if dog_whistle_sfx.playing == true:
+				#enemy.whistle_used()
 
 func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Happy Masks"):
@@ -109,4 +106,8 @@ func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_hammer_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Neutral Masks"):
+		interact_with_enemy(mannequin_enemy)
+
+func _on_mirror_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Sad Masks"):
 		interact_with_enemy(mannequin_enemy)
