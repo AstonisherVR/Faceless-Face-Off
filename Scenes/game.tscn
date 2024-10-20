@@ -18,7 +18,8 @@ script = ExtResource("1_h0t6p")
 
 [node name="House" parent="." instance=ExtResource("2_3ic8r")]
 
-[node name="Player" parent="." instance=ExtResource("3_owglr")]
+[node name="Player" parent="." node_paths=PackedStringArray("mannequin_enemy") instance=ExtResource("3_owglr")]
+mannequin_enemy = NodePath("../Mannequin")
 
 [node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points") instance=ExtResource("4_p70qw")]
 position = Vector2(256, 0)

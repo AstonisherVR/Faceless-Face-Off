@@ -12,12 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://ntiqvktgvhku" path="res://2D Sprites/Enemy Sprites/Masks/Happy Mask.png" id="9_aw3gu"]
 [ext_resource type="Texture2D" uid="uid://bf1rqr1v6otjr" path="res://2D Sprites/Enemy Sprites/Masks/Wolf Mask.png" id="11_sewe3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3mpf1"]
-radius = 12.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_p86w2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_py4bi"]
-radius = 30.0
-height = 84.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b56s"]
+radius = 28.0
+height = 80.0
 
 [node name="Mannequin" type="CharacterBody2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown")]
 script = ExtResource("1_6tuu8")
@@ -35,16 +34,8 @@ movement_timer = NodePath("Movement Timer")
 kill_countdown = NodePath("Kill Countdown")
 
 [node name="Mannequin Stand" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_oxbv5")
-
-[node name="Head Stand Area2D" type="Area2D" parent="Mannequin Stand"]
-position = Vector2(-5, -49)
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Head Stand Area2D"]
-shape = SubResource("CircleShape2D_3mpf1")
-metadata/_edit_lock_ = true
 
 [node name="Small Masks" type="Node2D" parent="Mannequin Stand"]
 position = Vector2(-5, -49)
@@ -54,14 +45,26 @@ visible = false
 texture = ExtResource("3_hryjf")
 metadata/_edit_lock_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/NeutralMaskSmol"]
+shape = SubResource("CircleShape2D_p86w2")
+metadata/_edit_lock_ = true
+
 [node name="HappyMaskSmol" type="Sprite2D" parent="Mannequin Stand/Small Masks"]
 visible = false
 texture = ExtResource("4_j7q8v")
 metadata/_edit_lock_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/HappyMaskSmol"]
+shape = SubResource("CircleShape2D_p86w2")
+metadata/_edit_lock_ = true
+
 [node name="SadClownMaskSmol" type="Sprite2D" parent="Mannequin Stand/Small Masks"]
 visible = false
 texture = ExtResource("5_as3ym")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/SadClownMaskSmol"]
+shape = SubResource("CircleShape2D_p86w2")
 metadata/_edit_lock_ = true
 
 [node name="WolfMaskSmol" type="Sprite2D" parent="Mannequin Stand/Small Masks"]
@@ -73,15 +76,6 @@ metadata/_edit_lock_ = true
 position = Vector2(0, -14)
 texture = ExtResource("3_aue6j")
 
-[node name="Head Forward Area2D" type="Area2D" parent="Mannequin Forawrd"]
-position = Vector2(0, -37)
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Head Forward Area2D"]
-shape = SubResource("CapsuleShape2D_py4bi")
-metadata/_edit_lock_ = true
-
 [node name="Big Masks" type="Node2D" parent="Mannequin Forawrd"]
 position = Vector2(0, -34)
 
@@ -91,15 +85,27 @@ position = Vector2(0, -5.5)
 texture = ExtResource("8_5ycia")
 metadata/_edit_lock_ = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/NeutralMask"]
+shape = SubResource("CapsuleShape2D_7b56s")
+metadata/_edit_lock_ = true
+
 [node name="HappyMask" type="Sprite2D" parent="Mannequin Forawrd/Big Masks"]
 visible = false
 texture = ExtResource("9_aw3gu")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/HappyMask"]
+shape = SubResource("CapsuleShape2D_7b56s")
 metadata/_edit_lock_ = true
 
 [node name="SadClownMask" type="Sprite2D" parent="Mannequin Forawrd/Big Masks"]
 visible = false
 position = Vector2(0, -3)
 texture = ExtResource("9_amvd5")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/SadClownMask"]
+shape = SubResource("CapsuleShape2D_7b56s")
 metadata/_edit_lock_ = true
 
 [node name="WolfMask" type="Sprite2D" parent="Mannequin Forawrd/Big Masks"]

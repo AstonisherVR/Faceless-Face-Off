@@ -109,6 +109,12 @@ func kill_player() -> void:
 	print_rich("[color=red][b]Game Over![/b][/color]")
 	#get_tree().paused = true
 
+func player_defended() -> void:
+	current_stage = Stages.STAGE_0
+	movement_timer
+	movement_timer.stop()
+	movement_timer.wait_time = attack_frequency
+
 func set_sprite(number) -> void:
 	if number == 0:
 		mannequin_stand_sprite.show()

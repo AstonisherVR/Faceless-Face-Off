@@ -31,22 +31,32 @@ func handle_items():
 	if Input.is_action_just_pressed("Item_Four"):
 		selected_item = Items.DOG_WHISTLE
 
+
 	if selected_item == Items.FLASHLIGHT:
+		dog_whistle_sfx.playing = false
 		set_visible_item(selected_item)
 		if Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click"): 
 			flashlight.show()
 			flashlight.position = get_global_mouse_position()
 		else:
 			flashlight.hide()
+		#interact_with_enemy(mannequin_enemy)
+
 	elif selected_item == Items.HAMMER:
+		dog_whistle_sfx.playing = false
 		set_visible_item(selected_item)
 		hammer.position = get_global_mouse_position()
 		if Input.is_action_just_pressed("R_Click") or Input.is_action_pressed("L_Click"): 
 			items_animation.play("Hammer Boink")
 			#hammer_sfx.play()
+		#interact_with_enemy(mannequin_enemy)
+
 	elif selected_item == Items.MIRROR:
+		dog_whistle_sfx.playing = false
 		set_visible_item(selected_item)
 		mirror.position = get_global_mouse_position()
+		#interact_with_enemy(mannequin_enemy)
+
 	elif selected_item == Items.DOG_WHISTLE:
 		set_visible_item(selected_item)
 		dog_whistle.position = get_global_mouse_position()
@@ -54,6 +64,7 @@ func handle_items():
 			dog_whistle_sfx.playing = true
 		else:
 			dog_whistle_sfx.playing = false
+		interact_with_enemy(mannequin_enemy)
 
 func set_visible_item(number):
 	if number == 0:
@@ -79,13 +90,14 @@ func set_visible_item(number):
 
 func interact_with_enemy(enemy):
 	match enemy.current_mask:
-		enemy.Masks.NO_MASK:
-			enemy.no_movement_detected()
-		enemy.Masks.NEUTRAL_MASK:
-			enemy.hammer_hit()
-		enemy.Masks.HAPPY_MASK:
-			enemy.flashed()
-		enemy.Masks.SAD_MASK:
-			enemy.reflection_shown()
+		#enemy.Masks.NO_MASK:
+			#enemy.no_movement_detected()
+		#enemy.Masks.NEUTRAL_MASK:
+			#enemy.hammer_hit()
+		#enemy.Masks.HAPPY_MASK:
+			#enemy.flashed()
+		#enemy.Masks.SAD_MASK:
+			#enemy.reflection_shown()
 		enemy.Masks.WOLF_MASK:
-			enemy.whistle_used()
+			if dog_whistle_sfx.playing == true:
+				enemy.whistle_used()

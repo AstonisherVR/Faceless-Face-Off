@@ -58,7 +58,7 @@ _data = {
 collision_layer = 3
 collision_mask = 5
 script = ExtResource("1_a0vwr")
-dog_whistle_sfx = NodePath("AudioStreamPlayer2D")
+dog_whistle_sfx = NodePath("Dog Whistle/DogWhistleAudioStreamPlayer2D")
 camera = NodePath("Camera2D")
 flashlight = NodePath("Flashlight")
 hammer = NodePath("Hammer")
@@ -103,13 +103,14 @@ texture = ExtResource("3_wwfu7")
 texture_scale = 0.95
 
 [node name="Mirror" type="Node2D" parent="."]
-visible = false
 z_index = 6
 
 [node name="Mirror Sprite2D" type="Sprite2D" parent="Mirror"]
 texture = ExtResource("4_uh3rm")
 
 [node name="Area2D" type="Area2D" parent="Mirror"]
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mirror/Area2D"]
 shape = SubResource("CircleShape2D_qtc36")
@@ -120,6 +121,10 @@ z_index = 6
 
 [node name="DogWhistle" type="Sprite2D" parent="Dog Whistle"]
 texture = ExtResource("5_jw66l")
+
+[node name="DogWhistleAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Dog Whistle"]
+stream = ExtResource("6_cl8oi")
+volume_db = -18.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.1, 1.1)
@@ -136,7 +141,3 @@ rotation_smoothing_enabled = true
 libraries = {
 "": SubResource("AnimationLibrary_cht2w")
 }
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_cl8oi")
-volume_db = -18.0
