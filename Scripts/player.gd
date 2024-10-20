@@ -1,8 +1,9 @@
-extends Node2D
+extends CharacterBody2D
 
 enum Items {FLASHLIGHT, HAMMER, MIRROR, DOG_WHISTLE}
 var selected_item := Items.FLASHLIGHT
 
+@export var mannequin_enemy: Node2D
 @export var camera: Camera2D
 @export var flashlight: Node2D
 @export var hammer: Node2D
@@ -70,3 +71,16 @@ func set_visible_item(number):
 		hammer.hide()
 		mirror.hide()
 		dog_whistle.show()
+
+func interact_with_enemy(enemy):
+	match enemy.current_mask:
+		enemy.Masks.NO_MASK:
+			enemy.no_movement_detected()
+		enemy.Masks.NEUTRAL_MASK:
+			enemy.hammer_hit()
+		enemy.Masks.HAPPY_MASK:
+			enemy.flashed()
+		enemy.Masks.SAD_MASK:
+			enemy.reflection_shown()
+		enemy.Masks.WOLF_MASK:
+			enemy.whistle_used()

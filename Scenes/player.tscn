@@ -53,7 +53,9 @@ _data = {
 "RESET": SubResource("Animation_ptdmm")
 }
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("camera", "flashlight", "hammer", "mirror", "dog_whistle", "items_animation")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("camera", "flashlight", "hammer", "mirror", "dog_whistle", "items_animation")]
+collision_layer = 3
+collision_mask = 5
 script = ExtResource("1_a0vwr")
 camera = NodePath("Camera2D")
 flashlight = NodePath("Flashlight")
@@ -111,6 +113,7 @@ texture = ExtResource("4_uh3rm")
 shape = SubResource("CircleShape2D_qtc36")
 
 [node name="Dog Whistle" type="Node2D" parent="."]
+visible = false
 z_index = 6
 
 [node name="DogWhistle" type="Sprite2D" parent="Dog Whistle"]

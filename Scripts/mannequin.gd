@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 # I like to export the variables 
 ## so that when I press a dot next to the variable "movement_timer." 
@@ -56,8 +56,12 @@ func update_ai():
 				set_z_ordering(-1)
 			Stages.STAGE_1:
 				ai_move()
+				set_sprite(0)
+				set_z_ordering(-1)
 			Stages.STAGE_2:
 				ai_move()
+				set_sprite(0)
+				set_z_ordering(-1)
 			Stages.STAGE_3:
 				ai_move()
 				set_sprite(1)
@@ -68,7 +72,7 @@ func update_ai():
 			Stages.STAGE_5_KILL:
 				kill_player()
 		if kill_countdown.is_stopped():
-			if chance_to_mask >= randi()%50+1 and current_stage <= 4:
+			if chance_to_mask >= randi()%100+1 and current_stage <= 4:
 				current_mask = Masks.values().pick_random()
 				print("current_stage ", current_stage)
 				print("current_mask ", current_mask)
@@ -89,10 +93,24 @@ func ai_move():
 	if marker_points[current_stage]:
 		position = marker_points[current_stage].position
 
+func hammer_hit():
+	print("OUCH! THAT HURT!")
+
+func reflection_shown():
+	print("AHH! I'M HEDOUS!")
+
+func flashed():
+	print("I CAN'T SEE!")
+
+func whistle_used():
+	print("MY EARS!")
+
+func no_movement_detected():
+	print("Good kid.") 
+
 func kill_player():
 	print_rich("[color=red][b]Game Over![/b][/color]")
 	#get_tree().paused = true
-
 
 func set_sprite(number):
 	if number == 0:

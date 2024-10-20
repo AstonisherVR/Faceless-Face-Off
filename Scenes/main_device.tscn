@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw5t5g7m08lw3"]
 
-[ext_resource type="Texture2D" path="res://2D Sprites/Player & Items Sprites/Device Animations.png" id="1_a2lbd"]
+[ext_resource type="Texture2D" uid="uid://cnqqxnad24u8t" path="res://2D Sprites/Player & Items Sprites/OLD Device.png" id="1_a2lbd"]
 [ext_resource type="Script" path="res://Scripts/main_device.gd" id="1_ax21m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wm8mk"]

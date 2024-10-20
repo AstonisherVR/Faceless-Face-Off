@@ -23,9 +23,9 @@ script = ExtResource("1_h0t6p")
 [node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points") instance=ExtResource("4_p70qw")]
 position = Vector2(256, 0)
 marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1"), NodePath("../House/Point 2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]
-agression_level = 30
-attack_frequency = 6
-chance_to_mask = 20
+agression_level = 100
+attack_frequency = 3
+chance_to_mask = 100
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
