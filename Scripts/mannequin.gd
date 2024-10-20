@@ -6,7 +6,6 @@ extends CharacterBody2D
 enum Stages {STAGE_0, STAGE_1, STAGE_2, STAGE_3, STAGE_4, STAGE_5_KILL}	 # These are the stages of the enemy.
 enum Masks {NO_MASK, NEUTRAL_MASK, HAPPY_MASK, SAD_MASK, WOLF_MASK}	# These are the masks that it can wear.
 
-
 @export var mannequin_stand_sprite: Sprite2D
 @export var mannequin_forawrd_sprite: Sprite2D
 
@@ -22,16 +21,22 @@ enum Masks {NO_MASK, NEUTRAL_MASK, HAPPY_MASK, SAD_MASK, WOLF_MASK}	# These are 
 
 @export var movement_timer: Timer	# This makes the enemy move. 
 @export var kill_countdown: Timer	# Countdown until the enemy will kill.
+@export var stunned_timer: Timer	#
+@export var recovery_timer: Timer	# This makes the enemy recover after it's been defeated.
 
-@export var collisions: Array [CollisionShape2D] # I need to have all the colisions so that I can manually enable/disable them.
-@export var marker_points: Array[Marker2D]	# Those are the positions of where the enemy can go.
+@export var collisions: Array [CollisionShape2D] 	# I need to have all the colisions so that I can manually enable/disable them.
+@export var marker_points: Array[Marker2D]			# Those are the positions of where the enemy can go.
 
 @export var agression_level: int	# This is how agressive the enemy is. Will change durning the night.
 @export var attack_frequency: int	# This is the time for how often the enemy has a chance to move. Changing it makes the enemy move more often.
-@export var chance_to_mask: int	 # This is how much the enemy has a chance to put on a mask. 
+@export var stunned_time: int		# This is how long it takes to be defeated.
+@export var recovery_time: int		# This is how long it will take the enemy to start.
+@export var chance_to_mask: int		# This is how much the enemy has a chance to put on a mask. 
 
 @export var current_stage := Stages.STAGE_0
 @export var current_mask := Masks.NO_MASK
+
+@export var defeated: bool # If it's defeated it won't move to the next phase.
 
 func _ready() -> void:
 	set_z_ordering(-2)
@@ -88,22 +93,25 @@ func update_ai() -> void:
 						set_current_mask(Masks.WOLF_MASK, current_stage)
 
 func ai_move() -> void:
-	current_stage += 1
+	if defeated == false:
+		current_stage += 1
 	if marker_points[current_stage]:
 		position = marker_points[current_stage].position
 
 func hammer_hit():
 	print("OUCH! THAT HURT!")
+	go_back()
 
 func reflection_shown():
 	print("AHH! I'M HEDOUS!")
 
 func flashed():
 	print("I CAN'T SEE!")
+	go_back()
 
 func whistle_used():
 	print("MY EARS!")
-	player_defended()
+	go_back()
 
 func no_movement_detected():
 	print("Good kid.") 
@@ -112,11 +120,18 @@ func kill_player() -> void:
 	print_rich("[color=red][b]Game Over![/b][/color]")
 	#get_tree().paused = true
 
-func player_defended() -> void:
+func go_back() -> void:
+	defeated = true
 	current_stage = Stages.STAGE_0
-	movement_timer
-	movement_timer.stop()
 	movement_timer.wait_time = attack_frequency
+	stunned_timer.start()
+
+func _on_stunned_timer_timeout() -> void:
+	ai_move()
+	recovery_timer.start()
+
+func _on_recovery_timer_timeout() -> void:
+	defeated = false
 
 func set_sprite(number) -> void:
 	if number == 0:

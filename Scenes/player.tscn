@@ -54,10 +54,11 @@ _data = {
 "RESET": SubResource("Animation_ptdmm")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("dog_whistle_sfx", "camera", "flashlight", "hammer", "mirror", "dog_whistle", "items_animation")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("item_collisions", "dog_whistle_sfx", "camera", "flashlight", "hammer", "mirror", "dog_whistle", "items_animation")]
 collision_layer = 3
 collision_mask = 5
 script = ExtResource("1_a0vwr")
+item_collisions = [NodePath("Flashlight/Flashlight Area2D/Flashlight CollisionShape2D"), NodePath("Hammer/Hammer Sprite2D/Hammer Area2D/Hammer CollisionShape2D"), NodePath("Mirror/Mirror Area2D/Mirror CollisionShape2D")]
 dog_whistle_sfx = NodePath("Dog Whistle/DogWhistleAudioStreamPlayer2D")
 camera = NodePath("Camera2D")
 flashlight = NodePath("Flashlight")
@@ -80,7 +81,7 @@ texture_scale = 2.0
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Flashlight/Flashlight Area2D"]
+[node name="Flashlight CollisionShape2D" type="CollisionShape2D" parent="Flashlight/Flashlight Area2D"]
 shape = SubResource("CircleShape2D_8knm5")
 
 [node name="Hammer" type="Node2D" parent="."]
@@ -94,7 +95,7 @@ texture = ExtResource("3_wwfu7")
 collision_layer = 2
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hammer/Hammer Sprite2D/Hammer Area2D"]
+[node name="Hammer CollisionShape2D" type="CollisionShape2D" parent="Hammer/Hammer Sprite2D/Hammer Area2D"]
 shape = SubResource("CircleShape2D_1h8jy")
 
 [node name="PointLight2D" type="PointLight2D" parent="Hammer/Hammer Sprite2D"]
@@ -108,11 +109,11 @@ z_index = 6
 [node name="Mirror Sprite2D" type="Sprite2D" parent="Mirror"]
 texture = ExtResource("4_uh3rm")
 
-[node name="Area2D" type="Area2D" parent="Mirror"]
+[node name="Mirror Area2D" type="Area2D" parent="Mirror"]
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirror/Area2D"]
+[node name="Mirror CollisionShape2D" type="CollisionShape2D" parent="Mirror/Mirror Area2D"]
 shape = SubResource("CircleShape2D_qtc36")
 
 [node name="Dog Whistle" type="Node2D" parent="."]
@@ -143,3 +144,4 @@ libraries = {
 }
 
 [connection signal="area_entered" from="Flashlight/Flashlight Area2D" to="." method="_on_flashlight_area_2d_area_entered"]
+[connection signal="area_entered" from="Hammer/Hammer Sprite2D/Hammer Area2D" to="." method="_on_hammer_area_2d_area_entered"]

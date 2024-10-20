@@ -3,6 +3,7 @@ extends CharacterBody2D
 enum Items {FLASHLIGHT, HAMMER, MIRROR, DOG_WHISTLE}
 var selected_item := Items.FLASHLIGHT
 
+@export var item_collisions: Array [CollisionShape2D]
 @export var mannequin_enemy: Node2D
 @export var dog_whistle_sfx: AudioStreamPlayer2D
 @export var camera: Camera2D
@@ -40,7 +41,6 @@ func handle_items():
 			flashlight.position = get_global_mouse_position()
 		else:
 			flashlight.hide()
-		#interact_with_enemy(mannequin_enemy)
 
 	elif selected_item == Items.HAMMER:
 		dog_whistle_sfx.playing = false
@@ -62,9 +62,10 @@ func handle_items():
 		dog_whistle.position = get_global_mouse_position()
 		if Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click"): 
 			dog_whistle_sfx.playing = true
+			interact_with_enemy(mannequin_enemy)
 		else:
 			dog_whistle_sfx.playing = false 
-		interact_with_enemy(mannequin_enemy)
+
 
 func set_visible_item(number):
 	if number == 0:
@@ -92,10 +93,10 @@ func interact_with_enemy(enemy):
 	match enemy.current_mask:
 		#enemy.Masks.NO_MASK:
 			#enemy.no_movement_detected()
-		#enemy.Masks.NEUTRAL_MASK:
-			#enemy.hammer_hit()
-		#enemy.Masks.HAPPY_MASK:
-			#enemy.flashed()
+		enemy.Masks.NEUTRAL_MASK:
+			enemy.hammer_hit()
+		enemy.Masks.HAPPY_MASK:
+			enemy.flashed()
 		#enemy.Masks.SAD_MASK:
 			#enemy.reflection_shown()
 		enemy.Masks.WOLF_MASK:
@@ -103,4 +104,9 @@ func interact_with_enemy(enemy):
 				enemy.whistle_used()
 
 func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
-	print(area.is_in_group("Neutral Masks"))
+	if area.is_in_group("Happy Masks"):
+		interact_with_enemy(mannequin_enemy)
+
+func _on_hammer_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Neutral Masks"):
+		interact_with_enemy(mannequin_enemy)
