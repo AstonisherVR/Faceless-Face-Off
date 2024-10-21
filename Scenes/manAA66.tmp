@@ -1,0 +1,173 @@
+[gd_scene load_steps=14 format=3 uid="uid://d04408vvn85lb"]
+
+[ext_resource type="Script" path="res://Scripts/mannequin.gd" id="1_6tuu8"]
+[ext_resource type="Texture2D" uid="uid://hi0le3ek4121" path="res://2D Sprites/Enemy Sprites/Mannequin Creature.png" id="1_oxbv5"]
+[ext_resource type="Texture2D" uid="uid://drubhpab7yk0g" path="res://2D Sprites/Enemy Sprites/Mannequin Creature Front.png" id="3_aue6j"]
+[ext_resource type="Texture2D" uid="uid://ctcitxront5wj" path="res://2D Sprites/Enemy Sprites/Masks/Neutral Mask Smol.png" id="3_hryjf"]
+[ext_resource type="Texture2D" uid="uid://bwnmapgbp8clp" path="res://2D Sprites/Enemy Sprites/Masks/Happy Mask Smol.png" id="4_j7q8v"]
+[ext_resource type="Texture2D" uid="uid://bmc6ogmcqnfb" path="res://2D Sprites/Enemy Sprites/Masks/Sad Clown Mask Smol.png" id="5_as3ym"]
+[ext_resource type="Texture2D" uid="uid://dctcq2oio8l6s" path="res://2D Sprites/Enemy Sprites/Masks/Wolf Mask Smol.png" id="6_7h6ac"]
+[ext_resource type="Texture2D" uid="uid://br2ryrefvsjwy" path="res://2D Sprites/Enemy Sprites/Masks/Neutral Mask.png" id="8_5ycia"]
+[ext_resource type="Texture2D" uid="uid://ds61afednwq3p" path="res://2D Sprites/Enemy Sprites/Masks/Sad Clown Mask.png" id="9_amvd5"]
+[ext_resource type="Texture2D" uid="uid://ntiqvktgvhku" path="res://2D Sprites/Enemy Sprites/Masks/Happy Mask.png" id="9_aw3gu"]
+[ext_resource type="Texture2D" uid="uid://bf1rqr1v6otjr" path="res://2D Sprites/Enemy Sprites/Masks/Wolf Mask.png" id="11_sewe3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p86w2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b56s"]
+radius = 28.0
+height = 80.0
+
+[node name="Mannequin" type="CharacterBody2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forawrd_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown", "stunned_timer", "recovery_timer", "collisions")]
+script = ExtResource("1_6tuu8")
+mannequin_stand_sprite = NodePath("Mannequin Stand")
+mannequin_forawrd_sprite = NodePath("Mannequin Forawrd")
+small_neutral_mask = NodePath("Mannequin Stand/Small Masks/NeutralMaskSmol")
+small_happy_mask = NodePath("Mannequin Stand/Small Masks/HappyMaskSmol")
+small_sad_clown_mask = NodePath("Mannequin Stand/Small Masks/SadClownMaskSmol")
+small_wolf_mask = NodePath("Mannequin Stand/Small Masks/WolfMaskSmol")
+big_neutral_mask = NodePath("Mannequin Forawrd/Big Masks/NeutralMask")
+big_happy_mask = NodePath("Mannequin Forawrd/Big Masks/HappyMask")
+big_sad_clown_mask = NodePath("Mannequin Forawrd/Big Masks/SadClownMask")
+big_wolf_mask = NodePath("Mannequin Forawrd/Big Masks/WolfMask")
+movement_timer = NodePath("Movement Timer")
+kill_countdown = NodePath("Kill Countdown")
+stunned_timer = NodePath("Stunned Timer")
+recovery_timer = NodePath("Recovery Timer")
+collisions = [NodePath("Mannequin Stand/Small Masks/NeutralMaskSmol/NeutralMaskSmol Area2D/NeutralMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/HappyMaskSmol/HappyMaskSmol Area2D/HappyMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/SadClownMaskSmol/SadClownMaskSmol Area2D/SadClownMaskSmol CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/NeutralMask/NeutralMask Area2D/NeutralMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/HappyMask/HappyMask Area2D/HappyMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/SadClownMask/SadClownMask Area2D/SadClownMask CollisionShape2D")]
+health_value = null
+agression_level = null
+attack_frequency = null
+stunned_time = null
+recovery_time = null
+chance_to_mask = null
+
+[node name="Mannequin Stand" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_oxbv5")
+
+[node name="Small Masks" type="Node2D" parent="Mannequin Stand"]
+position = Vector2(-5, -49)
+
+[node name="NeutralMaskSmol" type="Sprite2D" parent="Mannequin Stand/Small Masks"]
+visible = false
+texture = ExtResource("3_hryjf")
+metadata/_edit_lock_ = true
+
+[node name="NeutralMaskSmol Area2D" type="Area2D" parent="Mannequin Stand/Small Masks/NeutralMaskSmol" groups=["Neutral Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="NeutralMaskSmol CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/NeutralMaskSmol/NeutralMaskSmol Area2D"]
+shape = SubResource("CircleShape2D_p86w2")
+metadata/_edit_lock_ = true
+
+[node name="HappyMaskSmol" type="Sprite2D" parent="Mannequin Stand/Small Masks"]
+visible = false
+texture = ExtResource("4_j7q8v")
+metadata/_edit_lock_ = true
+
+[node name="HappyMaskSmol Area2D" type="Area2D" parent="Mannequin Stand/Small Masks/HappyMaskSmol" groups=["Happy Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="HappyMaskSmol CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/HappyMaskSmol/HappyMaskSmol Area2D"]
+shape = SubResource("CircleShape2D_p86w2")
+metadata/_edit_lock_ = true
+
+[node name="SadClownMaskSmol" type="Sprite2D" parent="Mannequin Stand/Small Masks"]
+visible = false
+texture = ExtResource("5_as3ym")
+metadata/_edit_lock_ = true
+
+[node name="SadClownMaskSmol Area2D" type="Area2D" parent="Mannequin Stand/Small Masks/SadClownMaskSmol" groups=["Sad Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="SadClownMaskSmol CollisionShape2D" type="CollisionShape2D" parent="Mannequin Stand/Small Masks/SadClownMaskSmol/SadClownMaskSmol Area2D"]
+shape = SubResource("CircleShape2D_p86w2")
+metadata/_edit_lock_ = true
+
+[node name="WolfMaskSmol" type="Sprite2D" parent="Mannequin Stand/Small Masks"]
+visible = false
+texture = ExtResource("6_7h6ac")
+metadata/_edit_lock_ = true
+
+[node name="Mannequin Forawrd" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("3_aue6j")
+
+[node name="Big Masks" type="Node2D" parent="Mannequin Forawrd"]
+position = Vector2(0, -34)
+
+[node name="NeutralMask" type="Sprite2D" parent="Mannequin Forawrd/Big Masks"]
+visible = false
+position = Vector2(0, -5.5)
+texture = ExtResource("8_5ycia")
+metadata/_edit_lock_ = true
+
+[node name="NeutralMask Area2D" type="Area2D" parent="Mannequin Forawrd/Big Masks/NeutralMask" groups=["Neutral Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="NeutralMask CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/NeutralMask/NeutralMask Area2D"]
+shape = SubResource("CapsuleShape2D_7b56s")
+metadata/_edit_lock_ = true
+
+[node name="HappyMask" type="Sprite2D" parent="Mannequin Forawrd/Big Masks"]
+visible = false
+texture = ExtResource("9_aw3gu")
+metadata/_edit_lock_ = true
+
+[node name="HappyMask Area2D" type="Area2D" parent="Mannequin Forawrd/Big Masks/HappyMask" groups=["Happy Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="HappyMask CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/HappyMask/HappyMask Area2D"]
+shape = SubResource("CapsuleShape2D_7b56s")
+metadata/_edit_lock_ = true
+
+[node name="SadClownMask" type="Sprite2D" parent="Mannequin Forawrd/Big Masks"]
+visible = false
+position = Vector2(0, -3)
+texture = ExtResource("9_amvd5")
+metadata/_edit_lock_ = true
+
+[node name="SadClownMask Area2D" type="Area2D" parent="Mannequin Forawrd/Big Masks/SadClownMask" groups=["Sad Masks"]]
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="SadClownMask CollisionShape2D" type="CollisionShape2D" parent="Mannequin Forawrd/Big Masks/SadClownMask/SadClownMask Area2D"]
+shape = SubResource("CapsuleShape2D_7b56s")
+metadata/_edit_lock_ = true
+
+[node name="WolfMask" type="Sprite2D" parent="Mannequin Forawrd/Big Masks"]
+visible = false
+position = Vector2(0, -4)
+texture = ExtResource("11_sewe3")
+metadata/_edit_lock_ = true
+
+[node name="Movement Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="Kill Countdown" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Recovery Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Stunned Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Movement Timer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="Kill Countdown" to="." method="_on_kill_countdown_timeout"]
+[connection signal="timeout" from="Recovery Timer" to="." method="_on_recovery_timer_timeout"]
+[connection signal="timeout" from="Stunned Timer" to="." method="_on_stunned_timer_timeout"]

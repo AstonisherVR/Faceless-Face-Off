@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bf4ytfd2qojaq"]
+[gd_scene load_steps=7 format=3 uid="uid://bf4ytfd2qojaq"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_h0t6p"]
 [ext_resource type="PackedScene" uid="uid://cjkpk06h3i6m2" path="res://Scenes/house.tscn" id="2_3ic8r"]
 [ext_resource type="PackedScene" uid="uid://cicfopi26jdj" path="res://Scenes/player.tscn" id="3_owglr"]
 [ext_resource type="PackedScene" uid="uid://d04408vvn85lb" path="res://Scenes/mannequin.tscn" id="4_p70qw"]
 [ext_resource type="Shader" path="res://Scripts/distortion.gdshader" id="5_flpld"]
-[ext_resource type="PackedScene" uid="uid://dwr3y7sv54h05" path="res://Scenes/UI Scenes/debug_ui.tscn" id="6_sid51"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hayf1"]
 shader = ExtResource("5_flpld")
@@ -18,13 +17,18 @@ script = ExtResource("1_h0t6p")
 
 [node name="House" parent="." instance=ExtResource("2_3ic8r")]
 
-[node name="Player" parent="." instance=ExtResource("3_owglr")]
+[node name="Player" parent="." node_paths=PackedStringArray("item_collisions", "mannequin_enemy") instance=ExtResource("3_owglr")]
+item_collisions = []
+mannequin_enemy = NodePath("../Mannequin")
 
-[node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points") instance=ExtResource("4_p70qw")]
+[node name="Mannequin" parent="." node_paths=PackedStringArray("collisions") instance=ExtResource("4_p70qw")]
 position = Vector2(256, 0)
-marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1"), NodePath("../House/Point 2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]
+collisions = []
+health_value = 100
 agression_level = 100
-attack_frequency = 3
+attack_frequency = 1
+stunned_time = 2
+recovery_time = 2
 chance_to_mask = 100
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -38,13 +42,6 @@ offset_left = -150.0
 offset_top = -110.0
 offset_right = 150.0
 offset_bottom = 110.0
-
-[node name="Debug UI" parent="." instance=ExtResource("6_sid51")]
-visible = false
-offset_left = -110.0
-offset_top = -88.0
-offset_right = -110.0
-offset_bottom = -88.0
 
 [editable path="House"]
 [editable path="Player"]
