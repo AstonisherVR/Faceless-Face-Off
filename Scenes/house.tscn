@@ -1,7 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjkpk06h3i6m2"]
+[gd_scene load_steps=9 format=3 uid="uid://cjkpk06h3i6m2"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_d2eie"]
-[ext_resource type="Texture2D" uid="uid://b3ggruvurg00q" path="res://2D Sprites/Cabin Interiror.png" id="2_m7yxk"]
+[ext_resource type="Texture2D" uid="uid://dahfrkv2ukf6r" path="res://2D Sprites/Cabin Interiror 1 - With Closed Door.png" id="2_d87f7"]
+[ext_resource type="Texture2D" uid="uid://tpgbmliolb2" path="res://2D Sprites/Cabin Interiror 2 - With Closed Broken Door Stage 1.png" id="3_rb87h"]
+[ext_resource type="Texture2D" uid="uid://beplijqgymbhi" path="res://2D Sprites/Cabin Interiror 3 - With Closed Broken Door Stage 2.png" id="4_r0akj"]
+[ext_resource type="Texture2D" uid="uid://pbyw77tph1m8" path="res://2D Sprites/Cabin Interiror 4 - Broken Down Door.png" id="5_e5scp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uylrn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d87f7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rb87h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r0akj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e5scp")
+}],
+"loop": true,
+"name": &"Door",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_jycvv"]
 offsets = PackedFloat32Array(0.402597, 0.785714, 1)
@@ -24,8 +47,11 @@ script = ExtResource("1_d2eie")
 
 [node name="Window 2" type="Node2D" parent="."]
 
-[node name="House" type="Sprite2D" parent="."]
-texture = ExtResource("2_m7yxk")
+[node name="HouseAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uylrn")
+animation = &"Door"
+frame = 3
+frame_progress = 0.45369
 
 [node name="Device" type="Node2D" parent="."]
 
@@ -43,7 +69,7 @@ position = Vector2(-80, 50)
 position = Vector2(81, 41)
 
 [node name="Point 3" type="Marker2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0, 28)
 
 [node name="Point 4" type="Marker2D" parent="."]
 position = Vector2(0, 23)

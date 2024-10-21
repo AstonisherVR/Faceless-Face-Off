@@ -86,6 +86,7 @@ func advance_position(sprite_index: int, z_order: int) -> void:
 			position = marker_points[current_stage].position
 			set_sprite(sprite_index)
 			set_z_ordering(z_order)
+			print(main_health)
 
 func should_change_mask() -> bool:
 	return kill_countdown.is_stopped() and \

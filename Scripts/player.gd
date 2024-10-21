@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 #TODO ADD A GODDAM GAMEPLAY LOOP
+#TODO FIXME Fix the enemy AI
 
 signal item_used(item_name: String)
 signal item_switched(item: Items)
@@ -95,6 +96,7 @@ func handle_mirror(mouse_pos: Vector2) -> void:
 func handle_dog_whistle(mouse_pos: Vector2, is_action: bool) -> void:
 	dog_whistle.position = mouse_pos
 	dog_whistle_sfx.playing = is_action
+	mannequin_enemy.whistle_used()
 	
 	if is_action and mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
 		mannequin_enemy.apply_damage(2)
@@ -114,39 +116,9 @@ func set_visible_item(item: Items) -> void:
 	hammer.visible = item == Items.HAMMER
 	mirror.visible = item == Items.MIRROR
 	dog_whistle.visible = item == Items.DOG_WHISTLE
-	
+
 func set_active_collisions() -> void:
 	for collision_shape in item_collisions:
 		collision_shape.disabled = true
 	if selected_item < item_collisions.size():
 		item_collisions[selected_item].disabled = false
-#
-#func interact_with_enemy() -> void:
-	#match selected_item:
-		#Items.FLASHLIGHT:
-			#if flashlight_area.overlaps_area(mannequin_enemy) and Input.is_action_pressed("R_Click"):
-				#mannequin_enemy.flashlight_shined()
-		#Items.HAMMER:
-			#if hammer_area.overlaps_area(mannequin_enemy) and Input.is_action_just_pressed("R_Click"):
-				#mannequin_enemy.hammer_hit()
-		#Items.MIRROR:
-			#if mirror_area.overlaps_area(mannequin_enemy):
-				#mannequin_enemy.reflection_shown()
-		#Items.DOG_WHISTLE:
-			#if mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
-				#mannequin_enemy.apply_damage(2)
-#
-#func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
-	#if area.is_in_group("Happy Masks"):
-		#mannequin_enemy.flashlight_shined() # Apply damage
-		#print(mannequin_enemy.current_state)
-#
-#func _on_hammer_area_2d_area_entered(area: Area2D) -> void:
-	#if area.is_in_group("Neutral Masks"):
-		#mannequin_enemy.hammer_hit() # Apply damage
-		#print(mannequin_enemy.current_state)
-#
-#func _on_mirror_area_2d_area_entered(area: Area2D) -> void:
-	#if area.is_in_group("Sad Masks"):
-		#mannequin_enemy.reflection_shown() # Apply damage
-		#print(mannequin_enemy.current_state)
