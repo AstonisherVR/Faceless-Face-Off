@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://cicfopi26jdj"]
+[gd_scene load_steps=15 format=3 uid="uid://cicfopi26jdj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a0vwr"]
 [ext_resource type="Texture2D" uid="uid://dponi722p2rf" path="res://2D Sprites/Player & Items Sprites/Light Point.png" id="2_nx43k"]
+[ext_resource type="AudioStream" uid="uid://cosayophkvxbg" path="res://Audio/SFX/Flashlight_1.wav" id="3_vxcnn"]
 [ext_resource type="Texture2D" uid="uid://btody4qwb32uv" path="res://2D Sprites/Player & Items Sprites/Hammer.png" id="3_wwfu7"]
+[ext_resource type="AudioStream" uid="uid://c6bp87pyssmyf" path="res://Audio/SFX/Flashlight_2.wav" id="4_oks4l"]
 [ext_resource type="Texture2D" uid="uid://cichdmty8c4nu" path="res://2D Sprites/Player & Items Sprites/Mirror.png" id="4_uh3rm"]
 [ext_resource type="Texture2D" uid="uid://bmw754wlp5c4t" path="res://2D Sprites/Player & Items Sprites/Dog Whistle.png" id="5_jw66l"]
-[ext_resource type="AudioStream" uid="uid://c50mv7slx6cgk" path="res://Audio/SFX/Dog_Whistle.tres" id="6_axlei"]
+[ext_resource type="AudioStream" uid="uid://bc4x7vslhpqkp" path="res://Audio/SFX/Dog Whistle.wav" id="6_821pw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8knm5"]
 radius = 21.0
@@ -79,7 +81,13 @@ range_z_min = -4096
 texture = ExtResource("2_nx43k")
 texture_scale = 2.0
 
-[node name="FlashlightAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Flashlight"]
+[node name="FlashlightAudio" type="AudioStreamPlayer2D" parent="Flashlight"]
+stream = ExtResource("3_vxcnn")
+bus = &"Sfx"
+
+[node name="FlashlightAudio2" type="AudioStreamPlayer2D" parent="Flashlight"]
+stream = ExtResource("4_oks4l")
+bus = &"Sfx"
 
 [node name="Flashlight Area2D" type="Area2D" parent="Flashlight"]
 collision_layer = 2
@@ -138,8 +146,9 @@ z_index = 6
 texture = ExtResource("5_jw66l")
 
 [node name="DogWhistleAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Dog Whistle"]
-stream = ExtResource("6_axlei")
+stream = ExtResource("6_821pw")
 volume_db = -26.0
+bus = &"Sfx"
 
 [node name="PointLight2D" type="PointLight2D" parent="Dog Whistle"]
 color = Color(0.70423, 0.738416, 0.726911, 1)
@@ -167,11 +176,11 @@ libraries = {
 [node name="Mouse Still Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
-
 [node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sfx"
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sfx"
 
 [connection signal="area_entered" from="Flashlight/Flashlight Area2D" to="." method="_on_flashlight_area_2d_area_entered"]
 [connection signal="area_entered" from="Hammer/Hammer Sprite2D/Hammer Area2D" to="." method="_on_hammer_area_2d_area_entered"]

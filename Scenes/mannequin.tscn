@@ -174,67 +174,51 @@ one_shot = true
 
 [node name="Footsteps0 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("27_qea5t")
-bus = &"Sfx"
 
 [node name="Footsteps1 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("12_vtqgk")
-bus = &"Sfx"
 
 [node name="Footsteps2 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("13_ly1de")
-bus = &"Sfx"
 
 [node name="Footsteps3 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("14_111se")
-bus = &"Sfx"
 
 [node name="Footsteps4 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("15_hmv3t")
-bus = &"Sfx"
 
 [node name="Footsteps5 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("16_7i33j")
-bus = &"Sfx"
 
 [node name="Footsteps6 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("17_50y7g")
-bus = &"Sfx"
 
 [node name="Footsteps7 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("18_xfr84")
-bus = &"Sfx"
 
 [node name="Footsteps8 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("19_u0jer")
-bus = &"Sfx"
 
 [node name="Footsteps9 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("20_v81l4")
-bus = &"Sfx"
 
 [node name="Footsteps10 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("21_hwfxf")
-bus = &"Sfx"
 
 [node name="Footsteps11 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("22_a25o3")
-bus = &"Sfx"
 
 [node name="Footsteps12 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("23_v5weo")
-bus = &"Sfx"
 
 [node name="Footsteps13 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("24_0uks4")
-bus = &"Sfx"
 
 [node name="Footsteps14 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("25_o2tem")
-bus = &"Sfx"
 
 [node name="Footsteps15 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("26_04t7b")
-bus = &"Sfx"
 
 [node name="Footsteps Close AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 

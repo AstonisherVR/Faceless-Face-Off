@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjf1d6fsmpbq"]
+[gd_scene load_steps=7 format=3 uid="uid://bcob76d6whlpn"]
 
 [ext_resource type="Script" path="res://Scripts/power_generator.gd" id="1_xnp5t"]
 [ext_resource type="Texture2D" uid="uid://cvujsl4jh6y7p" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Neutral1.png" id="2_xnncx"]

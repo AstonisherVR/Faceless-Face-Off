@@ -15,7 +15,7 @@ func _ready() -> void:
 	sfx_check_box.button_pressed = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_start_button_pressed() -> void:

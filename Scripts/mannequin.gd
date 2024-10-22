@@ -40,12 +40,16 @@ enum Damage_States {NO_DAMAGE, STILL_PLAYER_DAMAGE, FLASHLIGHT_DAMAGE, HAMMER_DA
 @export var footsteps_sfx: Array[AudioStreamPlayer2D]
 
 var main_health: float				# When it raches 0, the mannequin goes back to Stage 0.
+var should_be_taking_damage_now : bool		# This is for checking every frame if it should be taking damage.
 var current_stage: = Stages.STAGE_0
 var current_mask: = Masks.NO_MASK
 var current_damage_taking_state := Damage_States.NO_DAMAGE
 
 func _ready() -> void:
-	initialize_enemy()
+	if agression_level <= 0:
+		stop_yourself()
+	else:
+		initialize_enemy()
 
 func _process(delta: float) -> void:
 	handle_damage(delta)
@@ -100,17 +104,20 @@ func _on_kill_countdown_timeout() -> void:
 func handle_damage(delta) -> void:
 	match current_damage_taking_state:
 		Damage_States.NO_DAMAGE:
-			pass		
+			pass
 		Damage_States.STILL_PLAYER_DAMAGE:
-			pass			
+			pass
 		Damage_States.FLASHLIGHT_DAMAGE:
-			main_health -= (delta * 25)
+			if should_be_taking_damage_now:
+				main_health -= (delta * 25)
 		Damage_States.HAMMER_DAMAGE:
 			pass
 		Damage_States.MIRROR_DAMAGE:
-			main_health -= (delta * 35)
+			if should_be_taking_damage_now:
+				main_health -= (delta * 35)
 		Damage_States.WHISTLE_DAMAGE:
-			main_health -= (delta * 30)
+			if should_be_taking_damage_now:
+				main_health -= (delta * 30)
 	if main_health <= 0:
 		reset_enemy()
 
@@ -159,7 +166,7 @@ func reset_enemy() -> void:
 
 func kill_player() -> void:
 	print_rich("[color=red][b]Game Over![/b][/color]")
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://Scenes/UI Scenes/main_menu.tscn")
 	# Implement actual game over logic here
 
 func set_sprite(number: int) -> void:
@@ -221,3 +228,10 @@ func change_mask() -> void:
 func play_footsteps() -> void:
 	var new_footsep_sfx = footsteps_sfx.pick_random()
 	new_footsep_sfx.play()
+
+func stop_yourself() -> void:
+	current_stage = Stages.STAGE_0
+	set_z_ordering(-2)
+	set_sprite(0)
+	if marker_points[current_stage]:
+		position = marker_points[current_stage].global_position

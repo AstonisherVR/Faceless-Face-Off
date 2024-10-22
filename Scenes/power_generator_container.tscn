@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0qabt4ueiah1"]
+[gd_scene load_steps=9 format=3 uid="uid://bim4l0rtuo32d"]
 
 [ext_resource type="Script" path="res://Scripts/power_generator_container.gd" id="1_ilws4"]
-[ext_resource type="PackedScene" uid="uid://cjf1d6fsmpbq" path="res://Scenes/power_generator.tscn" id="2_cwhru"]
+[ext_resource type="PackedScene" uid="uid://bcob76d6whlpn" path="res://Scenes/power_generator.tscn" id="2_cwhru"]
 [ext_resource type="Texture2D" uid="uid://xpwtesvn0ck0" path="res://2D Sprites/gameplay switch to machine button.png" id="3_1dk1p"]
 [ext_resource type="Texture2D" uid="uid://dojrt2id5umyl" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Green Animation.png" id="5_ups1f"]
 
@@ -46,7 +46,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.15]
+"values": [0.0, 1.25]
 }
 
 [sub_resource type="Animation" id="Animation_ebd88"]
@@ -123,6 +123,7 @@ texture_normal = ExtResource("3_1dk1p")
 libraries = {
 "": SubResource("AnimationLibrary_o1oaj")
 }
+speed_scale = 2.0
 
 [connection signal="mouse_entered" from="GeneratorTextureButton" to="." method="_on_generator_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="GeneratorTextureButton" to="." method="_on_generator_texture_button_mouse_exited"]
