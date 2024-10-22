@@ -9,15 +9,15 @@ var is_power_generator_up: bool = false
 var tweener: Tween
 
 ##func _process(delta):
-	##print((MouseMovementGlobal.relative))
+	#print((MouseMovementGlobal.relative))
 func _ready():
-	print("ready")
+	#print("ready")
 	power_generator.visible = false
 	power_generator_sprites.visible = false
 
 func _on_generator_texture_button_pressed() -> void:
 	#power_generator.visible = true
-	print("click")
+	#print("click")
 	if is_power_generator_up == false:
 		power_generator_sprites.visible = true
 		power_generator_animation_player.play("Power Generator Lift")
@@ -43,14 +43,14 @@ func _on_power_generator_animation_player_animation_finished(anim_name: StringNa
 			generator_button.release_focus()
 
 func _on_generator_texture_button_mouse_entered() -> void:
-	print("m entered")
+	#print("m entered")
 	if tweener:
 		tweener.kill()
 	tweener = create_tween()
 	tweener.tween_property(generator_button, "modulate:a", 0.5, 0.3)
 
 func _on_generator_texture_button_mouse_exited() -> void:
-	print("m exited")
+	#print("m exited")
 	if tweener:
 		tweener.kill()
 	tweener = create_tween()

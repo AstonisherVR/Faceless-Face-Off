@@ -40,8 +40,6 @@ offset_right = 81.0
 offset_bottom = 83.0
 rounded = true
 show_percentage = false
-indeterminate = true
-editor_preview_indeterminate = false
 
 [node name="Score Label" type="Label" parent="."]
 offset_top = -87.0
