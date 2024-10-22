@@ -17,7 +17,7 @@ config/icon="res://2D Sprites/icon.svg"
 
 [autoload]
 
-Globals="*res://Scripts/Globals.gd"
+MouseMovementGlobal="*res://Scripts/MouseMovementGlobal.gd"
 
 [display]
 

@@ -26,17 +26,16 @@ enum Damage_States {NO_DAMAGE, STILL_PLAYER_DAMAGE, FLASHLIGHT_DAMAGE, HAMMER_DA
 @export_group("Timers")
 @export var movement_timer: Timer	# This makes the enemy move
 @export var kill_countdown: Timer	# Countdown until the enemy will kill.
-@export var stunned_timer: Timer	# Stunned for a period of time.
 @export var recovery_timer: Timer	# This makes the enemy recover after it's been defeated.
 
 @export_group("Gameplay Properties")
-@export var collisions: Array[CollisionShape2D]
-@export var marker_points: Array[Marker2D]
 @export var health_value: int		# This is the value assigned to the main health.
 @export var agression_level: int	# This is how agressive the enemy is. Will change durning the night.
 @export var attack_frequency: int	# This is the time for how often the enemy has a chance to move. Changing it makes the enemy move more often.
-@export var stunned_time: int		# This is how long it takes to be defeated.
 @export var chance_to_mask: int		# This is how much the enemy has a chance to put on a mask.
+@export var collisions: Array[CollisionShape2D]
+@export var marker_points: Array[Marker2D]
+@export var house: Node2D
 
 var main_health: float				# When it raches 0, the mannequin goes back to Stage 0.
 var current_stage: = Stages.STAGE_0
@@ -63,7 +62,17 @@ func update_ai() -> void:
 			Stages.STAGE_0, Stages.STAGE_1, Stages.STAGE_2:
 				advance_position(0, -1)
 			Stages.STAGE_3:
-				advance_position(1, 4)
+				if house.door_stage == 0:
+					house.change_door()
+					reset_enemy()
+				elif house.door_stage == 1:
+					house.change_door()
+					reset_enemy()
+				elif house.door_stage == 2:
+					house.change_door()
+					reset_enemy()
+				else:
+					advance_position(1, 4)
 			Stages.STAGE_4:
 				if kill_countdown.is_stopped():
 					kill_countdown.start()
@@ -103,9 +112,13 @@ func handle_damage(delta) -> void:
 	if main_health <= 0:
 		reset_enemy()
 
+func no_movement_detected() -> void:
+	if current_mask == Masks.NO_MASK:
+		stun_enemy(Masks.HAPPY_MASK)
+
 func hammer_hit() -> void:
 	if current_mask == Masks.NEUTRAL_MASK:
-		pass
+		stun_enemy(Masks.HAPPY_MASK)
 
 func flashlight_shined() -> void:
 	if current_mask == Masks.HAPPY_MASK:
@@ -120,7 +133,7 @@ func whistle_used() -> void:
 		stun_enemy(Masks.WOLF_MASK)
 
 func stun_enemy(mask: int) -> void:
-	print("Stun Activated")
+	#print("Stun Activated")
 	movement_timer.stop()
 	if mask == 0:
 		current_damage_taking_state = Damage_States.STILL_PLAYER_DAMAGE
@@ -134,7 +147,7 @@ func stun_enemy(mask: int) -> void:
 		current_damage_taking_state = Damage_States.WHISTLE_DAMAGE
 
 func reset_enemy() -> void:
-	#print("Enemy reset")
+	print("Enemy reset")
 	current_damage_taking_state = Damage_States.NO_DAMAGE
 	#current_state = States.ATTACKING
 	current_stage = Stages.STAGE_0
@@ -148,15 +161,6 @@ func kill_player() -> void:
 	get_tree().reload_current_scene()
 	# Implement actual game over logic here
 
-func should_change_mask() -> bool:
-	return kill_countdown.is_stopped() and \
-		chance_to_mask >= randi() % 100 + 1 and \
-		current_stage <= Stages.STAGE_4
-
-func change_mask() -> void:
-	current_mask = Masks.values().pick_random()
-	set_current_mask_visibility(current_mask, current_stage)
-	set_active_collisions(current_mask, current_stage)
 
 func set_sprite(number: int) -> void:
 	mannequin_stand_sprite.visible = (number == 0)
@@ -165,34 +169,27 @@ func set_sprite(number: int) -> void:
 func set_z_ordering(number: int) -> void:
 	z_index = number
 
-func set_current_mask_visibility(mask: Masks, stage: Stages) -> void:
-	hide_all_masks()
-	if stage < Stages.STAGE_4:
-		show_small_mask(mask)
-	else:
-		show_big_mask(mask)
-
-func hide_all_masks() -> void:
+func set_current_mask(mask: Masks, stage: Stages) -> void:
 	var all_masks = [small_neutral_mask, small_happy_mask, small_sad_clown_mask, 
 	small_wolf_mask, big_neutral_mask, big_happy_mask, big_sad_clown_mask, big_wolf_mask]
-	for mask in all_masks:
-		mask.hide()
 
-func show_big_mask(mask: Masks) -> void:
-	match mask:
-		Masks.NEUTRAL_MASK: big_neutral_mask.show()
-		Masks.HAPPY_MASK: big_happy_mask.show()
-		Masks.SAD_MASK: big_sad_clown_mask.show()
-		Masks.WOLF_MASK: big_wolf_mask.show()
-		_: pass
+	for masks in all_masks:
+		masks.hide()
 
-func show_small_mask(mask: Masks) -> void:
-	match mask:
-		Masks.NEUTRAL_MASK: small_neutral_mask.show()
-		Masks.HAPPY_MASK: small_happy_mask.show()
-		Masks.SAD_MASK: small_sad_clown_mask.show()
-		Masks.WOLF_MASK: small_wolf_mask.show()
-		_: pass
+	if stage < Stages.STAGE_4:
+		match mask:
+			Masks.NEUTRAL_MASK: small_neutral_mask.show()
+			Masks.HAPPY_MASK: small_happy_mask.show()
+			Masks.SAD_MASK: small_sad_clown_mask.show()
+			Masks.WOLF_MASK: small_wolf_mask.show()
+			_: pass
+	else:
+		match mask:
+			Masks.NEUTRAL_MASK: big_neutral_mask.show()
+			Masks.HAPPY_MASK: big_happy_mask.show()
+			Masks.SAD_MASK: big_sad_clown_mask.show()
+			Masks.WOLF_MASK: big_wolf_mask.show()
+			_: pass
 
 func set_active_collisions(mask: Masks, stage: Stages) -> void:
 	for collision in collisions:
@@ -210,3 +207,13 @@ func set_active_collisions(mask: Masks, stage: Stages) -> void:
 	
 	if collision_index >= 0 and collision_index < collisions.size():
 		collisions[collision_index].disabled = false
+
+func should_change_mask() -> bool:
+	return kill_countdown.is_stopped() and \
+		chance_to_mask >= randi() % 100 + 1 and \
+		current_stage <= Stages.STAGE_4
+
+func change_mask() -> void:
+	current_mask = Masks.values().pick_random()
+	set_current_mask(current_mask, current_stage)
+	set_active_collisions(current_mask, current_stage)

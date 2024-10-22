@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://bf4ytfd2qojaq"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_h0t6p"]
+[ext_resource type="PackedScene" uid="uid://cjkpk06h3i6m2" path="res://Scenes/house.tscn" id="2_3ic8r"]
+[ext_resource type="PackedScene" uid="uid://cicfopi26jdj" path="res://Scenes/player.tscn" id="3_owglr"]
+[ext_resource type="PackedScene" uid="uid://d04408vvn85lb" path="res://Scenes/mannequin.tscn" id="4_p70qw"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/distortion.gdshader" id="5_flpld"]
+[ext_resource type="PackedScene" uid="uid://cjf1d6fsmpbq" path="res://Scenes/power_generator.tscn" id="6_5bt1q"]
+[ext_resource type="Texture2D" uid="uid://xpwtesvn0ck0" path="res://2D Sprites/gameplay switch to machine button.png" id="7_5ay0h"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/blur_shader.gdshader" id="8_mmtmb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hayf1"]
+shader = ExtResource("5_flpld")
+shader_parameter/yaxis = null
+shader_parameter/fov = Vector2(0.25, 0.33)
+shader_parameter/stretch = Vector2(41, 28)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_815rs"]
+shader = ExtResource("8_mmtmb")
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("generator_button")]
+script = ExtResource("1_h0t6p")
+generator_button = NodePath("GeneratorTextureButton")
+
+[node name="House" parent="." instance=ExtResource("2_3ic8r")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("mannequin_enemy") instance=ExtResource("3_owglr")]
+mannequin_enemy = NodePath("../Mannequin")
+
+[node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points", "house") instance=ExtResource("4_p70qw")]
+position = Vector2(256, 0)
+health_value = 50
+agression_level = 100
+attack_frequency = 3
+chance_to_mask = 100
+marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1"), NodePath("../House/Point 2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]
+house = NodePath("../House")
+
+[node name="Distortion" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_hayf1")
+offset_left = -150.0
+offset_top = -110.0
+offset_right = 150.0
+offset_bottom = 110.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+offset_left = -87.0
+offset_top = -87.0
+offset_right = 77.0
+offset_bottom = 77.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(164, 164)
+render_target_update_mode = 0
+
+[node name="Power Rhythm" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_5bt1q")]
+
+[node name="GeneratorTextureButton" type="TextureButton" parent="."]
+offset_left = -95.0
+offset_top = 72.0
+offset_right = 95.0
+offset_bottom = 90.0
+texture_normal = ExtResource("7_5ay0h")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_815rs")
+offset_left = -289.0
+offset_top = -183.0
+offset_right = 149.0
+offset_bottom = 112.0
+
+[connection signal="pressed" from="GeneratorTextureButton" to="." method="_on_texture_button_pressed"]
+
+[editable path="House"]
+[editable path="Mannequin"]
