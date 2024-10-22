@@ -1,14 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0qabt4ueiah1"]
+[gd_scene load_steps=9 format=3 uid="uid://b0qabt4ueiah1"]
 
 [ext_resource type="Script" path="res://Scripts/power_generator_container.gd" id="1_ilws4"]
 [ext_resource type="PackedScene" uid="uid://cjf1d6fsmpbq" path="res://Scenes/power_generator.tscn" id="2_cwhru"]
 [ext_resource type="Texture2D" uid="uid://xpwtesvn0ck0" path="res://2D Sprites/gameplay switch to machine button.png" id="3_1dk1p"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/blur_shader.gdshader" id="4_inf6b"]
 [ext_resource type="Texture2D" uid="uid://dojrt2id5umyl" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Green Animation.png" id="5_ups1f"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_815rs"]
-shader = ExtResource("4_inf6b")
-shader_parameter/lod = 0.0
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_we8se"]
+light_mode = 1
 
 [sub_resource type="Animation" id="Animation_tlbm4"]
 resource_name = "Power Generator Lift"
@@ -41,14 +39,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Blur:material:shader_parameter/lod")
+tracks/2/path = NodePath("../House/Distortion & Blur:material:shader_parameter/blur_amount")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 2.5]
+"values": [0.0, 1.15]
 }
 
 [sub_resource type="Animation" id="Animation_ebd88"]
@@ -80,7 +78,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Blur:material:shader_parameter/lod")
+tracks/2/path = NodePath("../House/Distortion & Blur:material:shader_parameter/blur_amount")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -103,13 +101,6 @@ power_generator = NodePath("Power Generator")
 power_generator_animation_player = NodePath("Power Generator AnimationPlayer")
 power_generator_sprites = NodePath("Power Generator Sprites")
 
-[node name="Blur" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_815rs")
-offset_left = -150.0
-offset_top = -150.0
-offset_right = 150.0
-offset_bottom = 150.0
-
 [node name="Power Generator" parent="." instance=ExtResource("2_cwhru")]
 
 [node name="Power Generator Sprites" type="Sprite2D" parent="."]
@@ -119,6 +110,8 @@ vframes = 2
 frame = 5
 
 [node name="GeneratorTextureButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+material = SubResource("CanvasItemMaterial_we8se")
 offset_left = -95.0
 offset_top = 72.0
 offset_right = 95.0

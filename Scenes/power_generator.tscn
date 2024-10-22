@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjf1d6fsmpbq"]
+[gd_scene load_steps=7 format=3 uid="uid://cjf1d6fsmpbq"]
 
 [ext_resource type="Script" path="res://Scripts/power_generator.gd" id="1_xnp5t"]
 [ext_resource type="Texture2D" uid="uid://cvujsl4jh6y7p" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Neutral1.png" id="2_xnncx"]
 [ext_resource type="Texture2D" uid="uid://cag4msqi5gvh1" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Green1.png" id="3_3wt8t"]
 [ext_resource type="Texture2D" uid="uid://derlv1dwglaym" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Red1.png" id="4_xeg85"]
+[ext_resource type="Texture2D" uid="uid://dponi722p2rf" path="res://2D Sprites/Player & Items Sprites/Light Point.png" id="5_hupy8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e8f5v"]
 animations = [{
@@ -52,3 +53,10 @@ offset_left = -87.0
 offset_top = -87.0
 offset_right = -6.0
 offset_bottom = -46.0
+
+[node name="Test Camera2D" type="Camera2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+texture = ExtResource("5_hupy8")
+texture_scale = 3.0

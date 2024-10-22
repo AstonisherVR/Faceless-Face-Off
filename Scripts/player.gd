@@ -33,12 +33,8 @@ func _ready() -> void:
 	set_active_collisions()
 
 func _process(delta: float) -> void:
-	update_camera()
 	handle_item_selection()
 	handle_item_behavior()
-
-func update_camera() -> void:
-	camera.position = -get_global_mouse_position()
 
 func handle_item_selection() -> void:
 	if Input.is_action_just_pressed("Item_One"):

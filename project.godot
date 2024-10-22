@@ -15,9 +15,13 @@ run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://2D Sprites/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://Audio/default_bus_layout.tres"
+
 [autoload]
 
-MouseMovementGlobal="*res://Scripts/MouseMovementGlobal.gd"
+Globals="*res://Scripts/MouseMovementGlobal.gd"
 
 [display]
 
