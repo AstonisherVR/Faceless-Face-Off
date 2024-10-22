@@ -90,11 +90,9 @@ position = Vector2(0, 23)
 [node name="Music Calm" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ruak8")
 volume_db = -4.0
-bus = &"Music"
 
 [node name="Music Intense" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_kp1ig")
-bus = &"Music"
 
 [node name="Distortion & Blur" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_8ybf6")
