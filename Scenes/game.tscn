@@ -18,18 +18,16 @@ script = ExtResource("1_h0t6p")
 
 [node name="House" parent="." instance=ExtResource("2_3ic8r")]
 
-[node name="Player" parent="." node_paths=PackedStringArray("item_collisions", "mannequin_enemy") instance=ExtResource("3_owglr")]
-item_collisions = []
+[node name="Player" parent="." node_paths=PackedStringArray("mannequin_enemy") instance=ExtResource("3_owglr")]
 mannequin_enemy = NodePath("../Mannequin")
 
 [node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points") instance=ExtResource("4_p70qw")]
 position = Vector2(256, 0)
 marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1"), NodePath("../House/Point 2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]
-health_value = 100
+health_value = 50
 agression_level = 100
 attack_frequency = 3
 stunned_time = 2
-recovery_time = 2
 chance_to_mask = 100
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -49,5 +47,4 @@ offset_bottom = 110.0
 [node name="Power Rhythm" parent="SubViewport" instance=ExtResource("6_5bt1q")]
 
 [editable path="House"]
-[editable path="Player"]
 [editable path="Mannequin"]

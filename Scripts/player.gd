@@ -3,9 +3,6 @@ extends CharacterBody2D
 #TODO ADD A GODDAM GAMEPLAY LOOP
 #TODO FIXME Fix the enemy AI
 
-signal item_used(item_name: String)
-signal item_switched(item: Items)
-
 enum Items {FLASHLIGHT, HAMMER, MIRROR, DOG_WHISTLE}
 
 @export_group("Item References")
@@ -16,7 +13,7 @@ enum Items {FLASHLIGHT, HAMMER, MIRROR, DOG_WHISTLE}
 @export var dog_whistle: Node2D
 
 @export_group("Game Components")
-@export var mannequin_enemy: Node2D
+@export var mannequin_enemy: CharacterBody2D
 @export var camera: Camera2D
 @export var items_animation: AnimationPlayer
 
@@ -64,42 +61,49 @@ func switch_to_item(new_item: Items) -> void:
 
 func handle_item_behavior() -> void:
 	var mouse_pos = get_global_mouse_position()
-	var is_action = Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click")
+	var is_mouse_clicking = Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click")
 	match selected_item:
 		Items.FLASHLIGHT:
-			handle_flashlight(mouse_pos, is_action)
-		Items.HAMMER:
-			handle_hammer(mouse_pos, is_action)
+			handle_flashlight(mouse_pos, is_mouse_clicking)
+		#Items.HAMMER:
+			#handle_hammer(mouse_pos, is_mouse_clicking)
 		Items.MIRROR:
 			handle_mirror(mouse_pos)
 		Items.DOG_WHISTLE:
-			handle_dog_whistle(mouse_pos, is_action)
+			handle_dog_whistle(mouse_pos, is_mouse_clicking)
 
-func handle_flashlight(mouse_pos: Vector2, is_action: bool) -> void:
+func handle_flashlight(mouse_pos: Vector2, is_flashlight_visible: bool) -> void:
 	flashlight.position = mouse_pos
-	flashlight.visible = is_action
-	if flashlight_area.overlaps_area(mannequin_enemy) and is_action:
-		mannequin_enemy.flashlight_shined()
-
-func handle_hammer(mouse_pos: Vector2, is_action: bool) -> void:
-	hammer.position = mouse_pos
-	if Input.is_action_just_pressed("R_Click") or Input.is_action_just_pressed("L_Click"):
-		items_animation.play("Hammer Boink")
-		if hammer_area.overlaps_area(mannequin_enemy):
-			mannequin_enemy.hammer_hit()
+	flashlight.visible = is_flashlight_visible
+	#print("flashlight is handled")
+	#if flashlight_area.(mannequin_enemy) and is_flashlight_visible:
 
 func handle_mirror(mouse_pos: Vector2) -> void:
 	mirror.position = mouse_pos
-	if mirror_area.overlaps_area(mannequin_enemy):
-		mannequin_enemy.reflection_shown()
 
-func handle_dog_whistle(mouse_pos: Vector2, is_action: bool) -> void:
+func handle_dog_whistle(mouse_pos: Vector2, is_mouse_clicking: bool) -> void:
 	dog_whistle.position = mouse_pos
-	dog_whistle_sfx.playing = is_action
+	dog_whistle_sfx.playing = is_mouse_clicking
 	mannequin_enemy.whistle_used()
-	
-	if is_action and mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
-		mannequin_enemy.apply_damage(2)
+	if is_mouse_clicking and mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
+		mannequin_enemy.whistle_used()
+
+func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
+	print("from player flashlight is stunning)")
+	mannequin_enemy.flashlight_shined()
+
+func _on_mirror_area_2d_area_entered(area: Area2D) -> void:
+	print("from player mirror is stunning)")
+	mannequin_enemy.reflection_shown()
+
+#overlaps_area(mannequin_enemy) 
+#func handle_hammer(mouse_pos: Vector2, is_mouse_clicking: bool) -> void:
+	#hammer.position = mouse_pos
+	#if Input.is_action_just_pressed("R_Click") or Input.is_action_just_pressed("L_Click"):
+		#items_animation.play("Hammer Boink")
+		#if hammer_area.(mannequin_enemy):
+			#mannequin_enemy.hammer_hit()
+
 
 func handle_mouse_stillness(delta: float) -> void:
 	var current_mouse_pos = get_global_mouse_position()
