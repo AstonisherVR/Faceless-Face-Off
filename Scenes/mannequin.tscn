@@ -32,7 +32,7 @@ big_sad_clown_mask = NodePath("Mannequin Forawrd/Big Masks/SadClownMask")
 big_wolf_mask = NodePath("Mannequin Forawrd/Big Masks/WolfMask")
 movement_timer = NodePath("Movement Timer")
 kill_countdown = NodePath("Kill Countdown")
-recovery_timer = NodePath("Stunned Timer")
+recovery_timer = NodePath("")
 collisions = [NodePath("Mannequin Stand/Small Masks/NeutralMaskSmol/NeutralMaskSmol Area2D/NeutralMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/HappyMaskSmol/HappyMaskSmol Area2D/HappyMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/SadClownMaskSmol/SadClownMaskSmol Area2D/SadClownMaskSmol CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/NeutralMask/NeutralMask Area2D/NeutralMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/HappyMask/HappyMask Area2D/HappyMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/SadClownMask/SadClownMask Area2D/SadClownMask CollisionShape2D")]
 
 [node name="Mannequin Stand" type="Sprite2D" parent="."]
@@ -154,10 +154,5 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
-[node name="Stunned Timer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
 [connection signal="timeout" from="Movement Timer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="Kill Countdown" to="." method="_on_kill_countdown_timeout"]
-[connection signal="timeout" from="Stunned Timer" to="." method="_on_stunned_timer_timeout"]

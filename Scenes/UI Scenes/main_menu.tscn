@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cuec7tmvpugyg"]
+[gd_scene load_steps=11 format=3 uid="uid://cuec7tmvpugyg"]
 
 [ext_resource type="Script" path="res://Scripts/UI Scripts/main_menu.gd" id="1_dffsb"]
 [ext_resource type="PackedScene" uid="uid://cjkpk06h3i6m2" path="res://Scenes/house.tscn" id="2_1w1yj"]
@@ -19,6 +19,12 @@ fill_to = Vector2(0, 0.988076)
 light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2elqs"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uwphc"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lukuu"]
 light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_go0a0"]
@@ -89,6 +95,26 @@ offset_bottom = -132.0
 scale = Vector2(1.04765, 1.01854)
 text = "Quit"
 
+[node name="Music CheckBox" type="CheckBox" parent="."]
+material = SubResource("CanvasItemMaterial_uwphc")
+layout_mode = 0
+offset_left = 40.0
+offset_top = 15.0
+offset_right = 145.0
+offset_bottom = 46.0
+scale = Vector2(0.75, 0.75)
+text = "Music"
+
+[node name="SFX CheckBox" type="CheckBox" parent="."]
+material = SubResource("CanvasItemMaterial_lukuu")
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 145.0
+offset_bottom = 71.0
+scale = Vector2(0.75, 0.75)
+text = "SFX"
+
 [node name="Fullscreen CheckBox" type="CheckBox" parent="."]
 material = SubResource("CanvasItemMaterial_go0a0")
 layout_mode = 1
@@ -97,18 +123,20 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -215.0
-offset_top = -122.0
-offset_right = -108.0
-offset_bottom = -91.0
+offset_left = -218.0
+offset_top = -126.0
+offset_right = -111.0
+offset_bottom = -95.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.75, 0.75)
 text = "Fullscreen
 "
 
 [connection signal="pressed" from="Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Exit Button" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="Music CheckBox" to="." method="_on_music_check_box_toggled"]
+[connection signal="toggled" from="SFX CheckBox" to="." method="_on_sfx_check_box_toggled"]
 [connection signal="toggled" from="Fullscreen CheckBox" to="." method="_on_fullscreen_check_box_toggled"]
 
 [editable path="House"]
