@@ -26,7 +26,6 @@ enum Damage_States {NO_DAMAGE, STILL_PLAYER_DAMAGE, FLASHLIGHT_DAMAGE, HAMMER_DA
 @export_group("Timers")
 @export var movement_timer: Timer	# This makes the enemy move
 @export var kill_countdown: Timer	# Countdown until the enemy will kill.
-@export var recovery_timer: Timer	# This makes the enemy recover after it's been defeated.
 
 @export_group("Gameplay Properties")
 @export var health_value: int		# This is the value assigned to the main health.
@@ -43,7 +42,6 @@ enum Damage_States {NO_DAMAGE, STILL_PLAYER_DAMAGE, FLASHLIGHT_DAMAGE, HAMMER_DA
 var main_health: float				# When it raches 0, the mannequin goes back to Stage 0.
 var current_stage: = Stages.STAGE_0
 var current_mask: = Masks.NO_MASK
-#var current_state := States.ATTACKING
 var current_damage_taking_state := Damage_States.NO_DAMAGE
 
 func _ready() -> void:
@@ -153,7 +151,6 @@ func stun_enemy(mask: int) -> void:
 func reset_enemy() -> void:
 	print("Enemy reset")
 	current_damage_taking_state = Damage_States.NO_DAMAGE
-	#current_state = States.ATTACKING
 	current_stage = Stages.STAGE_0
 	current_mask = Masks.NO_MASK
 	position = marker_points[0].position

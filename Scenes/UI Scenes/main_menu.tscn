@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cuec7tmvpugyg"]
+[gd_scene load_steps=12 format=3 uid="uid://cuec7tmvpugyg"]
 
 [ext_resource type="Script" path="res://Scripts/UI Scripts/main_menu.gd" id="1_dffsb"]
 [ext_resource type="PackedScene" uid="uid://cjkpk06h3i6m2" path="res://Scenes/house.tscn" id="2_1w1yj"]
 [ext_resource type="Texture2D" uid="uid://bes6sr1iychsr" path="res://2D Sprites/Lamp.png" id="3_8d00a"]
+[ext_resource type="PackedScene" uid="uid://d04408vvn85lb" path="res://Scenes/mannequin.tscn" id="4_6vibv"]
 
 [sub_resource type="Gradient" id="Gradient_7ws2k"]
 interpolation_mode = 2
@@ -38,6 +39,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dffsb")
+
+[node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points", "house") instance=ExtResource("4_6vibv")]
+position = Vector2(324, 19)
+marker_points = [NodePath("../Marker2D")]
+house = NodePath("../House")
 
 [node name="House" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("2_1w1yj")]
 player_camera = NodePath("../Camera2D")
@@ -132,6 +138,9 @@ grow_vertical = 0
 scale = Vector2(0.75, 0.75)
 text = "Fullscreen
 "
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(49, 43)
 
 [connection signal="pressed" from="Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Exit Button" to="." method="_on_exit_button_pressed"]

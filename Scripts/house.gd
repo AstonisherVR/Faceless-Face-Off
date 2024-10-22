@@ -6,12 +6,14 @@ extends Node2D
 @export var house_animated_sprite_2d: AnimatedSprite2D
 @export var player_camera: Camera2D
 
+@export var music_fade_in_duration := 3.0
+@export var music_fade_out_duration := 3.0
+
 var music_on := true
 var door_stage: int
 
 func _ready() -> void:
 	house_animated_sprite_2d.frame = door_stage
-
 
 func _process(delta: float) -> void:
 	update_music_status()
