@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d04408vvn85lb"]
+[gd_scene load_steps=30 format=3 uid="uid://d04408vvn85lb"]
 
 [ext_resource type="Script" path="res://Scripts/mannequin.gd" id="1_6tuu8"]
 [ext_resource type="Texture2D" uid="uid://hi0le3ek4121" path="res://2D Sprites/Enemy Sprites/Mannequin Creature.png" id="1_oxbv5"]
@@ -11,6 +11,22 @@
 [ext_resource type="Texture2D" uid="uid://ds61afednwq3p" path="res://2D Sprites/Enemy Sprites/Masks/Sad Clown Mask.png" id="9_amvd5"]
 [ext_resource type="Texture2D" uid="uid://ntiqvktgvhku" path="res://2D Sprites/Enemy Sprites/Masks/Happy Mask.png" id="9_aw3gu"]
 [ext_resource type="Texture2D" uid="uid://bf1rqr1v6otjr" path="res://2D Sprites/Enemy Sprites/Masks/Wolf Mask.png" id="11_sewe3"]
+[ext_resource type="AudioStream" uid="uid://cflsknxvlhuhd" path="res://Audio/SFX/Ftsp_1.wav" id="12_vtqgk"]
+[ext_resource type="AudioStream" uid="uid://c07e17dw5ip4x" path="res://Audio/SFX/Ftsp_2.wav" id="13_ly1de"]
+[ext_resource type="AudioStream" uid="uid://rcegnppiolv0" path="res://Audio/SFX/Ftsp_3.wav" id="14_111se"]
+[ext_resource type="AudioStream" uid="uid://dhheq2a62eksc" path="res://Audio/SFX/Ftsp_4.wav" id="15_hmv3t"]
+[ext_resource type="AudioStream" uid="uid://dr7jajvg2qqr5" path="res://Audio/SFX/Ftsp_5.wav" id="16_7i33j"]
+[ext_resource type="AudioStream" uid="uid://drv4flvsv15h5" path="res://Audio/SFX/Ftsp_6.wav" id="17_50y7g"]
+[ext_resource type="AudioStream" uid="uid://dtto1sicveu4i" path="res://Audio/SFX/Ftsp_7.wav" id="18_xfr84"]
+[ext_resource type="AudioStream" uid="uid://cm670xow3xx1v" path="res://Audio/SFX/Ftsp_8.wav" id="19_u0jer"]
+[ext_resource type="AudioStream" uid="uid://orheuq175aur" path="res://Audio/SFX/Ftsp_9.wav" id="20_v81l4"]
+[ext_resource type="AudioStream" uid="uid://d5v1nkoege5e" path="res://Audio/SFX/Ftsp_10.wav" id="21_hwfxf"]
+[ext_resource type="AudioStream" uid="uid://dv6karmtdnev0" path="res://Audio/SFX/Ftsp_11.wav" id="22_a25o3"]
+[ext_resource type="AudioStream" uid="uid://c4d8su55sq7jd" path="res://Audio/SFX/Ftsp_12.wav" id="23_v5weo"]
+[ext_resource type="AudioStream" uid="uid://k5xcj5apaiib" path="res://Audio/SFX/Ftsp_13.wav" id="24_0uks4"]
+[ext_resource type="AudioStream" uid="uid://dbwqar8mhh7o6" path="res://Audio/SFX/Ftsp_14.wav" id="25_o2tem"]
+[ext_resource type="AudioStream" uid="uid://dwbab36ygvniw" path="res://Audio/SFX/Ftsp_15.wav" id="26_04t7b"]
+[ext_resource type="AudioStream" uid="uid://bny78pqo08pk6" path="res://Audio/SFX/Ftsp_16.wav" id="27_qea5t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p86w2"]
 
@@ -18,7 +34,7 @@
 radius = 28.0
 height = 80.0
 
-[node name="Mannequin" type="CharacterBody2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forward_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown", "recovery_timer", "collisions")]
+[node name="Mannequin" type="CharacterBody2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forward_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown", "recovery_timer", "collisions", "footsteps_sfx")]
 script = ExtResource("1_6tuu8")
 mannequin_stand_sprite = NodePath("Mannequin Stand")
 mannequin_forward_sprite = NodePath("Mannequin Forawrd")
@@ -34,6 +50,7 @@ movement_timer = NodePath("Movement Timer")
 kill_countdown = NodePath("Kill Countdown")
 recovery_timer = NodePath("")
 collisions = [NodePath("Mannequin Stand/Small Masks/NeutralMaskSmol/NeutralMaskSmol Area2D/NeutralMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/HappyMaskSmol/HappyMaskSmol Area2D/HappyMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/SadClownMaskSmol/SadClownMaskSmol Area2D/SadClownMaskSmol CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/NeutralMask/NeutralMask Area2D/NeutralMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/HappyMask/HappyMask Area2D/HappyMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/SadClownMask/SadClownMask Area2D/SadClownMask CollisionShape2D")]
+footsteps_sfx = [NodePath("SFX Collection/Footsteps0 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps1 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps2 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps3 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps4 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps5 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps6 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps7 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps8 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps9 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps10 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps11 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps12 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps13 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps14 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps15 AudioStreamPlayer2D")]
 
 [node name="Mannequin Stand" type="Sprite2D" parent="."]
 visible = false
@@ -153,6 +170,72 @@ one_shot = true
 [node name="Kill Countdown" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="SFX Collection" type="Node" parent="."]
+
+[node name="Footsteps0 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("27_qea5t")
+bus = &"Sfx"
+
+[node name="Footsteps1 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("12_vtqgk")
+bus = &"Sfx"
+
+[node name="Footsteps2 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("13_ly1de")
+bus = &"Sfx"
+
+[node name="Footsteps3 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("14_111se")
+bus = &"Sfx"
+
+[node name="Footsteps4 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("15_hmv3t")
+bus = &"Sfx"
+
+[node name="Footsteps5 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("16_7i33j")
+bus = &"Sfx"
+
+[node name="Footsteps6 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("17_50y7g")
+bus = &"Sfx"
+
+[node name="Footsteps7 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("18_xfr84")
+bus = &"Sfx"
+
+[node name="Footsteps8 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("19_u0jer")
+bus = &"Sfx"
+
+[node name="Footsteps9 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("20_v81l4")
+bus = &"Sfx"
+
+[node name="Footsteps10 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("21_hwfxf")
+bus = &"Sfx"
+
+[node name="Footsteps11 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("22_a25o3")
+bus = &"Sfx"
+
+[node name="Footsteps12 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("23_v5weo")
+bus = &"Sfx"
+
+[node name="Footsteps13 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("24_0uks4")
+bus = &"Sfx"
+
+[node name="Footsteps14 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("25_o2tem")
+bus = &"Sfx"
+
+[node name="Footsteps15 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("26_04t7b")
+bus = &"Sfx"
 
 [connection signal="timeout" from="Movement Timer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="Kill Countdown" to="." method="_on_kill_countdown_timeout"]

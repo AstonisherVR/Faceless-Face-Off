@@ -37,6 +37,9 @@ enum Damage_States {NO_DAMAGE, STILL_PLAYER_DAMAGE, FLASHLIGHT_DAMAGE, HAMMER_DA
 @export var marker_points: Array[Marker2D]
 @export var house: Node2D
 
+@export_group("Sound Effects")
+@export var footsteps_sfx: Array[AudioStreamPlayer2D]
+
 var main_health: float				# When it raches 0, the mannequin goes back to Stage 0.
 var current_stage: = Stages.STAGE_0
 var current_mask: = Masks.NO_MASK
@@ -83,6 +86,7 @@ func update_ai() -> void:
 
 func advance_position(sprite_index: int, z_order: int) -> void:
 	current_stage += 1
+	play_footsteps()
 	if marker_points[current_stage]:
 		position = marker_points[current_stage].position
 		set_sprite(sprite_index)
@@ -161,7 +165,6 @@ func kill_player() -> void:
 	get_tree().reload_current_scene()
 	# Implement actual game over logic here
 
-
 func set_sprite(number: int) -> void:
 	mannequin_stand_sprite.visible = (number == 0)
 	mannequin_forward_sprite.visible = (number == 1)
@@ -217,3 +220,7 @@ func change_mask() -> void:
 	current_mask = Masks.values().pick_random()
 	set_current_mask(current_mask, current_stage)
 	set_active_collisions(current_mask, current_stage)
+
+func play_footsteps() -> void:
+	var new_footsep_sfx = footsteps_sfx.pick_random()
+	new_footsep_sfx.play()
