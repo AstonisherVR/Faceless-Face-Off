@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cicfopi26jdj"]
+[gd_scene load_steps=18 format=3 uid="uid://cicfopi26jdj"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_a0vwr"]
 [ext_resource type="Texture2D" uid="uid://dponi722p2rf" path="res://2D Sprites/Player & Items Sprites/Light Point.png" id="2_nx43k"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cichdmty8c4nu" path="res://2D Sprites/Player & Items Sprites/Mirror.png" id="4_uh3rm"]
 [ext_resource type="Texture2D" uid="uid://bmw754wlp5c4t" path="res://2D Sprites/Player & Items Sprites/Dog Whistle.png" id="5_jw66l"]
 [ext_resource type="AudioStream" uid="uid://bc4x7vslhpqkp" path="res://Audio/SFX/Dog Whistle.wav" id="6_821pw"]
+[ext_resource type="AudioStream" uid="uid://dva6fyrhm24ej" path="res://Audio/SFX/Hammer_1.wav" id="6_yxitl"]
+[ext_resource type="AudioStream" uid="uid://ckk4qjo66yxcp" path="res://Audio/SFX/Hammer_2.wav" id="7_4bdlk"]
+[ext_resource type="AudioStream" uid="uid://bcibn2pmq7it2" path="res://Audio/SFX/Hammer_3.wav" id="8_osxyw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8knm5"]
 radius = 21.0
@@ -117,6 +120,18 @@ energy = 0.25
 range_z_min = -4096
 texture = ExtResource("2_nx43k")
 texture_scale = 0.75
+
+[node name="HammerAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Hammer"]
+stream = ExtResource("6_yxitl")
+bus = &"Sfx"
+
+[node name="Hammer2AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Hammer"]
+stream = ExtResource("7_4bdlk")
+bus = &"Sfx"
+
+[node name="Hammer3AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Hammer"]
+stream = ExtResource("8_osxyw")
+bus = &"Sfx"
 
 [node name="Mirror" type="Node2D" parent="."]
 visible = false

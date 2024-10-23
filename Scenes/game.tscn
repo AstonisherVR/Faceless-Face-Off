@@ -10,10 +10,10 @@
 [node name="Player" parent="." node_paths=PackedStringArray("mannequin_enemy") instance=ExtResource("3_owglr")]
 mannequin_enemy = NodePath("../Mannequin")
 
-[node name="Mannequin" parent="." node_paths=PackedStringArray("collisions", "footsteps_sfx") instance=ExtResource("4_p70qw")]
+[node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points", "house") instance=ExtResource("4_p70qw")]
 position = Vector2(256, 0)
-collisions = []
-footsteps_sfx = []
+marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1"), NodePath("../House/Point 2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]
+house = NodePath("../House")
 
 [node name="Footsteps0 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="0"]
 stream = null

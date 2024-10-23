@@ -50,13 +50,15 @@ func _ready() -> void:
 	Globals.gameplay_stage_changed.connect(_on_gameplay_stage_received)
 	stop_yourself()
 
-	
 func _on_gameplay_stage_received():
 	print("Sig recive")
-
-	agression_level = 30
-	attack_frequency = 2
-	chance_to_mask = 20
+	#agression_level = 30
+	#attack_frequency = 2
+	#chance_to_mask = 20
+	health_value = 30
+	agression_level = 300
+	attack_frequency = 1
+	chance_to_mask = 1111
 	print("agression_level ", agression_level)
 	print("attack_frequency ", attack_frequency)
 	print("chance_to_mask ", chance_to_mask)
@@ -69,12 +71,14 @@ func initialize_enemy() -> void:
 	print("initialized")
 	set_z_ordering(-2)
 	set_sprite(0)
+	
 	main_health = health_value
 	movement_timer.wait_time = attack_frequency
-	if movement_timer.is_stopped():
-		movement_timer.start()
+	movement_timer.start()
+	print("initialized 2")
 
 func update_ai() -> void:
+	print("ai_update")
 	if agression_level >= randi() % 100 + 1:
 		match current_stage:
 			Stages.STAGE_0, Stages.STAGE_1, Stages.STAGE_2:
@@ -108,6 +112,7 @@ func advance_position(sprite_index: int, z_order: int) -> void:
 		set_z_ordering(z_order)
 
 func _on_movement_timer_timeout() -> void:
+	print("movement_timer timepout")
 	update_ai()
 	movement_timer.start()
 
@@ -129,14 +134,15 @@ func handle_damage(delta: float) -> void:
 		Damage_States.WHISTLE_DAMAGE:
 			main_health -= delta * 60
 	if main_health <= 0:
+		print("reset")
 		reset_enemy()
 
 func stun_enemy() -> void:
 	if should_be_taking_damage_now:
 		movement_timer.stop()
 		match current_mask:
-			Masks.NO_MASK:
-				current_damage_taking_state = Damage_States.NO_DAMAGE  # Can adjust based on specific mechanic
+			#Masks.NO_MASK:
+				#current_damage_taking_state = Damage_States.NO_DAMAGE 
 			Masks.NEUTRAL_MASK:
 				current_damage_taking_state = Damage_States.HAMMER_DAMAGE
 			Masks.HAPPY_MASK:

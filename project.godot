@@ -37,6 +37,11 @@ window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
 mouse_cursor/custom_image="res://2D Sprites/Player & Items Sprites/Mouse Cursor White Dot.png"
 
+[editor]
+
+movie_writer/movie_file="D:/Applications/Godot/Faceless Face Off/Recording/"
+movie_writer/fps=30
+
 [global_group]
 
 "Neutral Masks"=""

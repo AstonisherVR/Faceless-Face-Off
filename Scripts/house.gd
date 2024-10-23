@@ -21,7 +21,7 @@ var music_on := true
 var door_stage: int
 
 func _ready() -> void:
-	var rng_scary_sfx_wait_time = randi_range(25, 120)
+	var rng_scary_sfx_wait_time = randi_range(50, 120)
 	drone_timer.wait_time = rng_scary_sfx_wait_time
 	drone_timer.start()
 	house_animated_sprite_2d.frame = door_stage
@@ -46,7 +46,7 @@ func update_music_status() -> void:
 
 func _on_drone_timer_timeout() -> void:
 	print("drone")
-	var rng_scary_sfx_wait_time = randi_range(25, 120)
+	var rng_scary_sfx_wait_time = randi_range(50, 120)
 	drone_timer.wait_time = rng_scary_sfx_wait_time
 	drone.pitch_scale = randf_range(0.8, 0.975)
 	drone.play()

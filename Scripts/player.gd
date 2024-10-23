@@ -18,7 +18,12 @@ enum Items {FLASHLIGHT, HAMMER, MIRROR, DOG_WHISTLE}
 @export var items_animation: AnimationPlayer
 
 @export_group("Audio")
+@onready var flashlight_audio: AudioStreamPlayer2D = $Flashlight/FlashlightAudio
+@onready var flashlight_audio_2: AudioStreamPlayer2D = $Flashlight/FlashlightAudio2
 @export var dog_whistle_sfx: AudioStreamPlayer2D
+@onready var hammer_audio_stream_player_2d: AudioStreamPlayer2D = $Hammer/HammerAudioStreamPlayer2D
+@onready var hammer_2_audio_stream_player_2d: AudioStreamPlayer2D = $Hammer/Hammer2AudioStreamPlayer2D
+@onready var hammer_3_audio_stream_player_2d: AudioStreamPlayer2D = $Hammer/Hammer3AudioStreamPlayer2D
 
 @export_group("Interaction Areas")
 @export var flashlight_area: Area2D
@@ -61,6 +66,12 @@ func handle_item_behavior() -> void:
 		Items.FLASHLIGHT:
 			flashlight.position = mouse_pos
 			flashlight.visible = is_mouse_holding
+			if is_mouse_clicking:
+				var random_flash_sfx = randi_range(0, 1)
+				match random_flash_sfx:
+					0:	flashlight_audio.play()
+					1:	flashlight_audio_2.play()
+
 		Items.HAMMER:
 				hammer.position = mouse_pos
 				if is_mouse_clicking:
