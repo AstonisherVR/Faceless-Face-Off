@@ -27,54 +27,6 @@ house = NodePath("../House")
 [node name="Mannequin Stand" parent="Mannequin" index="0"]
 texture = null
 
-[node name="Footsteps0 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="0"]
-stream = null
-
-[node name="Footsteps1 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="1"]
-stream = null
-
-[node name="Footsteps2 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="2"]
-stream = null
-
-[node name="Footsteps3 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="3"]
-stream = null
-
-[node name="Footsteps4 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="4"]
-stream = null
-
-[node name="Footsteps5 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="5"]
-stream = null
-
-[node name="Footsteps6 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="6"]
-stream = null
-
-[node name="Footsteps7 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="7"]
-stream = null
-
-[node name="Footsteps8 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="8"]
-stream = null
-
-[node name="Footsteps9 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="9"]
-stream = null
-
-[node name="Footsteps10 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="10"]
-stream = null
-
-[node name="Footsteps11 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="11"]
-stream = null
-
-[node name="Footsteps12 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="12"]
-stream = null
-
-[node name="Footsteps13 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="13"]
-stream = null
-
-[node name="Footsteps14 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="14"]
-stream = null
-
-[node name="Footsteps15 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="15"]
-stream = null
-
 [node name="House" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("2_3ic8r")]
 player_camera = NodePath("../Player/Camera2D")
 

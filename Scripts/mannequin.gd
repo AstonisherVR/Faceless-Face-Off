@@ -129,7 +129,7 @@ func handle_damage(delta: float) -> void:
 	else:
 		current_damage_taking_state = Damage_States.NO_DAMAGE
 		#print("NO_DAMAGE")
-	print(Globals.current_gameplay_stage)
+	#print(Globals.current_gameplay_stage)
 
 func check_mask_for_damage():
 	if main_health <= 0:
