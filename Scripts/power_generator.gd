@@ -43,11 +43,11 @@ func check_desired_score():
 			timer.start()
 
 func _on_timer_timeout() -> void:
-	print("timer")
+	#print("timer")
 	progress_next_stage()
 
 func progress_next_stage():
-	print("progr")
+	#print("progr")
 	match Globals.current_gameplay_stage:
 		Globals.Gameplay_Stages.STAGE_0:
 			reset_machine(5)
@@ -62,7 +62,7 @@ func progress_next_stage():
 			print("you win")
 
 func reset_machine(incr_amount):
-	print("reset")
+	#print("reset")
 	current_score = 0
 	desired_score *= incr_amount
 	progress_bar.max_value = desired_score

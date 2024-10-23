@@ -4,6 +4,7 @@ extends Node2D
 @export var power_generator: Node2D
 @export var power_generator_animation_player: AnimationPlayer
 @export var power_generator_sprites: Sprite2D
+@export var mannequin_enemy: CharacterBody2D
 
 var is_power_generator_up: bool = false
 var tweener: Tween
@@ -28,6 +29,7 @@ func _on_generator_texture_button_pressed() -> void:
 		power_generator.visible = false
 		power_generator_sprites.visible = true
 
+
 func _on_power_generator_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Power Generator Lift":
 		if is_power_generator_up == false:
@@ -41,6 +43,9 @@ func _on_power_generator_animation_player_animation_finished(anim_name: StringNa
 			generator_button.disabled = false
 			power_generator_sprites.visible = false
 			generator_button.release_focus()
+			if mannequin_enemy.current_stage == mannequin_enemy.Stages.STAGE_3:
+				mannequin_enemy.stinger.pitch_scale = randf_range(0.9, 1.1)
+				mannequin_enemy.stinger.play()
 
 func _on_generator_texture_button_mouse_entered() -> void:
 	#print("m entered")

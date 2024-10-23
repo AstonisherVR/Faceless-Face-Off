@@ -38,6 +38,7 @@ enum Damage_States {NO_DAMAGE, STILL_PLAYER_DAMAGE, FLASHLIGHT_DAMAGE, HAMMER_DA
 
 @export_group("Sound Effects")
 @export var footsteps_sfx: Array[AudioStreamPlayer2D]
+@export var stinger: AudioStreamPlayer2D
 
 var main_health: float				# When it raches 0, the mannequin goes back to Stage 0.
 var should_be_taking_damage_now : bool		# This is for checking every frame if it should be taking damage.
@@ -47,25 +48,31 @@ var current_damage_taking_state := Damage_States.NO_DAMAGE
 
 func _ready() -> void:
 	Globals.gameplay_stage_changed.connect(_on_gameplay_stage_received)
-	if agression_level <= 0:
-		stop_yourself()
-	else:
-		initialize_enemy()
+	stop_yourself()
+
 	
 func _on_gameplay_stage_received():
-	agression_level = 15
-	attack_frequency = 5
+	print("Sig recive")
+
+	agression_level = 30
+	attack_frequency = 2
 	chance_to_mask = 20
+	print("agression_level ", agression_level)
+	print("attack_frequency ", attack_frequency)
+	print("chance_to_mask ", chance_to_mask)
+	initialize_enemy()
 
 func _process(delta: float) -> void:
 	handle_damage(delta)
 
 func initialize_enemy() -> void:
+	print("initialized")
 	set_z_ordering(-2)
 	set_sprite(0)
 	main_health = health_value
 	movement_timer.wait_time = attack_frequency
-	movement_timer.start()
+	if movement_timer.is_stopped():
+		movement_timer.start()
 
 func update_ai() -> void:
 	if agression_level >= randi() % 100 + 1:

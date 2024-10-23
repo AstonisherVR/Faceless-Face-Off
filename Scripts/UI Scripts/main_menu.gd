@@ -9,6 +9,7 @@ extends Control
 @export var light: Sprite2D
 @export var light_buzz_sfx: AudioStreamPlayer2D
 @export var light_die_sfx: AudioStreamPlayer2D
+@export var wind: AudioStreamPlayer2D
 
 @export var start_button: Button 
 @export var exit_button: Button 
@@ -28,7 +29,9 @@ extends Control
 @onready var SFX_BUS_ID = AudioServer.get_bus_index("Sfx")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	light_buzz_sfx.pitch_scale = randf_range(1.0, 0.95)
 	light_buzz_sfx.play()
+	wind.play()
 	info_panel.hide()
 	music_check_box.button_pressed = true
 	sfx_check_box.button_pressed = true
@@ -36,7 +39,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
 func _on_start_button_pressed() -> void:
 	light_die_sfx.playing = true
 	info_panel.hide()
@@ -52,7 +54,8 @@ func _on_start_button_pressed() -> void:
 	cont1.hide()
 	cont2.hide()
 	light.hide()
-	await get_tree().create_timer(1.5).timeout
+	light_buzz_sfx.stop()
+	await get_tree().create_timer(3).timeout
 	
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
 
@@ -112,3 +115,11 @@ func _on_prev_button_pressed() -> void:
 	cont2.hide()
 	prev_button.hide()
 	next_button.show()
+
+func _on_light_die_audio_stream_player_2d_finished() -> void:
+	if light_die_sfx.playing == true:
+		light_buzz_sfx.play()
+
+func _on_wind_audio_stream_player_2d_finished() -> void:
+	wind.play()
+	

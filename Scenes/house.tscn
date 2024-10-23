@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjkpk06h3i6m2"]
+[gd_scene load_steps=16 format=3 uid="uid://cjkpk06h3i6m2"]
 
 [ext_resource type="Script" path="res://Scripts/house.gd" id="1_q52gg"]
 [ext_resource type="Texture2D" uid="uid://dahfrkv2ukf6r" path="res://2D Sprites/Cabin Interiror 1 - With Closed Door.png" id="2_d87f7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" path="res://Scripts/Shaders/distortion_&_blur.gdshader" id="8_ocx1o"]
 [ext_resource type="AudioStream" uid="uid://c1t1t5g7q46jp" path="res://Audio/Music/Wind_LP.wav" id="9_npkpn"]
 [ext_resource type="AudioStream" uid="uid://70dwpsvwlhba" path="res://Audio/Music/Wind2_LP.wav" id="10_311ns"]
+[ext_resource type="AudioStream" uid="uid://bkpsavmfg4fl4" path="res://Audio/SFX/Drone_1.wav" id="12_pe5bp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uylrn"]
 animations = [{
@@ -112,16 +113,15 @@ color = Color(0.151276, 0.151276, 0.151276, 1)
 
 [node name="Wind 1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_npkpn")
-bus = &"Music"
+bus = &"Sfx"
 
 [node name="Wind 2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_311ns")
-bus = &"Music"
-
-[node name="Stinger" type="AudioStreamPlayer2D" parent="."]
 bus = &"Sfx"
 
 [node name="Drone" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_pe5bp")
+bus = &"Sfx"
 
 [node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="."]
 
@@ -132,7 +132,7 @@ bus = &"Sfx"
 [node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Drone Timer" type="Timer" parent="."]
-wait_time = 100.0
+wait_time = 10.0
 one_shot = true
 
 [connection signal="timeout" from="Drone Timer" to="." method="_on_drone_timer_timeout"]

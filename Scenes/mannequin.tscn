@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d04408vvn85lb"]
+[gd_scene load_steps=34 format=3 uid="uid://d04408vvn85lb"]
 
 [ext_resource type="Script" path="res://Scripts/mannequin.gd" id="1_6tuu8"]
 [ext_resource type="Texture2D" uid="uid://hi0le3ek4121" path="res://2D Sprites/Enemy Sprites/Mannequin Creature.png" id="1_oxbv5"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://dfp6kfa65iqqv" path="res://Audio/SFX/Footsteps/Thump_Far.wav" id="28_3qech"]
 [ext_resource type="AudioStream" uid="uid://d31lp1awaycrt" path="res://Audio/SFX/Footsteps/Thump_Near.wav" id="29_ubxty"]
 [ext_resource type="AudioStream" uid="uid://5uvle2173h8t" path="res://Audio/SFX/Footsteps/Thump_Close.wav" id="30_jb5ql"]
+[ext_resource type="AudioStream" uid="uid://btoti0odab7k3" path="res://Audio/SFX/Stinger_Music.wav" id="31_j443i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p86w2"]
 
@@ -37,7 +38,7 @@
 radius = 28.0
 height = 80.0
 
-[node name="Mannequin" type="CharacterBody2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forward_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown", "collisions", "footsteps_sfx")]
+[node name="Mannequin" type="CharacterBody2D" node_paths=PackedStringArray("mannequin_stand_sprite", "mannequin_forward_sprite", "small_neutral_mask", "small_happy_mask", "small_sad_clown_mask", "small_wolf_mask", "big_neutral_mask", "big_happy_mask", "big_sad_clown_mask", "big_wolf_mask", "movement_timer", "kill_countdown", "collisions", "footsteps_sfx", "stinger")]
 script = ExtResource("1_6tuu8")
 mannequin_stand_sprite = NodePath("Mannequin Stand")
 mannequin_forward_sprite = NodePath("Mannequin Forawrd")
@@ -53,6 +54,7 @@ movement_timer = NodePath("Movement Timer")
 kill_countdown = NodePath("Kill Countdown")
 collisions = [NodePath("Mannequin Stand/Small Masks/NeutralMaskSmol/NeutralMaskSmol Area2D/NeutralMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/HappyMaskSmol/HappyMaskSmol Area2D/HappyMaskSmol CollisionShape2D"), NodePath("Mannequin Stand/Small Masks/SadClownMaskSmol/SadClownMaskSmol Area2D/SadClownMaskSmol CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/NeutralMask/NeutralMask Area2D/NeutralMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/HappyMask/HappyMask Area2D/HappyMask CollisionShape2D"), NodePath("Mannequin Forawrd/Big Masks/SadClownMask/SadClownMask Area2D/SadClownMask CollisionShape2D")]
 footsteps_sfx = [NodePath("SFX Collection/Footsteps0 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps1 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps2 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps3 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps4 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps5 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps6 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps7 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps8 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps9 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps10 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps11 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps12 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps13 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps14 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps15 AudioStreamPlayer2D"), NodePath("SFX Collection/Footsteps Close AudioStreamPlayer2D")]
+stinger = NodePath("SFX Collection/Stinger")
 
 [node name="Mannequin Stand" type="Sprite2D" parent="."]
 visible = false
@@ -249,6 +251,10 @@ bus = &"Sfx"
 
 [node name="Footsteps Close AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
 stream = ExtResource("30_jb5ql")
+bus = &"Sfx"
+
+[node name="Stinger" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("31_j443i")
 bus = &"Sfx"
 
 [connection signal="timeout" from="Movement Timer" to="." method="_on_movement_timer_timeout"]
