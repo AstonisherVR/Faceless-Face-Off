@@ -1,16 +1,16 @@
 [gd_scene load_steps=16 format=3 uid="uid://cjkpk06h3i6m2"]
 
 [ext_resource type="Script" path="res://Scripts/house.gd" id="1_q52gg"]
-[ext_resource type="Texture2D" uid="uid://dahfrkv2ukf6r" path="res://2D Sprites/Cabin Interiror 1 - With Closed Door.png" id="2_d87f7"]
-[ext_resource type="Texture2D" uid="uid://tpgbmliolb2" path="res://2D Sprites/Cabin Interiror 2 - With Closed Broken Door Stage 1.png" id="3_rb87h"]
-[ext_resource type="Texture2D" uid="uid://beplijqgymbhi" path="res://2D Sprites/Cabin Interiror 3 - With Closed Broken Door Stage 2.png" id="4_r0akj"]
-[ext_resource type="Texture2D" uid="uid://pbyw77tph1m8" path="res://2D Sprites/Cabin Interiror 4 - Broken Down Door.png" id="5_e5scp"]
+[ext_resource type="Texture2D" uid="uid://cnfwkc5eil8li" path="res://2D Sprites/Cabin Interiror 1 - With Closed Door.png" id="2_d87f7"]
+[ext_resource type="Texture2D" uid="uid://1t4g0wf2akyd" path="res://2D Sprites/Cabin Interiror 2 - With Closed Broken Door Stage 1.png" id="3_rb87h"]
+[ext_resource type="Texture2D" uid="uid://vypfgidvudvs" path="res://2D Sprites/Cabin Interiror 3 - With Closed Broken Door Stage 2.png" id="4_r0akj"]
+[ext_resource type="Texture2D" uid="uid://yengti5tgyym" path="res://2D Sprites/Cabin Interiror 4 - Broken Down Door.png" id="5_e5scp"]
 [ext_resource type="AudioStream" uid="uid://bur44y6aeypvo" path="res://Audio/Music/MUS_Calm.wav" id="6_ruak8"]
 [ext_resource type="AudioStream" uid="uid://bh24tby1haobs" path="res://Audio/Music/MUS_Action.wav" id="7_kp1ig"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/distortion_&_blur.gdshader" id="8_ocx1o"]
 [ext_resource type="AudioStream" uid="uid://c1t1t5g7q46jp" path="res://Audio/Music/Wind_LP.wav" id="9_npkpn"]
 [ext_resource type="AudioStream" uid="uid://70dwpsvwlhba" path="res://Audio/Music/Wind2_LP.wav" id="10_311ns"]
-[ext_resource type="AudioStream" uid="uid://bkpsavmfg4fl4" path="res://Audio/SFX/Drone_1.wav" id="12_pe5bp"]
+[ext_resource type="AudioStream" uid="uid://mx3k3gync6es" path="res://Audio/SFX/Drone_1.wav" id="12_pe5bp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uylrn"]
 animations = [{

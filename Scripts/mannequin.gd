@@ -5,7 +5,6 @@ extends CharacterBody2D
 # a list of all the things that I can do after pressing a dot.
 enum Stages {STAGE_0, STAGE_1, STAGE_2, STAGE_3, STAGE_4, STAGE_5_KILL} 	# These are the stages of the enemy.
 enum Masks {NO_MASK, NEUTRAL_MASK, HAPPY_MASK, SAD_MASK, WOLF_MASK}			# These are the masks that it can wear.
-#enum States {ATTACKING}
 enum Damage_States {NO_DAMAGE, GENERATOR_UP_DAMAGE, FLASHLIGHT_DAMAGE, HAMMER_DAMAGE, MIRROR_DAMAGE, WHISTLE_DAMAGE}
 
 @export_group("Sprites")
@@ -47,6 +46,8 @@ var should_be_taking_damage_now : bool
 var current_stage: = Stages.STAGE_0
 var current_mask: = Masks.NO_MASK
 var current_damage_taking_state := Damage_States.NO_DAMAGE
+
+var hammer_is_hitting := false
 
 func _ready() -> void:
 	Globals.gameplay_stage_changed.connect(_on_gameplay_stage_received)
@@ -106,47 +107,48 @@ func _on_kill_countdown_timeout() -> void:
 	current_stage = Stages.STAGE_5_KILL
 
 func handle_damage(delta: float) -> void:
+	#print(should_be_taking_damage_now)
 	if should_be_taking_damage_now:
 		check_mask_for_damage()
-
 		match current_damage_taking_state:
 			Damage_States.GENERATOR_UP_DAMAGE:
-				print("GENERATOR_UP_DAMAGE")
-				main_health -= delta * 2
+				#print("GENERATOR_UP_DAMAGE")
+				main_health -= delta * 80
 			Damage_States.FLASHLIGHT_DAMAGE:
-				print("FLASHLIGHT_DAMAGE")
-				main_health -= delta * 50
+				#print("FLASHLIGHT_DAMAGE")
+				main_health -= delta * 90
 			Damage_States.HAMMER_DAMAGE:
-				print("HAMMER_DAMAGE")
+				#print("HAMMER_DAMAGE")
 				main_health -= 25
 			Damage_States.MIRROR_DAMAGE:
-				print("MIRROR_DAMAGE")
-				main_health -= delta * 65
+				#print("MIRROR_DAMAGE")
+				main_health -= delta * 100
 			Damage_States.WHISTLE_DAMAGE:
-				print("WHISTLE_DAMAGE")
-				main_health -= delta * 60
+				#print("WHISTLE_DAMAGE")
+				main_health -= delta * 75
 	else:
 		current_damage_taking_state = Damage_States.NO_DAMAGE
-		main_health = health_value
-		print("NO_DAMAGE")
-
-	if main_health <= 0:
-		reset_enemy()
+		#print("NO_DAMAGE")
+	print(Globals.current_gameplay_stage)
 
 func check_mask_for_damage():
-	match current_mask:
-		Masks.NO_MASK:
-			current_damage_taking_state = Damage_States.GENERATOR_UP_DAMAGE 
-		Masks.NEUTRAL_MASK:
-			current_damage_taking_state = Damage_States.HAMMER_DAMAGE
-		Masks.HAPPY_MASK:
-			current_damage_taking_state = Damage_States.FLASHLIGHT_DAMAGE
-		Masks.SAD_MASK:
-			current_damage_taking_state = Damage_States.MIRROR_DAMAGE
-		Masks.WOLF_MASK:
-			current_damage_taking_state = Damage_States.WHISTLE_DAMAGE
+	if main_health <= 0:
+		reset_enemy()
+	if current_stage != Stages.STAGE_0:
+		match current_mask:
+			Masks.NO_MASK:
+				current_damage_taking_state = Damage_States.GENERATOR_UP_DAMAGE 
+			Masks.NEUTRAL_MASK:
+				current_damage_taking_state = Damage_States.HAMMER_DAMAGE
+			Masks.HAPPY_MASK:
+				current_damage_taking_state = Damage_States.FLASHLIGHT_DAMAGE
+			Masks.SAD_MASK:
+				current_damage_taking_state = Damage_States.MIRROR_DAMAGE
+			Masks.WOLF_MASK:
+				current_damage_taking_state = Damage_States.WHISTLE_DAMAGE
 
 func reset_enemy() -> void:
+	should_be_taking_damage_now = false
 	current_damage_taking_state = Damage_States.NO_DAMAGE
 	current_stage = Stages.STAGE_0
 	current_mask = Masks.NO_MASK
@@ -208,31 +210,26 @@ func stop_yourself() -> void:
 func set_active_collisions(mask: Masks, stage: Stages) -> void:
 	for collision in collisions:
 		collision.disabled = true
-	#var collision_index = get_collision_index(mask, stage)
-	#if collision_index >= 0 and collision_index < collisions.size():
-		#collisions[collision_index].disabled = false
-
-	var collision_index = -1
+	var collision_index = get_collision_index(mask, stage)
+	if collision_index >= 0 and collision_index < collisions.size():
+		collisions[collision_index].disabled = false
 	match mask:
 		Masks.NEUTRAL_MASK: collision_index = 0
 		Masks.HAPPY_MASK: collision_index = 1
 		Masks.SAD_MASK: collision_index = 2
 		_: return
-
 	if stage == Stages.STAGE_4:
 		collision_index += 3
-
 	if collision_index >= 0 and collision_index < collisions.size():
 		collisions[collision_index].disabled = false
 
-#func get_collision_index(mask: Masks, stage: Stages) -> int:
-	#var collision_index: int = -1
-	## Set the collision_index based on the mask
-	#match mask:
-		#Masks.NEUTRAL_MASK: collision_index = 0
-		#Masks.HAPPY_MASK: collision_index = 1
-		#Masks.SAD_MASK: collision_index = 2
-		#Masks.WOLF_MASK: collision_index = 3
-	#if stage == Stages.STAGE_4:
-		#collision_index += 3
-	#return collision_index
+func get_collision_index(mask: Masks, stage: Stages) -> int:
+	var collision_index: int = -1
+	if stage == Stages.STAGE_4:
+		collision_index += 3
+	match mask:
+		Masks.NEUTRAL_MASK: collision_index = 0
+		Masks.HAPPY_MASK: collision_index = 1
+		Masks.SAD_MASK: collision_index = 2
+		Masks.WOLF_MASK: collision_index = 3
+	return collision_index

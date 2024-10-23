@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/UI Scripts/main_menu.gd" id="1_dffsb"]
 [ext_resource type="PackedScene" uid="uid://cjkpk06h3i6m2" path="res://Scenes/house.tscn" id="2_1w1yj"]
-[ext_resource type="Texture2D" uid="uid://bes6sr1iychsr" path="res://2D Sprites/Lamp.png" id="3_8d00a"]
+[ext_resource type="Texture2D" uid="uid://1ihnct5gpbig" path="res://2D Sprites/Lamp.png" id="3_8d00a"]
 [ext_resource type="PackedScene" uid="uid://d04408vvn85lb" path="res://Scenes/mannequin.tscn" id="3_y3kcf"]
 [ext_resource type="PackedScene" uid="uid://pit2pj2jwc5f" path="res://Scenes/info_panel.tscn" id="5_vp8gu"]
-[ext_resource type="AudioStream" uid="uid://brou4yyeeybk0" path="res://Audio/SFX/Light_Buzzing_Loop.wav" id="6_63d7l"]
-[ext_resource type="AudioStream" uid="uid://dcoix4kitrpe4" path="res://Audio/SFX/Light_Dying.wav" id="7_dtppb"]
+[ext_resource type="AudioStream" uid="uid://qqt7u6bicdad" path="res://Audio/SFX/Light_Buzzing_Loop.wav" id="6_63d7l"]
+[ext_resource type="AudioStream" uid="uid://c6aqmsvhkob15" path="res://Audio/SFX/Light_Dying.wav" id="7_dtppb"]
 [ext_resource type="AudioStream" uid="uid://70dwpsvwlhba" path="res://Audio/Music/Wind2_LP.wav" id="8_b45ok"]
 
 [sub_resource type="Gradient" id="Gradient_7ws2k"]

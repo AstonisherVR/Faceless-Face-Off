@@ -55,8 +55,12 @@ func progress_next_stage():
 			Globals.current_gameplay_stage += 1
 		Globals.Gameplay_Stages.STAGE_1:
 			reset_machine(4)
+			Globals.gameplay_stage_changed.emit()
+			Globals.current_gameplay_stage += 1
 		Globals.Gameplay_Stages.STAGE_2:
 			reset_machine(2)
+			Globals.gameplay_stage_changed.emit()
+			Globals.current_gameplay_stage += 1
 		Globals.Gameplay_Stages.STAGE_3_FINAL:
 			#get_tree().change_scene_to_file("res://Scenes/UI Scenes/main_menu.tscn")
 			print("you win")

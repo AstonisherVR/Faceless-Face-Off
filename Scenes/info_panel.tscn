@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://pit2pj2jwc5f"]
 
-[ext_resource type="Texture2D" uid="uid://dponi722p2rf" path="res://2D Sprites/Player & Items Sprites/Light Point.png" id="1_bvjlu"]
-[ext_resource type="Texture2D" uid="uid://btody4qwb32uv" path="res://2D Sprites/Player & Items Sprites/Hammer.png" id="2_n2h0m"]
-[ext_resource type="Texture2D" uid="uid://cichdmty8c4nu" path="res://2D Sprites/Player & Items Sprites/Mirror.png" id="3_q68pm"]
-[ext_resource type="Texture2D" uid="uid://bmw754wlp5c4t" path="res://2D Sprites/Player & Items Sprites/Dog Whistle.png" id="4_ko7i3"]
-[ext_resource type="Texture2D" uid="uid://ntiqvktgvhku" path="res://2D Sprites/Enemy Sprites/Masks/Happy Mask.png" id="5_o4smc"]
-[ext_resource type="Texture2D" uid="uid://br2ryrefvsjwy" path="res://2D Sprites/Enemy Sprites/Masks/Neutral Mask.png" id="6_4ujlc"]
-[ext_resource type="Texture2D" uid="uid://ds61afednwq3p" path="res://2D Sprites/Enemy Sprites/Masks/Sad Clown Mask.png" id="7_beheu"]
-[ext_resource type="Texture2D" uid="uid://bf1rqr1v6otjr" path="res://2D Sprites/Enemy Sprites/Masks/Wolf Mask.png" id="8_duy5d"]
+[ext_resource type="Texture2D" uid="uid://cyll5w3dtisbn" path="res://2D Sprites/Player & Items Sprites/Light Point.png" id="1_bvjlu"]
+[ext_resource type="Texture2D" uid="uid://dhixwgjn7kc4y" path="res://2D Sprites/Player & Items Sprites/Hammer.png" id="2_n2h0m"]
+[ext_resource type="Texture2D" uid="uid://dpsfvy8utqso2" path="res://2D Sprites/Player & Items Sprites/Mirror.png" id="3_q68pm"]
+[ext_resource type="Texture2D" uid="uid://dysdboacbmd77" path="res://2D Sprites/Player & Items Sprites/Dog Whistle.png" id="4_ko7i3"]
+[ext_resource type="Texture2D" uid="uid://dw0a5iamxihkt" path="res://2D Sprites/Enemy Sprites/Masks/Happy Mask.png" id="5_o4smc"]
+[ext_resource type="Texture2D" uid="uid://rk7dlnukerb2" path="res://2D Sprites/Enemy Sprites/Masks/Neutral Mask.png" id="6_4ujlc"]
+[ext_resource type="Texture2D" uid="uid://dyhk7663xapr8" path="res://2D Sprites/Enemy Sprites/Masks/Sad Clown Mask.png" id="7_beheu"]
+[ext_resource type="Texture2D" uid="uid://c0u2u038kb2cn" path="res://2D Sprites/Enemy Sprites/Masks/Wolf Mask.png" id="8_duy5d"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7fo4p"]
 blend_mode = 3

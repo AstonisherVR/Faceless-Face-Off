@@ -24,6 +24,9 @@ position = Vector2(256, 0)
 marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1"), NodePath("../House/Point 2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]
 house = NodePath("../House")
 
+[node name="Mannequin Stand" parent="Mannequin" index="0"]
+texture = null
+
 [node name="Footsteps0 AudioStreamPlayer2D" parent="Mannequin/SFX Collection" index="0"]
 stream = null
 

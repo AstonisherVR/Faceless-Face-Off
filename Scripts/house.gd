@@ -39,8 +39,12 @@ func change_door() -> void:
 
 func update_music_status() -> void:
 	if music_on:
-		if !music_calm.playing:
-			music_calm.play()
+		if Globals.current_gameplay_stage != 2:
+			if !music_calm.playing:
+				music_calm.play()
+		elif !music_intense.playing:
+				music_intense.play()
+				music_calm.volume_db -= 1
 	else:
 		music_calm.stop()
 

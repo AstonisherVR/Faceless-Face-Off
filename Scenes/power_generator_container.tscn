@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/power_generator_container.gd" id="1_ilws4"]
 [ext_resource type="PackedScene" uid="uid://csbnbkd87iepr" path="res://Scenes/power_generator.tscn" id="2_cwhru"]
-[ext_resource type="Texture2D" uid="uid://xpwtesvn0ck0" path="res://2D Sprites/gameplay switch to machine button.png" id="3_1dk1p"]
-[ext_resource type="Texture2D" uid="uid://dojrt2id5umyl" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Green Animation.png" id="5_ups1f"]
+[ext_resource type="Texture2D" uid="uid://sgpik5k2vmc8" path="res://2D Sprites/gameplay switch to machine button.png" id="3_1dk1p"]
+[ext_resource type="Texture2D" uid="uid://bf3gev35udthj" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Green Animation.png" id="5_ups1f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_we8se"]
 light_mode = 1
