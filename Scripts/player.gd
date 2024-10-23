@@ -50,9 +50,7 @@ func handle_item_behavior() -> void:
 	var mouse_pos = get_global_mouse_position()
 	var is_holding = Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click")
 	var is_clicking = Input.is_action_just_pressed("R_Click") or Input.is_action_just_pressed("L_Click")
-
 	items[selected_item].position = mouse_pos
-
 	match selected_item:
 		Items.FLASHLIGHT:
 			items[Items.FLASHLIGHT].visible = is_holding
@@ -65,30 +63,25 @@ func handle_item_behavior() -> void:
 					hammer_audio.pick_random().play()
 		Items.DOG_WHISTLE:
 			dog_whistle_sfx.playing = is_holding
-			handle_dog_whistle_behavior()
+			if dog_whistle_sfx.playing:
+				mannequin_enemy.should_be_taking_damage_now = true
+			else:
+				mannequin_enemy.should_be_taking_damage_now = false  # Changed from true to false
 
-func handle_dog_whistle_behavior() -> void:
-	if dog_whistle_sfx.playing and mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
-		mannequin_enemy.should_be_taking_damage_now = true
-		mannequin_enemy.stun_enemy()
-	else:
-		mannequin_enemy.should_be_taking_damage_now = false  # Changed from true to false
+func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
+	mannequin_enemy.should_be_taking_damage_now = true
 
 func _on_flashlight_area_2d_area_exited(area: Area2D) -> void:
 	mannequin_enemy.should_be_taking_damage_now = false
 
 func _on_hammer_area_2d_area_entered(area: Area2D) -> void:
 	mannequin_enemy.should_be_taking_damage_now = true
-	if mannequin_enemy.current_mask == mannequin_enemy.Masks.NEUTRAL_MASK:
-		mannequin_enemy.stun_enemy()
 
 func _on_hammer_area_2d_area_exited(area: Area2D) -> void:
 	mannequin_enemy.should_be_taking_damage_now = false
 
 func _on_mirror_area_2d_area_entered(area: Area2D) -> void:
 	mannequin_enemy.should_be_taking_damage_now = true
-	if mannequin_enemy.current_mask == mannequin_enemy.Masks.SAD_MASK:
-		mannequin_enemy.stun_enemy()
 
 func _on_mirror_area_2d_area_exited(area: Area2D) -> void:
 	mannequin_enemy.should_be_taking_damage_now = false
@@ -98,7 +91,3 @@ func set_active_collisions() -> void:
 		collision_shape.disabled = true
 	if selected_item < item_collisions.size():
 		item_collisions[selected_item].disabled = false
-
-
-func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.

@@ -48,7 +48,6 @@ var current_stage: = Stages.STAGE_0
 var current_mask: = Masks.NO_MASK
 var current_damage_taking_state := Damage_States.NO_DAMAGE
 
-
 func _ready() -> void:
 	Globals.gameplay_stage_changed.connect(_on_gameplay_stage_received)
 	stop_yourself()
@@ -99,23 +98,6 @@ func advance_position(sprite_index: int, z_order: int) -> void:
 		set_sprite(sprite_index)
 		set_z_ordering(z_order)
 
-func handle_damage(delta: float) -> void:
-	match current_damage_taking_state:
-		Damage_States.NO_DAMAGE:
-			main_health = health_value
-		Damage_States.GENERATOR_UP_DAMAGE:
-			main_health -= delta * 2
-		Damage_States.FLASHLIGHT_DAMAGE:
-			main_health -= delta * 50
-		Damage_States.HAMMER_DAMAGE:
-			main_health -= 25  # Static damage for hammer hits
-		Damage_States.MIRROR_DAMAGE:
-			main_health -= delta * 65
-		Damage_States.WHISTLE_DAMAGE:
-			main_health -= delta * 60
-	if main_health <= 0:
-		reset_enemy()
-
 func _on_movement_timer_timeout() -> void:
 	update_ai()
 	movement_timer.start()
@@ -123,23 +105,46 @@ func _on_movement_timer_timeout() -> void:
 func _on_kill_countdown_timeout() -> void:
 	current_stage = Stages.STAGE_5_KILL
 
-func stun_enemy() -> void:
+func handle_damage(delta: float) -> void:
 	if should_be_taking_damage_now:
-		movement_timer.stop()
-		match current_mask:
-			#Masks.NO_MASK:
-				#current_damage_taking_state = Damage_States.NO_DAMAGE 
-			Masks.NEUTRAL_MASK:
-				current_damage_taking_state = Damage_States.HAMMER_DAMAGE
-			Masks.HAPPY_MASK:
-				current_damage_taking_state = Damage_States.FLASHLIGHT_DAMAGE
-			Masks.SAD_MASK:
-				current_damage_taking_state = Damage_States.MIRROR_DAMAGE
-			Masks.WOLF_MASK:
-				current_damage_taking_state = Damage_States.WHISTLE_DAMAGE
+		check_mask_for_damage()
+
+		match current_damage_taking_state:
+			Damage_States.GENERATOR_UP_DAMAGE:
+				print("GENERATOR_UP_DAMAGE")
+				main_health -= delta * 2
+			Damage_States.FLASHLIGHT_DAMAGE:
+				print("FLASHLIGHT_DAMAGE")
+				main_health -= delta * 50
+			Damage_States.HAMMER_DAMAGE:
+				print("HAMMER_DAMAGE")
+				main_health -= 25
+			Damage_States.MIRROR_DAMAGE:
+				print("MIRROR_DAMAGE")
+				main_health -= delta * 65
+			Damage_States.WHISTLE_DAMAGE:
+				print("WHISTLE_DAMAGE")
+				main_health -= delta * 60
 	else:
-		movement_timer.start()
 		current_damage_taking_state = Damage_States.NO_DAMAGE
+		main_health = health_value
+		print("NO_DAMAGE")
+
+	if main_health <= 0:
+		reset_enemy()
+
+func check_mask_for_damage():
+	match current_mask:
+		Masks.NO_MASK:
+			current_damage_taking_state = Damage_States.GENERATOR_UP_DAMAGE 
+		Masks.NEUTRAL_MASK:
+			current_damage_taking_state = Damage_States.HAMMER_DAMAGE
+		Masks.HAPPY_MASK:
+			current_damage_taking_state = Damage_States.FLASHLIGHT_DAMAGE
+		Masks.SAD_MASK:
+			current_damage_taking_state = Damage_States.MIRROR_DAMAGE
+		Masks.WOLF_MASK:
+			current_damage_taking_state = Damage_States.WHISTLE_DAMAGE
 
 func reset_enemy() -> void:
 	current_damage_taking_state = Damage_States.NO_DAMAGE
