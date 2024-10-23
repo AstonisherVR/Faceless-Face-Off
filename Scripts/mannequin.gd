@@ -46,10 +46,13 @@ var current_mask: = Masks.NO_MASK
 var current_damage_taking_state := Damage_States.NO_DAMAGE
 
 func _ready() -> void:
+	Globals.gameplay_stage_changed.connect(on_gameplay_stage_received)
 	if agression_level <= 0:
 		stop_yourself()
 	else:
 		initialize_enemy()
+func on_gameplay_stage_received():
+	print("G stage rec")
 
 func _process(delta: float) -> void:
 	handle_damage(delta)

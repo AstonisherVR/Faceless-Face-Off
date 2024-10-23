@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://pit2pj2jwc5f"]
+
+[node name="Info Panel" type="Panel"]
+offset_left = -122.0
+offset_top = -90.0
+offset_right = 119.0
+offset_bottom = 89.0
+
+[node name="Back to main menu Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 4.0
+offset_right = 239.0
+offset_bottom = 35.0
+text = "Back"
+
+[node name="Cont" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 436.0
+offset_bottom = 104.0
+
+[node name="Label" type="Label" parent="Cont"]
+layout_mode = 2
+text = "The Faceless is here and you have to survive. Here's how"
+
+[node name="Label2" type="Label" parent="Cont"]
+layout_mode = 2
+text = "You have been equiped with 4 items:"
+
+[node name="Label3" type="Label" parent="Cont"]
+layout_mode = 2
+text = "A flashlight"
+
+[node name="Label4" type="Label" parent="Cont"]
+layout_mode = 2
+text = "A hammer"
+
+[node name="Label5" type="Label" parent="Cont"]
+layout_mode = 2
+text = "A mirror"
+
+[node name="Label6" type="Label" parent="Cont"]
+layout_mode = 2
+text = "A dog whistle"
+
+[node name="Next Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 148.0
+offset_right = 239.0
+offset_bottom = 179.0
+text = "Next"

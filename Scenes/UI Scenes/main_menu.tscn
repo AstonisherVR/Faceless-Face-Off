@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuec7tmvpugyg"]
+[gd_scene load_steps=14 format=3 uid="uid://cuec7tmvpugyg"]
 
 [ext_resource type="Script" path="res://Scripts/UI Scripts/main_menu.gd" id="1_dffsb"]
 [ext_resource type="PackedScene" uid="uid://cjkpk06h3i6m2" path="res://Scenes/house.tscn" id="2_1w1yj"]
 [ext_resource type="Texture2D" uid="uid://bes6sr1iychsr" path="res://2D Sprites/Lamp.png" id="3_8d00a"]
 [ext_resource type="PackedScene" uid="uid://d04408vvn85lb" path="res://Scenes/mannequin.tscn" id="3_y3kcf"]
+[ext_resource type="PackedScene" uid="uid://pit2pj2jwc5f" path="res://Scenes/info_panel.tscn" id="5_vp8gu"]
 
 [sub_resource type="Gradient" id="Gradient_7ws2k"]
 interpolation_mode = 2
@@ -31,7 +32,10 @@ light_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_go0a0"]
 light_mode = 1
 
-[node name="Main Menu" type="Control"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iomgf"]
+light_mode = 1
+
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("start_button", "exit_button", "fullscreen_check_box", "music_check_box", "sfx_check_box", "panel", "main_menu_stuff")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,6 +43,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dffsb")
+start_button = NodePath("Main menu stuff/Start Button")
+exit_button = NodePath("Main menu stuff/Exit Button")
+fullscreen_check_box = NodePath("Main menu stuff/Fullscreen CheckBox")
+music_check_box = NodePath("Main menu stuff/Music CheckBox")
+sfx_check_box = NodePath("Main menu stuff/SFX CheckBox")
+panel = NodePath("Info Panel")
+main_menu_stuff = NodePath("Main menu stuff")
 
 [node name="House" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("2_1w1yj")]
 player_camera = NodePath("../Camera2D")
@@ -50,9 +61,9 @@ volume_db = -80.0
 [node name="Music Intense" parent="House" index="12"]
 volume_db = -80.0
 
-[node name="Mannequin" parent="." node_paths=PackedStringArray("collisions", "house", "footsteps_sfx") instance=ExtResource("3_y3kcf")]
+[node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points", "house", "footsteps_sfx") instance=ExtResource("3_y3kcf")]
 position = Vector2(303, 2)
-collisions = []
+marker_points = [NodePath("../Marker2D")]
 house = NodePath("../House")
 footsteps_sfx = []
 
@@ -77,34 +88,36 @@ position = Vector2(-5.96046e-08, 44)
 scale = Vector2(1.72893, 1.5)
 texture = SubResource("GradientTexture2D_5afxj")
 
-[node name="Start Button" type="Button" parent="."]
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(49, 43)
+
+[node name="Main menu stuff" type="Node2D" parent="."]
+
+[node name="Start Button" type="Button" parent="Main menu stuff"]
 material = SubResource("CanvasItemMaterial_cox84")
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.371
 anchor_bottom = 1.0
 offset_left = -99.0
 offset_top = -28.0
-offset_right = -127.976
-offset_bottom = -189.0
+offset_right = -53.0
+offset_bottom = 3.0
 text = "Start"
 
-[node name="Exit Button" type="Button" parent="."]
+[node name="Exit Button" type="Button" parent="Main menu stuff"]
 material = SubResource("CanvasItemMaterial_2elqs")
-layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.367
 anchor_bottom = 1.0
 offset_left = -100.0
 offset_top = 29.0
-offset_right = -130.952
-offset_bottom = -132.0
+offset_right = -58.0
+offset_bottom = 60.0
 scale = Vector2(1.04765, 1.01854)
 text = "Quit"
 
-[node name="Music CheckBox" type="CheckBox" parent="."]
+[node name="Music CheckBox" type="CheckBox" parent="Main menu stuff"]
 material = SubResource("CanvasItemMaterial_uwphc")
-layout_mode = 0
 offset_left = 40.0
 offset_top = 15.0
 offset_right = 145.0
@@ -112,9 +125,8 @@ offset_bottom = 46.0
 scale = Vector2(0.75, 0.75)
 text = "Music"
 
-[node name="SFX CheckBox" type="CheckBox" parent="."]
+[node name="SFX CheckBox" type="CheckBox" parent="Main menu stuff"]
 material = SubResource("CanvasItemMaterial_lukuu")
-layout_mode = 0
 offset_left = 40.0
 offset_top = 40.0
 offset_right = 145.0
@@ -122,31 +134,47 @@ offset_bottom = 71.0
 scale = Vector2(0.75, 0.75)
 text = "SFX"
 
-[node name="Fullscreen CheckBox" type="CheckBox" parent="."]
+[node name="Fullscreen CheckBox" type="CheckBox" parent="Main menu stuff"]
 material = SubResource("CanvasItemMaterial_go0a0")
-layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -218.0
-offset_top = -126.0
-offset_right = -111.0
-offset_bottom = -95.0
+offset_left = 38.0
+offset_top = 66.0
+offset_right = 145.0
+offset_bottom = 97.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.75, 0.75)
 text = "Fullscreen
 "
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(49, 43)
+[node name="How to play Button" type="Button" parent="Main menu stuff"]
+material = SubResource("CanvasItemMaterial_iomgf")
+offset_left = 15.0
+offset_top = -86.0
+offset_right = 115.0
+offset_bottom = -55.0
+text = "How to play"
 
-[connection signal="pressed" from="Start Button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Exit Button" to="." method="_on_exit_button_pressed"]
-[connection signal="toggled" from="Music CheckBox" to="." method="_on_music_check_box_toggled"]
-[connection signal="toggled" from="SFX CheckBox" to="." method="_on_sfx_check_box_toggled"]
-[connection signal="toggled" from="Fullscreen CheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[node name="Info Panel" parent="." instance=ExtResource("5_vp8gu")]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 241.0
+offset_bottom = 179.0
+
+[connection signal="pressed" from="Main menu stuff/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Main menu stuff/Exit Button" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="Main menu stuff/Music CheckBox" to="." method="_on_music_check_box_toggled"]
+[connection signal="toggled" from="Main menu stuff/SFX CheckBox" to="." method="_on_sfx_check_box_toggled"]
+[connection signal="toggled" from="Main menu stuff/Fullscreen CheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="pressed" from="Main menu stuff/How to play Button" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="Main menu stuff/How to play Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Info Panel/Next Button" to="." method="_on_next_button_pressed"]
 
 [editable path="House"]
+[editable path="Info Panel"]

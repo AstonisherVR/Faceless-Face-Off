@@ -21,8 +21,7 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
-Globals="*res://Scripts/Globals.gd"
-MouseMovementGlobal="*res://Scripts/MouseMovementGlobal.gd"
+Globals="*res://Scripts/MouseMovementGlobal.gd"
 
 [display]
 

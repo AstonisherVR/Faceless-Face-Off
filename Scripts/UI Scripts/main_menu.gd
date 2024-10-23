@@ -1,14 +1,17 @@
 extends Control
 
-@onready var start_button: Button = $"Start Button"
-@onready var exit_button: Button = $"Exit Button"
-@onready var fullscreen_check_box: CheckBox = $"Fullscreen CheckBox"
-@onready var music_check_box: CheckBox = $"Music CheckBox"
-@onready var sfx_check_box: CheckBox = $"SFX CheckBox"
+@export var start_button: Button 
+@export var exit_button: Button 
+@export var fullscreen_check_box: CheckBox
+@export var music_check_box: CheckBox
+@export var sfx_check_box: CheckBox 
+
+@export var panel: Panel 
+@export var main_menu_stuff: Node2D
+@onready var cont: VBoxContainer
 
 @onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
 @onready var SFX_BUS_ID = AudioServer.get_bus_index("Sfx")
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	music_check_box.button_pressed = true
@@ -42,3 +45,15 @@ func _on_sfx_check_box_toggled(toggled_on: bool) -> void:
 		AudioServer.set_bus_mute(SFX_BUS_ID, false)
 	else:
 		AudioServer.set_bus_mute(SFX_BUS_ID, true)
+
+func _on_how_to_play_button_pressed() -> void:
+	main_menu_stuff.hide()
+	panel.show()
+
+func _on_back_to_main_menu_button_pressed() -> void:
+	main_menu_stuff.show()
+	panel.hide()
+
+
+func _on_next_button_pressed() -> void:
+	cont.hide()

@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://csbnbkd87iepr"]
+[gd_scene load_steps=8 format=3 uid="uid://csbnbkd87iepr"]
 
 [ext_resource type="Script" path="res://Scripts/power_generator.gd" id="1_xnp5t"]
 [ext_resource type="Texture2D" uid="uid://cvujsl4jh6y7p" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Neutral1.png" id="2_xnncx"]
 [ext_resource type="Texture2D" uid="uid://cag4msqi5gvh1" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Green1.png" id="3_3wt8t"]
 [ext_resource type="Texture2D" uid="uid://derlv1dwglaym" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Red1.png" id="4_xeg85"]
 [ext_resource type="Texture2D" uid="uid://dponi722p2rf" path="res://2D Sprites/Player & Items Sprites/Light Point.png" id="5_hupy8"]
-[ext_resource type="Texture2D" uid="uid://cecdywj2iyy1s" path="res://2D Sprites/Player & Items Sprites/Lever.png" id="6_w5qjb"]
+[ext_resource type="Texture2D" uid="uid://covfk4g3niopn" path="res://2D Sprites/icon.svg" id="6_yb713"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e8f5v"]
 animations = [{
@@ -24,14 +24,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_hi6mj"]
-offsets = PackedFloat32Array(0.157258, 0.818548, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.570948, 8.58105e-07, 3.71073e-07, 1, 0.592448, 8.90419e-07, 3.85046e-07, 1)
-
-[sub_resource type="Gradient" id="Gradient_056kd"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 0.316667, 0, 1)
-
 [node name="Power Generator" type="Node2D" node_paths=PackedStringArray("animated_panel", "progress_bar", "score_label", "reach_label", "lever", "lever_point")]
 script = ExtResource("1_xnp5t")
 animated_panel = NodePath("Panel ON or OFF AnimatedSprite2D")
@@ -43,23 +35,6 @@ lever_point = NodePath("Marker2D")
 
 [node name="Panel ON or OFF AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e8f5v")
-
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(39, -63, 50, -62, 59, -57, 65, -49, 69, -39, 72, -31, 74, -23)
-width = 4.0
-gradient = SubResource("Gradient_hi6mj")
-joint_mode = 2
-begin_cap_mode = 1
-end_cap_mode = 2
-metadata/_edit_lock_ = true
-
-[node name="Arrow Line2D" type="Line2D" parent="."]
-position = Vector2(18, 18)
-points = PackedVector2Array(40, -55, 56, -40, 65, -59)
-width = 4.0
-gradient = SubResource("Gradient_056kd")
-begin_cap_mode = 2
-end_cap_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -77.0
@@ -93,6 +68,7 @@ texture_scale = 3.0
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="Lever" type="Sprite2D" parent="Marker2D"]
-position = Vector2(43, 0)
+position = Vector2(47, 0)
 rotation = 1.5708
-texture = ExtResource("6_w5qjb")
+scale = Vector2(0.160506, 0.712492)
+texture = ExtResource("6_yb713")

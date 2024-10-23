@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bim4l0rtuo32d"]
+[gd_scene load_steps=9 format=3 uid="uid://de2qdde6jaqf1"]
 
 [ext_resource type="Script" path="res://Scripts/power_generator_container.gd" id="1_ilws4"]
-[ext_resource type="PackedScene" uid="uid://bcob76d6whlpn" path="res://Scenes/power_generator.tscn" id="2_cwhru"]
+[ext_resource type="PackedScene" uid="uid://csbnbkd87iepr" path="res://Scenes/power_generator.tscn" id="2_cwhru"]
 [ext_resource type="Texture2D" uid="uid://xpwtesvn0ck0" path="res://2D Sprites/gameplay switch to machine button.png" id="3_1dk1p"]
 [ext_resource type="Texture2D" uid="uid://dojrt2id5umyl" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Green Animation.png" id="5_ups1f"]
 
@@ -90,6 +90,7 @@ power_generator_animation_player = NodePath("Power Generator AnimationPlayer")
 power_generator_sprites = NodePath("Power Generator Sprites")
 
 [node name="Power Generator" parent="." instance=ExtResource("2_cwhru")]
+visible = false
 
 [node name="Power Generator Sprites" type="Sprite2D" parent="."]
 texture = ExtResource("5_ups1f")
