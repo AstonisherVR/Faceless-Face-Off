@@ -143,7 +143,7 @@ func stun_enemy() -> void:
 		current_damage_taking_state = Damage_States.NO_DAMAGE
 
 func reset_enemy() -> void:
-	print("Enemy reset")
+	#print("Enemy reset")
 	current_damage_taking_state = Damage_States.NO_DAMAGE
 	current_stage = Stages.STAGE_0
 	current_mask = Masks.NO_MASK

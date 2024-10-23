@@ -89,6 +89,7 @@ texture = ExtResource("5_hupy8")
 texture_scale = 3.0
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
@@ -96,3 +97,5 @@ texture_scale = 3.0
 position = Vector2(43, 0)
 rotation = 1.5708
 texture = ExtResource("6_w5qjb")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -13,6 +13,5 @@ func _process(delta):
 
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion:
-		print()
 		lastMouseMove = lastFrame
 		relative = event.relative
