@@ -9,14 +9,10 @@ var lastMouseMove : float
 func _process(delta):
 	if lastMouseMove < lastFrame:
 		relative = Vector2.ZERO
-
 	lastFrame += delta
 
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion:
+		print()
 		lastMouseMove = lastFrame
 		relative = event.relative
-
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-	

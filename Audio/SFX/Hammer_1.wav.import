@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://d5v1nkoege5e"
-path="res://.godot/imported/Ftsp_10.wav-5c16aafaec9ddc98959aafdc079bb086.sample"
+uid="uid://dva6fyrhm24ej"
+path="res://.godot/imported/Hammer_1.wav-30a9f476f6694b81f5088e6eac62b29c.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Ftsp_10.wav"
-dest_files=["res://.godot/imported/Ftsp_10.wav-5c16aafaec9ddc98959aafdc079bb086.sample"]
+source_file="res://Audio/SFX/Hammer_1.wav"
+dest_files=["res://.godot/imported/Hammer_1.wav-30a9f476f6694b81f5088e6eac62b29c.sample"]
 
 [params]
 

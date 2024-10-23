@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dfp6kfa65iqqv"
-path="res://.godot/imported/Thump_Far.wav-e41c92bd868005b3fd9b9553192172bd.sample"
+uid="uid://bny78pqo08pk6"
+path="res://.godot/imported/Ftsp_16.wav-f65b3c15d10c41d58c8c9d05b7f80203.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Thump_Far.wav"
-dest_files=["res://.godot/imported/Thump_Far.wav-e41c92bd868005b3fd9b9553192172bd.sample"]
+source_file="res://Audio/SFX/Footsteps/Ftsp_16.wav"
+dest_files=["res://.godot/imported/Ftsp_16.wav-f65b3c15d10c41d58c8c9d05b7f80203.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://5uvle2173h8t"
-path="res://.godot/imported/Thump_Close.wav-d53cdf2199c293f94fd499adee7c018c.sample"
+path="res://.godot/imported/Thump_Close.wav-456e41c0f818a7fad89fb77594dd2a1e.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Thump_Close.wav"
-dest_files=["res://.godot/imported/Thump_Close.wav-d53cdf2199c293f94fd499adee7c018c.sample"]
+source_file="res://Audio/SFX/Footsteps/Thump_Close.wav"
+dest_files=["res://.godot/imported/Thump_Close.wav-456e41c0f818a7fad89fb77594dd2a1e.sample"]
 
 [params]
 

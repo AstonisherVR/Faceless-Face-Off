@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://d04408vvn85lb"]
+[gd_scene load_steps=33 format=3 uid="uid://d04408vvn85lb"]
 
 [ext_resource type="Script" path="res://Scripts/mannequin.gd" id="1_6tuu8"]
 [ext_resource type="Texture2D" uid="uid://hi0le3ek4121" path="res://2D Sprites/Enemy Sprites/Mannequin Creature.png" id="1_oxbv5"]
@@ -11,22 +11,25 @@
 [ext_resource type="Texture2D" uid="uid://ds61afednwq3p" path="res://2D Sprites/Enemy Sprites/Masks/Sad Clown Mask.png" id="9_amvd5"]
 [ext_resource type="Texture2D" uid="uid://ntiqvktgvhku" path="res://2D Sprites/Enemy Sprites/Masks/Happy Mask.png" id="9_aw3gu"]
 [ext_resource type="Texture2D" uid="uid://bf1rqr1v6otjr" path="res://2D Sprites/Enemy Sprites/Masks/Wolf Mask.png" id="11_sewe3"]
-[ext_resource type="AudioStream" uid="uid://cflsknxvlhuhd" path="res://Audio/SFX/Ftsp_1.wav" id="12_vtqgk"]
-[ext_resource type="AudioStream" uid="uid://c07e17dw5ip4x" path="res://Audio/SFX/Ftsp_2.wav" id="13_ly1de"]
-[ext_resource type="AudioStream" uid="uid://rcegnppiolv0" path="res://Audio/SFX/Ftsp_3.wav" id="14_111se"]
-[ext_resource type="AudioStream" uid="uid://dhheq2a62eksc" path="res://Audio/SFX/Ftsp_4.wav" id="15_hmv3t"]
-[ext_resource type="AudioStream" uid="uid://dr7jajvg2qqr5" path="res://Audio/SFX/Ftsp_5.wav" id="16_7i33j"]
-[ext_resource type="AudioStream" uid="uid://drv4flvsv15h5" path="res://Audio/SFX/Ftsp_6.wav" id="17_50y7g"]
-[ext_resource type="AudioStream" uid="uid://dtto1sicveu4i" path="res://Audio/SFX/Ftsp_7.wav" id="18_xfr84"]
-[ext_resource type="AudioStream" uid="uid://cm670xow3xx1v" path="res://Audio/SFX/Ftsp_8.wav" id="19_u0jer"]
-[ext_resource type="AudioStream" uid="uid://orheuq175aur" path="res://Audio/SFX/Ftsp_9.wav" id="20_v81l4"]
-[ext_resource type="AudioStream" uid="uid://d5v1nkoege5e" path="res://Audio/SFX/Ftsp_10.wav" id="21_hwfxf"]
-[ext_resource type="AudioStream" uid="uid://dv6karmtdnev0" path="res://Audio/SFX/Ftsp_11.wav" id="22_a25o3"]
-[ext_resource type="AudioStream" uid="uid://c4d8su55sq7jd" path="res://Audio/SFX/Ftsp_12.wav" id="23_v5weo"]
-[ext_resource type="AudioStream" uid="uid://k5xcj5apaiib" path="res://Audio/SFX/Ftsp_13.wav" id="24_0uks4"]
-[ext_resource type="AudioStream" uid="uid://dbwqar8mhh7o6" path="res://Audio/SFX/Ftsp_14.wav" id="25_o2tem"]
-[ext_resource type="AudioStream" uid="uid://dwbab36ygvniw" path="res://Audio/SFX/Ftsp_15.wav" id="26_04t7b"]
-[ext_resource type="AudioStream" uid="uid://bny78pqo08pk6" path="res://Audio/SFX/Ftsp_16.wav" id="27_qea5t"]
+[ext_resource type="AudioStream" uid="uid://bny78pqo08pk6" path="res://Audio/SFX/Footsteps/Ftsp_16.wav" id="12_inanh"]
+[ext_resource type="AudioStream" uid="uid://cflsknxvlhuhd" path="res://Audio/SFX/Footsteps/Ftsp_1.wav" id="13_1oqfn"]
+[ext_resource type="AudioStream" uid="uid://c07e17dw5ip4x" path="res://Audio/SFX/Footsteps/Ftsp_2.wav" id="14_pyw4a"]
+[ext_resource type="AudioStream" uid="uid://rcegnppiolv0" path="res://Audio/SFX/Footsteps/Ftsp_3.wav" id="15_cldc3"]
+[ext_resource type="AudioStream" uid="uid://dhheq2a62eksc" path="res://Audio/SFX/Footsteps/Ftsp_4.wav" id="16_tby7r"]
+[ext_resource type="AudioStream" uid="uid://dr7jajvg2qqr5" path="res://Audio/SFX/Footsteps/Ftsp_5.wav" id="17_edh34"]
+[ext_resource type="AudioStream" uid="uid://drv4flvsv15h5" path="res://Audio/SFX/Footsteps/Ftsp_6.wav" id="18_kc8c4"]
+[ext_resource type="AudioStream" uid="uid://dtto1sicveu4i" path="res://Audio/SFX/Footsteps/Ftsp_7.wav" id="19_6e7gl"]
+[ext_resource type="AudioStream" uid="uid://cm670xow3xx1v" path="res://Audio/SFX/Footsteps/Ftsp_8.wav" id="20_t2to0"]
+[ext_resource type="AudioStream" uid="uid://orheuq175aur" path="res://Audio/SFX/Footsteps/Ftsp_9.wav" id="21_ll12i"]
+[ext_resource type="AudioStream" uid="uid://d5v1nkoege5e" path="res://Audio/SFX/Footsteps/Ftsp_10.wav" id="22_c7gsw"]
+[ext_resource type="AudioStream" uid="uid://dv6karmtdnev0" path="res://Audio/SFX/Footsteps/Ftsp_11.wav" id="23_7s3h6"]
+[ext_resource type="AudioStream" uid="uid://c4d8su55sq7jd" path="res://Audio/SFX/Footsteps/Ftsp_12.wav" id="24_bkloq"]
+[ext_resource type="AudioStream" uid="uid://k5xcj5apaiib" path="res://Audio/SFX/Footsteps/Ftsp_13.wav" id="25_kmgt7"]
+[ext_resource type="AudioStream" uid="uid://dbwqar8mhh7o6" path="res://Audio/SFX/Footsteps/Ftsp_14.wav" id="26_0d11q"]
+[ext_resource type="AudioStream" uid="uid://dwbab36ygvniw" path="res://Audio/SFX/Footsteps/Ftsp_15.wav" id="27_r7mdd"]
+[ext_resource type="AudioStream" uid="uid://dfp6kfa65iqqv" path="res://Audio/SFX/Footsteps/Thump_Far.wav" id="28_3qech"]
+[ext_resource type="AudioStream" uid="uid://d31lp1awaycrt" path="res://Audio/SFX/Footsteps/Thump_Near.wav" id="29_ubxty"]
+[ext_resource type="AudioStream" uid="uid://5uvle2173h8t" path="res://Audio/SFX/Footsteps/Thump_Close.wav" id="30_jb5ql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p86w2"]
 
@@ -173,54 +176,80 @@ one_shot = true
 [node name="SFX Collection" type="Node" parent="."]
 
 [node name="Footsteps0 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("27_qea5t")
+stream = ExtResource("12_inanh")
+bus = &"Sfx"
 
 [node name="Footsteps1 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("12_vtqgk")
+stream = ExtResource("13_1oqfn")
+bus = &"Sfx"
 
 [node name="Footsteps2 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("13_ly1de")
+stream = ExtResource("14_pyw4a")
+bus = &"Sfx"
 
 [node name="Footsteps3 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("14_111se")
+stream = ExtResource("15_cldc3")
+bus = &"Sfx"
 
 [node name="Footsteps4 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("15_hmv3t")
+stream = ExtResource("16_tby7r")
+bus = &"Sfx"
 
 [node name="Footsteps5 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("16_7i33j")
+stream = ExtResource("17_edh34")
+bus = &"Sfx"
 
 [node name="Footsteps6 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("17_50y7g")
+stream = ExtResource("18_kc8c4")
+bus = &"Sfx"
 
 [node name="Footsteps7 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("18_xfr84")
+stream = ExtResource("19_6e7gl")
+bus = &"Sfx"
 
 [node name="Footsteps8 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("19_u0jer")
+stream = ExtResource("20_t2to0")
+bus = &"Sfx"
 
 [node name="Footsteps9 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("20_v81l4")
+stream = ExtResource("21_ll12i")
+bus = &"Sfx"
 
 [node name="Footsteps10 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("21_hwfxf")
+stream = ExtResource("22_c7gsw")
+bus = &"Sfx"
 
 [node name="Footsteps11 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("22_a25o3")
+stream = ExtResource("23_7s3h6")
+bus = &"Sfx"
 
 [node name="Footsteps12 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("23_v5weo")
+stream = ExtResource("24_bkloq")
+bus = &"Sfx"
 
 [node name="Footsteps13 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("24_0uks4")
+stream = ExtResource("25_kmgt7")
+bus = &"Sfx"
 
 [node name="Footsteps14 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("25_o2tem")
+stream = ExtResource("26_0d11q")
+bus = &"Sfx"
 
 [node name="Footsteps15 AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
-stream = ExtResource("26_04t7b")
+stream = ExtResource("27_r7mdd")
+bus = &"Sfx"
+
+[node name="Footsteps Far AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("28_3qech")
+bus = &"Sfx"
+
+[node name="Footsteps Near AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("29_ubxty")
+bus = &"Sfx"
 
 [node name="Footsteps Close AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX Collection"]
+stream = ExtResource("30_jb5ql")
+bus = &"Sfx"
 
 [connection signal="timeout" from="Movement Timer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="Kill Countdown" to="." method="_on_kill_countdown_timeout"]

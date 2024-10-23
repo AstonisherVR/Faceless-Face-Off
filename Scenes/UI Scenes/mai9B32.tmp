@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cuec7tmvpugyg"]
+[gd_scene load_steps=15 format=3 uid="uid://cuec7tmvpugyg"]
 
 [ext_resource type="Script" path="res://Scripts/UI Scripts/main_menu.gd" id="1_dffsb"]
 [ext_resource type="PackedScene" uid="uid://cjkpk06h3i6m2" path="res://Scenes/house.tscn" id="2_1w1yj"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d04408vvn85lb" path="res://Scenes/mannequin.tscn" id="3_y3kcf"]
 [ext_resource type="PackedScene" uid="uid://pit2pj2jwc5f" path="res://Scenes/info_panel.tscn" id="5_vp8gu"]
 [ext_resource type="AudioStream" uid="uid://brou4yyeeybk0" path="res://Audio/SFX/Light_Buzzing_Loop.wav" id="6_63d7l"]
-[ext_resource type="AudioStream" uid="uid://dcoix4kitrpe4" path="res://Audio/SFX/Light_Dying.wav" id="7_dtppb"]
 
 [sub_resource type="Gradient" id="Gradient_7ws2k"]
 interpolation_mode = 2
@@ -37,7 +36,7 @@ light_mode = 1
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iomgf"]
 light_mode = 1
 
-[node name="Main Menu" type="Control" node_paths=PackedStringArray("info_panel", "fullscreen_check_box", "music_check_box", "sfx_check_box", "light", "light_buzz_sfx", "light_die_sfx", "start_button", "exit_button", "prev_button", "next_button", "back_to_main_menu_button", "example_item_sprites", "example_mask_sprites", "main_menu_stuff", "cont1", "cont2")]
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("info_panel", "fullscreen_check_box", "music_check_box", "sfx_check_box", "light", "light_buzz_sfx", "start_button", "exit_button", "prev_button", "next_button", "back_to_main_menu_button", "example_item_sprites", "example_mask_sprites", "main_menu_stuff", "cont1", "cont2")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,7 +50,6 @@ music_check_box = NodePath("Main menu stuff/Music CheckBox")
 sfx_check_box = NodePath("Main menu stuff/SFX CheckBox")
 light = NodePath("Sprite2D")
 light_buzz_sfx = NodePath("Buzz AudioStreamPlayer2D")
-light_die_sfx = NodePath("Light Die AudioStreamPlayer2D")
 start_button = NodePath("Main menu stuff/Start Button")
 exit_button = NodePath("Main menu stuff/Exit Button")
 prev_button = NodePath("Info Panel/Prev Button")
@@ -191,8 +189,6 @@ max_distance = 300.0
 bus = &"Sfx"
 
 [node name="Light Die AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_dtppb")
-bus = &"Sfx"
 
 [connection signal="pressed" from="Main menu stuff/Start Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Main menu stuff/Exit Button" to="." method="_on_exit_button_pressed"]

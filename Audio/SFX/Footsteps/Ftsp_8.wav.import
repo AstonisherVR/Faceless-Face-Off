@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://orheuq175aur"
-path="res://.godot/imported/Ftsp_9.wav-2a478017bd226d0e89164349a1348f92.sample"
+uid="uid://cm670xow3xx1v"
+path="res://.godot/imported/Ftsp_8.wav-a5a18e8cf3a0c1c2bf3a6b86508e37f0.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Ftsp_9.wav"
-dest_files=["res://.godot/imported/Ftsp_9.wav-2a478017bd226d0e89164349a1348f92.sample"]
+source_file="res://Audio/SFX/Footsteps/Ftsp_8.wav"
+dest_files=["res://.godot/imported/Ftsp_8.wav-a5a18e8cf3a0c1c2bf3a6b86508e37f0.sample"]
 
 [params]
 
