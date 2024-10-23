@@ -54,37 +54,52 @@ func switch_to_item(new_item: Items) -> void:
 
 func handle_item_behavior() -> void:
 	var mouse_pos = get_global_mouse_position()
-	var is_mouse_clicking = Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click")
-	
+	var is_mouse_holding = Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click")
+	var is_mouse_clicking = Input.is_action_just_pressed("R_Click") or Input.is_action_just_pressed("L_Click")
 	#mannequin_enemy.no_movement_detected()
 	match selected_item:
 		Items.FLASHLIGHT:
 			flashlight.position = mouse_pos
-			flashlight.visible = is_mouse_clicking
+			flashlight.visible = is_mouse_holding
 		Items.HAMMER:
 				hammer.position = mouse_pos
-				if Input.is_action_just_pressed("R_Click") or Input.is_action_just_pressed("L_Click"):
+				if is_mouse_clicking:
 					items_animation.play("Hammer Boink")
 		Items.MIRROR:
 			mirror.position = mouse_pos
 		Items.DOG_WHISTLE:
 			dog_whistle.position = mouse_pos
-			dog_whistle_sfx.playing = is_mouse_clicking
+			dog_whistle_sfx.playing = is_mouse_holding
 			if is_mouse_clicking and mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
-				mannequin_enemy.whistle_used()
+				mannequin_enemy.should_be_taking_damage_now = true
+				mannequin_enemy.stun_enemy()
+			else:
+				mannequin_enemy.should_be_taking_damage_now = true
 #func handle_mouse_stillness(delta: float) -> void:
 
 func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
-	#print("from player flashlight is stunning)")
-	mannequin_enemy.flashlight_shined()
+	mannequin_enemy.should_be_taking_damage_now = true
+	if mannequin_enemy.current_mask == mannequin_enemy.Masks.HAPPY_MASK:
+		mannequin_enemy.stun_enemy()
+
+func _on_flashlight_area_2d_area_exited(area: Area2D) -> void:
+	mannequin_enemy.should_be_taking_damage_now = false
 
 func _on_hammer_area_2d_area_entered(area: Area2D) -> void:
-	#print("from player hammer is stunning)")
-	mannequin_enemy.hammer_hit()
+	mannequin_enemy.should_be_taking_damage_now = true
+	if mannequin_enemy.current_mask == mannequin_enemy.Masks.NEUTRAL_MASK:
+		mannequin_enemy.stun_enemy()
+
+func _on_hammer_area_2d_area_exited(area: Area2D) -> void:
+	mannequin_enemy.should_be_taking_damage_now = false
 
 func _on_mirror_area_2d_area_entered(area: Area2D) -> void:
-	#print("from player mirror is stunning)")
-	mannequin_enemy.reflection_shown()
+	mannequin_enemy.should_be_taking_damage_now = true
+	if mannequin_enemy.current_mask == mannequin_enemy.Masks.SAD_MASK:
+		mannequin_enemy.stun_enemy()
+
+func _on_mirror_area_2d_area_exited(area: Area2D) -> void:
+	mannequin_enemy.should_be_taking_damage_now = false
 
 func set_visible_item(item: Items) -> void:
 	flashlight.visible = item == Items.FLASHLIGHT

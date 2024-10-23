@@ -101,59 +101,40 @@ func _on_movement_timer_timeout() -> void:
 func _on_kill_countdown_timeout() -> void:
 	current_stage = Stages.STAGE_5_KILL
 
-func handle_damage(delta) -> void:
+func handle_damage(delta: float) -> void:
 	match current_damage_taking_state:
 		Damage_States.NO_DAMAGE:
-			pass
+			main_health = health_value
 		Damage_States.STILL_PLAYER_DAMAGE:
 			pass
 		Damage_States.FLASHLIGHT_DAMAGE:
-			if should_be_taking_damage_now:
-				main_health -= (delta * 25)
+			main_health -= delta * 50
 		Damage_States.HAMMER_DAMAGE:
-			pass
+			main_health -= 25  # Static damage for hammer hits
 		Damage_States.MIRROR_DAMAGE:
-			if should_be_taking_damage_now:
-				main_health -= (delta * 35)
+			main_health -= delta * 65
 		Damage_States.WHISTLE_DAMAGE:
-			if should_be_taking_damage_now:
-				main_health -= (delta * 30)
+			main_health -= delta * 60
 	if main_health <= 0:
 		reset_enemy()
 
-func no_movement_detected() -> void:
-	if current_mask == Masks.NO_MASK:
-		stun_enemy(Masks.HAPPY_MASK)
-
-func hammer_hit() -> void:
-	if current_mask == Masks.NEUTRAL_MASK:
-		stun_enemy(Masks.HAPPY_MASK)
-
-func flashlight_shined() -> void:
-	if current_mask == Masks.HAPPY_MASK:
-		stun_enemy(Masks.HAPPY_MASK)
-
-func reflection_shown() -> void:
-	if current_mask == Masks.SAD_MASK:
-		stun_enemy(Masks.SAD_MASK)
-
-func whistle_used() -> void:
-	if current_mask == Masks.WOLF_MASK:
-		stun_enemy(Masks.WOLF_MASK)
-
-func stun_enemy(mask: int) -> void:
-	#print("Stun Activated")
-	movement_timer.stop()
-	if mask == 0:
-		current_damage_taking_state = Damage_States.STILL_PLAYER_DAMAGE
-	elif mask == 1:
-		current_damage_taking_state = Damage_States.HAMMER_DAMAGE
-	elif mask == 2:
-		current_damage_taking_state = Damage_States.FLASHLIGHT_DAMAGE
-	elif mask == 3:
-		current_damage_taking_state = Damage_States.MIRROR_DAMAGE
-	elif mask == 4:
-		current_damage_taking_state = Damage_States.WHISTLE_DAMAGE
+func stun_enemy() -> void:
+	if should_be_taking_damage_now:
+		movement_timer.stop()
+		match current_mask:
+			Masks.NO_MASK:
+				current_damage_taking_state = Damage_States.NO_DAMAGE  # Can adjust based on specific mechanic
+			Masks.NEUTRAL_MASK:
+				current_damage_taking_state = Damage_States.HAMMER_DAMAGE
+			Masks.HAPPY_MASK:
+				current_damage_taking_state = Damage_States.FLASHLIGHT_DAMAGE
+			Masks.SAD_MASK:
+				current_damage_taking_state = Damage_States.MIRROR_DAMAGE
+			Masks.WOLF_MASK:
+				current_damage_taking_state = Damage_States.WHISTLE_DAMAGE
+	else:
+		movement_timer.start()
+		current_damage_taking_state = Damage_States.NO_DAMAGE
 
 func reset_enemy() -> void:
 	print("Enemy reset")
@@ -179,10 +160,8 @@ func set_z_ordering(number: int) -> void:
 func set_current_mask(mask: Masks, stage: Stages) -> void:
 	var all_masks = [small_neutral_mask, small_happy_mask, small_sad_clown_mask, 
 	small_wolf_mask, big_neutral_mask, big_happy_mask, big_sad_clown_mask, big_wolf_mask]
-
 	for masks in all_masks:
 		masks.hide()
-
 	if stage < Stages.STAGE_4:
 		match mask:
 			Masks.NEUTRAL_MASK: small_neutral_mask.show()

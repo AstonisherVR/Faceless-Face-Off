@@ -16,7 +16,7 @@ mannequin_enemy = NodePath("../Mannequin")
 position = Vector2(256, 0)
 health_value = 100
 agression_level = 100
-attack_frequency = 2
+attack_frequency = 1
 chance_to_mask = 100
 marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1"), NodePath("../House/Point 2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]
 house = NodePath("../House")
@@ -71,12 +71,6 @@ stream = null
 
 [node name="House" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("2_3ic8r")]
 player_camera = NodePath("../Player/Camera2D")
-
-[node name="Distortion & Blur" parent="House" index="13"]
-visible = false
-
-[node name="CanvasModulate" parent="House" index="14"]
-visible = false
 
 [node name="Power Generator Container" parent="." instance=ExtResource("2_8v1jv")]
 

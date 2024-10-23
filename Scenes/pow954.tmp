@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcob76d6whlpn"]
+[gd_scene load_steps=7 format=3 uid="uid://bcob76d6whlpn"]
 
 [ext_resource type="Script" path="res://Scripts/power_generator.gd" id="1_xnp5t"]
 [ext_resource type="Texture2D" uid="uid://cvujsl4jh6y7p" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Neutral1.png" id="2_xnncx"]
 [ext_resource type="Texture2D" uid="uid://cag4msqi5gvh1" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Green1.png" id="3_3wt8t"]
 [ext_resource type="Texture2D" uid="uid://derlv1dwglaym" path="res://2D Sprites/Player & Items Sprites/Power Generator Panel Red1.png" id="4_xeg85"]
 [ext_resource type="Texture2D" uid="uid://dponi722p2rf" path="res://2D Sprites/Player & Items Sprites/Light Point.png" id="5_hupy8"]
-[ext_resource type="Texture2D" uid="uid://covfk4g3niopn" path="res://2D Sprites/icon.svg" id="6_yb713"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e8f5v"]
 animations = [{
@@ -24,13 +23,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Power Generator" type="Node2D" node_paths=PackedStringArray("animated_panel", "progress_bar", "score_label", "reach_label", "lever")]
+[node name="Power Generator" type="Node2D" node_paths=PackedStringArray("score_label", "reach_label", "progress_bar", "animated_panel", "generator_hit_timer")]
 script = ExtResource("1_xnp5t")
-animated_panel = NodePath("Panel ON or OFF AnimatedSprite2D")
-progress_bar = NodePath("ProgressBar")
 score_label = NodePath("Score Label")
 reach_label = NodePath("Reach Label")
-lever = NodePath("Lever")
+progress_bar = NodePath("ProgressBar")
+animated_panel = NodePath("Panel ON or OFF AnimatedSprite2D")
+generator_hit_timer = NodePath("Generator Hit Timer")
 
 [node name="Panel ON or OFF AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e8f5v")
@@ -62,13 +61,9 @@ energy = 0.5
 texture = ExtResource("5_hupy8")
 texture_scale = 3.0
 
+[node name="Generator Hit Timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Timer" type="Timer" parent="."]
 
-[node name="Lever" type="TextureButton" parent="."]
-offset_left = -65.315
-offset_right = 62.685
-offset_bottom = 350.0
-scale = Vector2(0.25, 0.25)
-pivot_offset = Vector2(65, 0)
-texture_normal = ExtResource("6_yb713")
-stretch_mode = 0
+[connection signal="timeout" from="Generator Hit Timer" to="." method="_on_generator_hit_timer_timeout"]

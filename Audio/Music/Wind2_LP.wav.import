@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://70dwpsvwlhba"
-path="res://.godot/imported/Wind2_LP.wav-e10e8c33114678d83c6a2a3fef4319a6.sample"
+path="res://.godot/imported/Wind2_LP.wav-2faf142d3753f869116a7ab86fbad123.sample"
 
 [deps]
 
-source_file="res://Audio/SFX/Wind2_LP.wav"
-dest_files=["res://.godot/imported/Wind2_LP.wav-e10e8c33114678d83c6a2a3fef4319a6.sample"]
+source_file="res://Audio/Music/Wind2_LP.wav"
+dest_files=["res://.godot/imported/Wind2_LP.wav-2faf142d3753f869116a7ab86fbad123.sample"]
 
 [params]
 

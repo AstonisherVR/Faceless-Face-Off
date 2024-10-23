@@ -50,10 +50,11 @@ volume_db = -80.0
 [node name="Music Intense" parent="House" index="12"]
 volume_db = -80.0
 
-[node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points", "house") instance=ExtResource("3_y3kcf")]
+[node name="Mannequin" parent="." node_paths=PackedStringArray("collisions", "house", "footsteps_sfx") instance=ExtResource("3_y3kcf")]
 position = Vector2(303, 2)
-marker_points = [NodePath("../Marker2D")]
+collisions = []
 house = NodePath("../House")
+footsteps_sfx = []
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.1, 1.1)
