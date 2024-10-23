@@ -25,12 +25,18 @@ func _on_generator_texture_button_pressed() -> void:
 		power_generator_animation_player.play("Power Generator Lift")
 		generator_button.visible = true
 		player.handle = false
+		player.flashlight.visible = false
+		player.hammer.visible = false
+		player.mirror.visible = false
+		player.dog_whistle.visible = false
+		player.dog_whistle_sfx.playing = false
 	else:
 		power_generator_animation_player.play_backwards("Power Generator Lift")
 		generator_button.disabled = true
 		power_generator.visible = false
 		power_generator_sprites.visible = true
 		player.handle = true
+
 
 func _on_power_generator_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Power Generator Lift":

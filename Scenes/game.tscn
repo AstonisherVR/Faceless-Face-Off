@@ -10,6 +10,15 @@
 [node name="Player" parent="." node_paths=PackedStringArray("mannequin_enemy") instance=ExtResource("3_owglr")]
 mannequin_enemy = NodePath("../Mannequin")
 
+[node name="HammerAudioStreamPlayer2D" parent="Player/Hammer" index="1"]
+volume_db = -4.0
+
+[node name="Hammer2AudioStreamPlayer2D" parent="Player/Hammer" index="2"]
+volume_db = -4.0
+
+[node name="Hammer3AudioStreamPlayer2D" parent="Player/Hammer" index="3"]
+volume_db = -4.0
+
 [node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points", "house") instance=ExtResource("4_p70qw")]
 position = Vector2(256, 0)
 marker_points = [NodePath("../House/Point 0"), NodePath("../House/Point 1"), NodePath("../House/Point 2"), NodePath("../House/Point 3"), NodePath("../House/Point 4")]

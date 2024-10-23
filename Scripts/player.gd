@@ -21,9 +21,7 @@ enum Items {FLASHLIGHT, HAMMER, MIRROR, DOG_WHISTLE}
 @onready var flashlight_audio: AudioStreamPlayer2D = $Flashlight/FlashlightAudio
 @onready var flashlight_audio_2: AudioStreamPlayer2D = $Flashlight/FlashlightAudio2
 @export var dog_whistle_sfx: AudioStreamPlayer2D
-@onready var hammer_audio_stream_player_2d: AudioStreamPlayer2D = $Hammer/HammerAudioStreamPlayer2D
-@onready var hammer_2_audio_stream_player_2d: AudioStreamPlayer2D = $Hammer/Hammer2AudioStreamPlayer2D
-@onready var hammer_3_audio_stream_player_2d: AudioStreamPlayer2D = $Hammer/Hammer3AudioStreamPlayer2D
+@export var hammer_audio: Array[AudioStreamPlayer2D]
 
 @export_group("Interaction Areas")
 @export var flashlight_area: Area2D
@@ -42,12 +40,6 @@ func _process(delta: float) -> void:
 	if handle == true:
 		handle_item_selection()
 		handle_item_behavior()
-	else:
-		flashlight.visible = false
-		hammer.visible = false
-		mirror.visible = false
-		dog_whistle.visible = false
-		dog_whistle_sfx.playing = false
 
 func handle_item_selection() -> void:
 	if Input.is_action_just_pressed("Item_One"):
@@ -79,17 +71,19 @@ func handle_item_behavior() -> void:
 				match random_flash_sfx:
 					0:	flashlight_audio.play()
 					1:	flashlight_audio_2.play()
-
 		Items.HAMMER:
 				hammer.position = mouse_pos
 				if is_mouse_clicking:
 					items_animation.play("Hammer Boink")
+					if 	mannequin_enemy.should_be_taking_damage_now == true:
+						var this_one = hammer_audio.pick_random()
+						this_one.play()
 		Items.MIRROR:
 			mirror.position = mouse_pos
 		Items.DOG_WHISTLE:
 			dog_whistle.position = mouse_pos
 			dog_whistle_sfx.playing = is_mouse_holding
-			if is_mouse_clicking and mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
+			if is_mouse_holding and mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
 				mannequin_enemy.should_be_taking_damage_now = true
 				mannequin_enemy.stun_enemy()
 			else:

@@ -59,7 +59,7 @@ _data = {
 "RESET": SubResource("Animation_ptdmm")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("item_collisions", "flashlight", "hammer", "mirror", "dog_whistle", "camera", "items_animation", "dog_whistle_sfx", "flashlight_area", "hammer_area", "mirror_area")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("item_collisions", "flashlight", "hammer", "mirror", "dog_whistle", "camera", "items_animation", "dog_whistle_sfx", "hammer_audio", "flashlight_area", "hammer_area", "mirror_area")]
 collision_layer = 3
 collision_mask = 5
 script = ExtResource("1_a0vwr")
@@ -71,6 +71,7 @@ dog_whistle = NodePath("Dog Whistle")
 camera = NodePath("Camera2D")
 items_animation = NodePath("Items Animation")
 dog_whistle_sfx = NodePath("Dog Whistle/DogWhistleAudioStreamPlayer2D")
+hammer_audio = [NodePath("Hammer/HammerAudioStreamPlayer2D"), NodePath("Hammer/Hammer2AudioStreamPlayer2D"), NodePath("Hammer/Hammer3AudioStreamPlayer2D")]
 flashlight_area = NodePath("Flashlight/Flashlight Area2D")
 hammer_area = NodePath("Hammer/Hammer Sprite2D/Hammer Area2D")
 mirror_area = NodePath("Mirror/Mirror Area2D")
