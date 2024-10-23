@@ -39,29 +39,30 @@ enum Damage_States {NO_DAMAGE, STILL_PLAYER_DAMAGE, FLASHLIGHT_DAMAGE, HAMMER_DA
 @export_group("Sound Effects")
 @export var footsteps_sfx: Array[AudioStreamPlayer2D]
 @export var stinger: AudioStreamPlayer2D
+var increase_base_stats_amount: float
+var main_health: float
+var should_be_taking_damage_now: bool
+var current_stage = Stages.STAGE_0
+var current_mask = Masks.NO_MASK
+var current_damage_taking_state = Damage_States.NO_DAMAGE
 
-var increase_base_stats_amount : float
-var main_health: float				# When it raches 0, the mannequin goes back to Stage 0.
-var should_be_taking_damage_now : bool		# This is for checking every frame if it should be taking damage.
-var current_stage: = Stages.STAGE_0
-var current_mask: = Masks.NO_MASK
-var current_damage_taking_state := Damage_States.NO_DAMAGE
-
+# Main functions
 func _ready() -> void:
 	Globals.gameplay_stage_changed.connect(_on_gameplay_stage_received)
 	stop_yourself()
 
-func _on_gameplay_stage_received():
-	increase_base_stats_amount += 1
-	initialize_enemy(increase_base_stats_amount)
-
 func _process(delta: float) -> void:
 	handle_damage(delta)
+
+# Enemy Initialization
+func _on_gameplay_stage_received() -> void:
+	increase_base_stats_amount += 1
+	initialize_enemy(increase_base_stats_amount)
 
 func initialize_enemy(increase_base: float) -> void:
 	agression_level = 30 + (increase_base * randi_range(5, 10))
 	attack_frequency = 3 - (int(increase_base) % 2)
-	chance_to_mask = 40 * increase_base/1.1
+	chance_to_mask = 40 * increase_base / 1.1
 	health_value = 30 * increase_base
 	set_z_ordering(-2)
 	set_sprite(0)
@@ -69,46 +70,39 @@ func initialize_enemy(increase_base: float) -> void:
 	movement_timer.wait_time = attack_frequency
 	movement_timer.start()
 
+# AI Handling
 func update_ai() -> void:
 	if agression_level >= randi() % 100 + 1:
 		match current_stage:
 			Stages.STAGE_0, Stages.STAGE_1, Stages.STAGE_2:
 				advance_position(0, -1)
 			Stages.STAGE_3:
-				if house.door_stage == 0:
-					house.change_door()
-					reset_enemy()
-				elif house.door_stage == 1:
-					house.change_door()
-					reset_enemy()
-				elif house.door_stage == 2:
-					house.change_door()
-					reset_enemy()
-				else:
-					advance_position(1, 4)
+				handle_stage_3_interactions()
 			Stages.STAGE_4:
 				if kill_countdown.is_stopped():
 					kill_countdown.start()
 			Stages.STAGE_5_KILL:
 				kill_player()
+
 		if should_change_mask():
 			change_mask()
+
+func handle_stage_3_interactions() -> void:
+	if house.door_stage in range(3):
+		house.change_door()
+		reset_enemy()
+	else:
+		advance_position(1, 4)
 
 func advance_position(sprite_index: int, z_order: int) -> void:
 	current_stage += 1
 	play_footsteps()
-	if marker_points[current_stage]:
+	if marker_points.has(current_stage):
 		position = marker_points[current_stage].position
 		set_sprite(sprite_index)
 		set_z_ordering(z_order)
 
-func _on_movement_timer_timeout() -> void:
-	update_ai()
-	movement_timer.start()
-
-func _on_kill_countdown_timeout() -> void:
-	current_stage = Stages.STAGE_5_KILL
-
+# Damage Handling
 func handle_damage(delta: float) -> void:
 	match current_damage_taking_state:
 		Damage_States.NO_DAMAGE:
@@ -118,11 +112,12 @@ func handle_damage(delta: float) -> void:
 		Damage_States.FLASHLIGHT_DAMAGE:
 			main_health -= delta * 50
 		Damage_States.HAMMER_DAMAGE:
-			main_health -= 25  # Static damage for hammer hits
+			main_health -= 25
 		Damage_States.MIRROR_DAMAGE:
 			main_health -= delta * 65
 		Damage_States.WHISTLE_DAMAGE:
 			main_health -= delta * 60
+
 	if main_health <= 0:
 		reset_enemy()
 
@@ -130,8 +125,6 @@ func stun_enemy() -> void:
 	if should_be_taking_damage_now:
 		movement_timer.stop()
 		match current_mask:
-			#Masks.NO_MASK:
-				#current_damage_taking_state = Damage_States.NO_DAMAGE 
 			Masks.NEUTRAL_MASK:
 				current_damage_taking_state = Damage_States.HAMMER_DAMAGE
 			Masks.HAPPY_MASK:
@@ -144,6 +137,7 @@ func stun_enemy() -> void:
 		movement_timer.start()
 		current_damage_taking_state = Damage_States.NO_DAMAGE
 
+# Enemy Reset and Game Over
 func reset_enemy() -> void:
 	current_damage_taking_state = Damage_States.NO_DAMAGE
 	current_stage = Stages.STAGE_0
@@ -155,8 +149,8 @@ func reset_enemy() -> void:
 func kill_player() -> void:
 	print_rich("[color=red][b]Game Over![/b][/color]")
 	get_tree().change_scene_to_file("res://Scenes/UI Scenes/main_menu.tscn")
-	# Implement actual game over logic here
 
+# Utility Functions
 func set_sprite(number: int) -> void:
 	mannequin_stand_sprite.visible = (number == 0)
 	mannequin_forward_sprite.visible = (number == 1)
@@ -165,46 +159,57 @@ func set_z_ordering(number: int) -> void:
 	z_index = number
 
 func set_current_mask(mask: Masks, stage: Stages) -> void:
-	var all_masks = [small_neutral_mask, small_happy_mask, small_sad_clown_mask, 
-	small_wolf_mask, big_neutral_mask, big_happy_mask, big_sad_clown_mask, big_wolf_mask]
-	for masks in all_masks:
-		masks.hide()
+	hide_all_masks()
 	if stage < Stages.STAGE_4:
-		match mask:
-			Masks.NEUTRAL_MASK: small_neutral_mask.show()
-			Masks.HAPPY_MASK: small_happy_mask.show()
-			Masks.SAD_MASK: small_sad_clown_mask.show()
-			Masks.WOLF_MASK: small_wolf_mask.show()
-			_: pass
+		show_small_mask(mask)
 	else:
-		match mask:
-			Masks.NEUTRAL_MASK: big_neutral_mask.show()
-			Masks.HAPPY_MASK: big_happy_mask.show()
-			Masks.SAD_MASK: big_sad_clown_mask.show()
-			Masks.WOLF_MASK: big_wolf_mask.show()
-			_: pass
+		show_big_mask(mask)
+
+func hide_all_masks() -> void:
+	for mask in [small_neutral_mask, small_happy_mask, small_sad_clown_mask, small_wolf_mask, 
+				big_neutral_mask, big_happy_mask, big_sad_clown_mask, big_wolf_mask]:
+		mask.hide()
+
+func show_small_mask(mask: Masks) -> void:
+	match mask:
+		Masks.NEUTRAL_MASK: small_neutral_mask.show()
+		Masks.HAPPY_MASK: small_happy_mask.show()
+		Masks.SAD_MASK: small_sad_clown_mask.show()
+		Masks.WOLF_MASK: small_wolf_mask.show()
+
+func show_big_mask(mask: Masks) -> void:
+	match mask:
+		Masks.NEUTRAL_MASK: big_neutral_mask.show()
+		Masks.HAPPY_MASK: big_happy_mask.show()
+		Masks.SAD_MASK: big_sad_clown_mask.show()
+		Masks.WOLF_MASK: big_wolf_mask.show()
 
 func set_active_collisions(mask: Masks, stage: Stages) -> void:
 	for collision in collisions:
 		collision.disabled = true
-	
-	var collision_index = -1
+	var collision_index = get_collision_index(mask, stage)
+	if collision_index >= 0 and collision_index < collisions.size():
+		collisions[collision_index].disabled = false
+
+func get_collision_index(mask: Masks, stage: Stages) -> int:
+	var collision_index: int = -1
+
+	# Set the collision_index based on the mask
 	match mask:
 		Masks.NEUTRAL_MASK: collision_index = 0
 		Masks.HAPPY_MASK: collision_index = 1
 		Masks.SAD_MASK: collision_index = 2
-		_: return
-	
+		_: return -1  # Return -1 if no match
+	# Adjust for stage 4 after the mask match
 	if stage == Stages.STAGE_4:
 		collision_index += 3
-	
-	if collision_index >= 0 and collision_index < collisions.size():
-		collisions[collision_index].disabled = false
+	return collision_index
+
 
 func should_change_mask() -> bool:
 	return kill_countdown.is_stopped() and \
-		chance_to_mask >= randi() % 100 + 1 and \
-		current_stage <= Stages.STAGE_4
+		   chance_to_mask >= randi() % 100 + 1 and \
+		   current_stage <= Stages.STAGE_4
 
 func change_mask() -> void:
 	current_mask = Masks.values().pick_random()
@@ -212,12 +217,11 @@ func change_mask() -> void:
 	set_active_collisions(current_mask, current_stage)
 
 func play_footsteps() -> void:
-	var new_footsep_sfx = footsteps_sfx.pick_random()
-	new_footsep_sfx.play()
+	footsteps_sfx.pick_random().play()
 
 func stop_yourself() -> void:
 	current_stage = Stages.STAGE_0
 	set_z_ordering(-2)
 	set_sprite(0)
-	if marker_points[current_stage]:
+	if marker_points.has(current_stage):
 		position = marker_points[current_stage].global_position

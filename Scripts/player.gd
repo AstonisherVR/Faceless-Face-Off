@@ -1,40 +1,29 @@
 extends CharacterBody2D
 
-#TODO ADD A GODDAM GAMEPLAY LOOP
 #TODO FIXME Fix the enemy AI
 
 enum Items {FLASHLIGHT, HAMMER, MIRROR, DOG_WHISTLE}
 
-@export_group("Item References")
+@export_group("Items")
 @export var item_collisions: Array[CollisionShape2D]
-@export var flashlight: Node2D
-@export var hammer: Node2D
-@export var mirror: Node2D
-@export var dog_whistle: Node2D
-
-@export_group("Game Components")
+@export var items: Array[Node2D]
 @export var mannequin_enemy: CharacterBody2D
-@export var camera: Camera2D
 @export var items_animation: AnimationPlayer
 
 @export_group("Audio")
-@onready var flashlight_audio: AudioStreamPlayer2D = $Flashlight/FlashlightAudio
-@onready var flashlight_audio_2: AudioStreamPlayer2D = $Flashlight/FlashlightAudio2
+@export var flashlight_audio: Array[AudioStreamPlayer2D]
 @export var dog_whistle_sfx: AudioStreamPlayer2D
 @export var hammer_audio: Array[AudioStreamPlayer2D]
 
 @export_group("Interaction Areas")
-@export var flashlight_area: Area2D
-@export var hammer_area: Area2D
-@export var mirror_area: Area2D
+@export var item_areas: Array[Area2D]
+
 var handle := false
-# State variables
 var selected_item := Items.FLASHLIGHT
 
 func _ready() -> void:
 	handle = true
-	set_visible_item(selected_item)
-	set_active_collisions()
+	update_item_state()
 
 func _process(delta: float) -> void:
 	if handle == true:
@@ -42,83 +31,56 @@ func _process(delta: float) -> void:
 		handle_item_behavior()
 
 func handle_item_selection() -> void:
-	if Input.is_action_just_pressed("Item_One"):
-		switch_to_item(Items.FLASHLIGHT)
-	elif Input.is_action_just_pressed("Item_Two"):
-		switch_to_item(Items.HAMMER)
-	elif Input.is_action_just_pressed("Item_Three"):
-		switch_to_item(Items.MIRROR)
-	elif Input.is_action_just_pressed("Item_Four"):
-		switch_to_item(Items.DOG_WHISTLE)
+	for i in range(4):
+		if Input.is_action_just_pressed("Item_" + str(i + 1)):
+			switch_to_item(i)
+
+func update_item_state() -> void:
+	for i in range(items.size()):
+		items[i].visible = i == selected_item
+	set_active_collisions()
 
 func switch_to_item(new_item: Items) -> void:
 	selected_item = new_item
-	set_visible_item(selected_item)
-	set_active_collisions()
+	update_item_state()
 	dog_whistle_sfx.playing = false
+	mannequin_enemy.should_be_taking_damage_now = false
 
 func handle_item_behavior() -> void:
 	var mouse_pos = get_global_mouse_position()
-	var is_mouse_holding = Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click")
-	var is_mouse_clicking = Input.is_action_just_pressed("R_Click") or Input.is_action_just_pressed("L_Click")
-	#mannequin_enemy.no_movement_detected()
+	var is_holding = Input.is_action_pressed("R_Click") or Input.is_action_pressed("L_Click")
+	var is_clicking = Input.is_action_just_pressed("R_Click") or Input.is_action_just_pressed("L_Click")
+
+	items[selected_item].position = mouse_pos
+
 	match selected_item:
 		Items.FLASHLIGHT:
-			flashlight.position = mouse_pos
-			flashlight.visible = is_mouse_holding
-			if is_mouse_clicking:
-				var random_flash_sfx = randi_range(0, 1)
-				match random_flash_sfx:
-					0:	flashlight_audio.play()
-					1:	flashlight_audio_2.play()
+			items[Items.FLASHLIGHT].visible = is_holding
+			if is_clicking:
+				flashlight_audio.pick_random().play()
 		Items.HAMMER:
-				hammer.position = mouse_pos
-				if is_mouse_clicking:
-					items_animation.play("Hammer Boink")
-					if 	mannequin_enemy.should_be_taking_damage_now == true:
-						var this_one = hammer_audio.pick_random()
-						this_one.play()
-		Items.MIRROR:
-			mirror.position = mouse_pos
+			if is_clicking:
+				items_animation.play("Hammer Boink")
+				if mannequin_enemy.should_be_taking_damage_now:
+					hammer_audio.pick_random().play()
 		Items.DOG_WHISTLE:
-			dog_whistle.position = mouse_pos
-			dog_whistle_sfx.playing = is_mouse_holding
-			if is_mouse_holding and mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
-				mannequin_enemy.should_be_taking_damage_now = true
-				mannequin_enemy.stun_enemy()
-			else:
-				mannequin_enemy.should_be_taking_damage_now = true
-#func handle_mouse_stillness(delta: float) -> void:
+			dog_whistle_sfx.playing = is_holding
+			handle_dog_whistle_behavior()
 
-func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
+func handle_dog_whistle_behavior() -> void:
+	if dog_whistle_sfx.playing and mannequin_enemy.current_mask == mannequin_enemy.Masks.WOLF_MASK:
+		mannequin_enemy.should_be_taking_damage_now = true
+		mannequin_enemy.stun_enemy()
+	else:
+		mannequin_enemy.should_be_taking_damage_now = false  # Changed from true to false
+
+func _on_item_area_entered(area: Area2D, mask_type: int) -> void:
 	mannequin_enemy.should_be_taking_damage_now = true
-	if mannequin_enemy.current_mask == mannequin_enemy.Masks.HAPPY_MASK:
+	if mannequin_enemy.current_mask == mask_type:
 		mannequin_enemy.stun_enemy()
 
-func _on_flashlight_area_2d_area_exited(area: Area2D) -> void:
+func _on_item_area_exited(_area: Area2D) -> void:
 	mannequin_enemy.should_be_taking_damage_now = false
-
-func _on_hammer_area_2d_area_entered(area: Area2D) -> void:
-	mannequin_enemy.should_be_taking_damage_now = true
-	if mannequin_enemy.current_mask == mannequin_enemy.Masks.NEUTRAL_MASK:
-		mannequin_enemy.stun_enemy()
-
-func _on_hammer_area_2d_area_exited(area: Area2D) -> void:
-	mannequin_enemy.should_be_taking_damage_now = false
-
-func _on_mirror_area_2d_area_entered(area: Area2D) -> void:
-	mannequin_enemy.should_be_taking_damage_now = true
-	if mannequin_enemy.current_mask == mannequin_enemy.Masks.SAD_MASK:
-		mannequin_enemy.stun_enemy()
-
-func _on_mirror_area_2d_area_exited(area: Area2D) -> void:
-	mannequin_enemy.should_be_taking_damage_now = false
-
-func set_visible_item(item: Items) -> void:
-	flashlight.visible = item == Items.FLASHLIGHT
-	hammer.visible = item == Items.HAMMER
-	mirror.visible = item == Items.MIRROR
-	dog_whistle.visible = item == Items.DOG_WHISTLE
 
 func set_active_collisions() -> void:
 	for collision_shape in item_collisions:
