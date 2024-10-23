@@ -74,12 +74,23 @@ func handle_dog_whistle_behavior() -> void:
 	else:
 		mannequin_enemy.should_be_taking_damage_now = false  # Changed from true to false
 
-func _on_item_area_entered(area: Area2D, mask_type: int) -> void:
+func _on_flashlight_area_2d_area_exited(area: Area2D) -> void:
+	mannequin_enemy.should_be_taking_damage_now = false
+
+func _on_hammer_area_2d_area_entered(area: Area2D) -> void:
 	mannequin_enemy.should_be_taking_damage_now = true
-	if mannequin_enemy.current_mask == mask_type:
+	if mannequin_enemy.current_mask == mannequin_enemy.Masks.NEUTRAL_MASK:
 		mannequin_enemy.stun_enemy()
 
-func _on_item_area_exited(_area: Area2D) -> void:
+func _on_hammer_area_2d_area_exited(area: Area2D) -> void:
+	mannequin_enemy.should_be_taking_damage_now = false
+
+func _on_mirror_area_2d_area_entered(area: Area2D) -> void:
+	mannequin_enemy.should_be_taking_damage_now = true
+	if mannequin_enemy.current_mask == mannequin_enemy.Masks.SAD_MASK:
+		mannequin_enemy.stun_enemy()
+
+func _on_mirror_area_2d_area_exited(area: Area2D) -> void:
 	mannequin_enemy.should_be_taking_damage_now = false
 
 func set_active_collisions() -> void:
@@ -87,3 +98,7 @@ func set_active_collisions() -> void:
 		collision_shape.disabled = true
 	if selected_item < item_collisions.size():
 		item_collisions[selected_item].disabled = false
+
+
+func _on_flashlight_area_2d_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

@@ -49,6 +49,7 @@ func handle_generator_raised() -> void:
 	is_power_generator_up = true
 	power_generator_sprites.visible = false
 	power_generator.visible = true
+	mannequin_enemy.current_damage_taking_state = mannequin_enemy.Damage_States.GENERATOR_UP_DAMAGE
 	generator_button.release_focus()
 
 func handle_generator_lowered() -> void:
@@ -56,6 +57,7 @@ func handle_generator_lowered() -> void:
 	power_generator.visible = false
 	generator_button.disabled = false
 	power_generator_sprites.visible = false
+	mannequin_enemy.current_damage_taking_state = mannequin_enemy.Damage_States.NO_DAMAGE
 	generator_button.release_focus()
 	
 	# Make only the last selected item visible

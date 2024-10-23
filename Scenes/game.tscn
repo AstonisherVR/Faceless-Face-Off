@@ -75,9 +75,6 @@ stream = null
 [node name="House" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("2_3ic8r")]
 player_camera = NodePath("../Player/Camera2D")
 
-[node name="CanvasModulate" parent="House" index="14"]
-visible = false
-
 [node name="Power Generator Container" parent="." node_paths=PackedStringArray("mannequin_enemy", "player") instance=ExtResource("2_8v1jv")]
 mannequin_enemy = NodePath("../Mannequin")
 player = NodePath("../Player")
