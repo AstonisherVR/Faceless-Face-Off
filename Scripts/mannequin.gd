@@ -40,6 +40,7 @@ enum Damage_States {NO_DAMAGE, STILL_PLAYER_DAMAGE, FLASHLIGHT_DAMAGE, HAMMER_DA
 @export var footsteps_sfx: Array[AudioStreamPlayer2D]
 @export var stinger: AudioStreamPlayer2D
 
+var increase_base_stats_amount : float
 var main_health: float				# When it raches 0, the mannequin goes back to Stage 0.
 var should_be_taking_damage_now : bool		# This is for checking every frame if it should be taking damage.
 var current_stage: = Stages.STAGE_0
@@ -51,34 +52,24 @@ func _ready() -> void:
 	stop_yourself()
 
 func _on_gameplay_stage_received():
-	print("Sig recive")
-	#agression_level = 30
-	#attack_frequency = 2
-	#chance_to_mask = 20
-	health_value = 30
-	agression_level = 300
-	attack_frequency = 1
-	chance_to_mask = 1111
-	print("agression_level ", agression_level)
-	print("attack_frequency ", attack_frequency)
-	print("chance_to_mask ", chance_to_mask)
-	initialize_enemy()
+	increase_base_stats_amount += 1
+	initialize_enemy(increase_base_stats_amount)
 
 func _process(delta: float) -> void:
 	handle_damage(delta)
 
-func initialize_enemy() -> void:
-	print("initialized")
+func initialize_enemy(increase_base: float) -> void:
+	agression_level = 30 + (increase_base * randi_range(5, 10))
+	attack_frequency = 3 - (int(increase_base) % 2)
+	chance_to_mask = 40 * increase_base/1.1
+	health_value = 30 * increase_base
 	set_z_ordering(-2)
 	set_sprite(0)
-	
 	main_health = health_value
 	movement_timer.wait_time = attack_frequency
 	movement_timer.start()
-	print("initialized 2")
 
 func update_ai() -> void:
-	print("ai_update")
 	if agression_level >= randi() % 100 + 1:
 		match current_stage:
 			Stages.STAGE_0, Stages.STAGE_1, Stages.STAGE_2:
@@ -112,7 +103,6 @@ func advance_position(sprite_index: int, z_order: int) -> void:
 		set_z_ordering(z_order)
 
 func _on_movement_timer_timeout() -> void:
-	print("movement_timer timepout")
 	update_ai()
 	movement_timer.start()
 
@@ -134,7 +124,6 @@ func handle_damage(delta: float) -> void:
 		Damage_States.WHISTLE_DAMAGE:
 			main_health -= delta * 60
 	if main_health <= 0:
-		print("reset")
 		reset_enemy()
 
 func stun_enemy() -> void:
@@ -156,7 +145,6 @@ func stun_enemy() -> void:
 		current_damage_taking_state = Damage_States.NO_DAMAGE
 
 func reset_enemy() -> void:
-	#print("Enemy reset")
 	current_damage_taking_state = Damage_States.NO_DAMAGE
 	current_stage = Stages.STAGE_0
 	current_mask = Masks.NO_MASK

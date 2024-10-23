@@ -5,6 +5,7 @@ extends Node2D
 @export var power_generator_animation_player: AnimationPlayer
 @export var power_generator_sprites: Sprite2D
 @export var mannequin_enemy: CharacterBody2D
+@export var player: CharacterBody2D
 
 var is_power_generator_up: bool = false
 var tweener: Tween
@@ -23,12 +24,13 @@ func _on_generator_texture_button_pressed() -> void:
 		power_generator_sprites.visible = true
 		power_generator_animation_player.play("Power Generator Lift")
 		generator_button.visible = true
+		player.handle = false
 	else:
 		power_generator_animation_player.play_backwards("Power Generator Lift")
 		generator_button.disabled = true
 		power_generator.visible = false
 		power_generator_sprites.visible = true
-
+		player.handle = true
 
 func _on_power_generator_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Power Generator Lift":

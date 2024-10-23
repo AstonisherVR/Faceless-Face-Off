@@ -29,17 +29,25 @@ enum Items {FLASHLIGHT, HAMMER, MIRROR, DOG_WHISTLE}
 @export var flashlight_area: Area2D
 @export var hammer_area: Area2D
 @export var mirror_area: Area2D
-
+var handle := false
 # State variables
 var selected_item := Items.FLASHLIGHT
 
 func _ready() -> void:
+	handle = true
 	set_visible_item(selected_item)
 	set_active_collisions()
 
 func _process(delta: float) -> void:
-	handle_item_selection()
-	handle_item_behavior()
+	if handle == true:
+		handle_item_selection()
+		handle_item_behavior()
+	else:
+		flashlight.visible = false
+		hammer.visible = false
+		mirror.visible = false
+		dog_whistle.visible = false
+		dog_whistle_sfx.playing = false
 
 func handle_item_selection() -> void:
 	if Input.is_action_just_pressed("Item_One"):
