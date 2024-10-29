@@ -1,0 +1,215 @@
+[gd_scene load_steps=17 format=3 uid="uid://cuec7tmvpugyg"]
+
+[ext_resource type="Script" path="res://Legacy/Scripts/UI Scripts/main_menu.gd" id="1_1xkj1"]
+[ext_resource type="PackedScene" uid="uid://cjkpk06h3i6m2" path="res://Legacy/Scenes/house.tscn" id="2_1w1yj"]
+[ext_resource type="Texture2D" uid="uid://1ihnct5gpbig" path="res://Legacy/2D Sprites/Lamp.png" id="3_8d00a"]
+[ext_resource type="PackedScene" uid="uid://d04408vvn85lb" path="res://Legacy/Scenes/mannequin.tscn" id="3_y3kcf"]
+[ext_resource type="PackedScene" uid="uid://pit2pj2jwc5f" path="res://Legacy/Scenes/info_panel.tscn" id="5_vp8gu"]
+[ext_resource type="AudioStream" uid="uid://qqt7u6bicdad" path="res://Legacy/Audio/SFX/Light_Buzzing_Loop.wav" id="6_63d7l"]
+[ext_resource type="AudioStream" uid="uid://c6aqmsvhkob15" path="res://Legacy/Audio/SFX/Light_Dying.wav" id="7_dtppb"]
+[ext_resource type="AudioStream" uid="uid://70dwpsvwlhba" path="res://Legacy/Audio/Music/Wind2_LP.wav" id="8_b45ok"]
+
+[sub_resource type="Gradient" id="Gradient_7ws2k"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.483333, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5afxj"]
+gradient = SubResource("Gradient_7ws2k")
+width = 89
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0.988076)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cox84"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2elqs"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uwphc"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lukuu"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_go0a0"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iomgf"]
+light_mode = 1
+
+[node name="Main Menu" type="Control" node_paths=PackedStringArray("info_panel", "fullscreen_check_box", "music_check_box", "sfx_check_box", "light", "light_buzz_sfx", "light_die_sfx", "wind", "start_button", "exit_button", "prev_button", "next_button", "back_to_main_menu_button", "example_item_sprites", "example_mask_sprites", "main_menu_stuff", "cont1", "cont2")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1xkj1")
+info_panel = NodePath("Info Panel")
+fullscreen_check_box = NodePath("Main menu stuff/Fullscreen CheckBox")
+music_check_box = NodePath("Main menu stuff/Music CheckBox")
+sfx_check_box = NodePath("Main menu stuff/SFX CheckBox")
+light = NodePath("Lamp")
+light_buzz_sfx = NodePath("Buzz AudioStreamPlayer2D")
+light_die_sfx = NodePath("Light Die AudioStreamPlayer2D")
+wind = NodePath("WindAudioStreamPlayer2D")
+start_button = NodePath("Main menu stuff/Start Button")
+exit_button = NodePath("Main menu stuff/Exit Button")
+prev_button = NodePath("Info Panel/Prev Button")
+next_button = NodePath("Info Panel/Next Button")
+back_to_main_menu_button = NodePath("Info Panel/Back to main menu Button")
+example_item_sprites = [NodePath("Info Panel/Sprite2D2"), NodePath("Info Panel/Sprite2D4"), NodePath("Info Panel/Sprite2D3"), NodePath("Info Panel/Sprite2D5")]
+example_mask_sprites = [NodePath("Info Panel/MSprite2D6"), NodePath("Info Panel/MSprite2D7"), NodePath("Info Panel/MSprite2D8"), NodePath("Info Panel/MSprite2D9")]
+main_menu_stuff = NodePath("Main menu stuff")
+cont1 = NodePath("Info Panel/Cont")
+cont2 = NodePath("Info Panel/Cont2")
+
+[node name="House" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("2_1w1yj")]
+player_camera = NodePath("../Camera2D")
+metadata/_edit_group_ = true
+
+[node name="Music Calm" parent="House" index="11"]
+volume_db = -80.0
+
+[node name="Music Intense" parent="House" index="12"]
+volume_db = -80.0
+
+[node name="Mannequin" parent="." node_paths=PackedStringArray("marker_points", "house", "footsteps_sfx") instance=ExtResource("3_y3kcf")]
+position = Vector2(303, 2)
+marker_points = [NodePath("../Marker2D")]
+house = NodePath("../House")
+footsteps_sfx = []
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.1, 1.1)
+limit_left = -105
+limit_top = -80
+limit_right = 105
+limit_bottom = 80
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 1.1
+rotation_smoothing_enabled = true
+
+[node name="Lamp" type="Sprite2D" parent="."]
+position = Vector2(0, -88)
+scale = Vector2(2, 2)
+texture = ExtResource("3_8d00a")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lamp"]
+position = Vector2(-5.96046e-08, 44)
+scale = Vector2(1.72893, 1.5)
+texture = SubResource("GradientTexture2D_5afxj")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(49, 43)
+
+[node name="Main menu stuff" type="Node2D" parent="."]
+
+[node name="Start Button" type="Button" parent="Main menu stuff"]
+material = SubResource("CanvasItemMaterial_cox84")
+anchors_preset = -1
+anchor_right = 0.371
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -28.0
+offset_right = -53.0
+offset_bottom = 3.0
+text = "Start"
+
+[node name="Exit Button" type="Button" parent="Main menu stuff"]
+material = SubResource("CanvasItemMaterial_2elqs")
+anchors_preset = -1
+anchor_right = 0.367
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = 29.0
+offset_right = -58.0
+offset_bottom = 60.0
+scale = Vector2(1.04765, 1.01854)
+text = "Quit"
+
+[node name="Music CheckBox" type="CheckBox" parent="Main menu stuff"]
+material = SubResource("CanvasItemMaterial_uwphc")
+offset_left = 40.0
+offset_top = 15.0
+offset_right = 145.0
+offset_bottom = 46.0
+scale = Vector2(0.75, 0.75)
+text = "Music"
+
+[node name="SFX CheckBox" type="CheckBox" parent="Main menu stuff"]
+material = SubResource("CanvasItemMaterial_lukuu")
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 145.0
+offset_bottom = 71.0
+scale = Vector2(0.75, 0.75)
+text = "SFX"
+
+[node name="Fullscreen CheckBox" type="CheckBox" parent="Main menu stuff"]
+material = SubResource("CanvasItemMaterial_go0a0")
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 38.0
+offset_top = 66.0
+offset_right = 145.0
+offset_bottom = 97.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+text = "Fullscreen
+"
+
+[node name="How to play Button" type="Button" parent="Main menu stuff"]
+material = SubResource("CanvasItemMaterial_iomgf")
+offset_left = 15.0
+offset_top = -86.0
+offset_right = 115.0
+offset_bottom = -55.0
+text = "How to play"
+
+[node name="Info Panel" parent="." instance=ExtResource("5_vp8gu")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -120.0
+offset_top = -89.0
+offset_right = 121.0
+offset_bottom = 90.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Buzz AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-2, -95)
+stream = ExtResource("6_63d7l")
+volume_db = -16.0
+max_distance = 300.0
+
+[node name="Light Die AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_dtppb")
+volume_db = -5.0
+
+[node name="WindAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_b45ok")
+
+[connection signal="pressed" from="Main menu stuff/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Main menu stuff/Exit Button" to="." method="_on_exit_button_pressed"]
+[connection signal="toggled" from="Main menu stuff/Music CheckBox" to="." method="_on_music_check_box_toggled"]
+[connection signal="toggled" from="Main menu stuff/SFX CheckBox" to="." method="_on_sfx_check_box_toggled"]
+[connection signal="toggled" from="Main menu stuff/Fullscreen CheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="pressed" from="Main menu stuff/How to play Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Main menu stuff/How to play Button" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="Info Panel/Back to main menu Button" to="." method="_on_back_to_main_menu_button_pressed"]
+[connection signal="pressed" from="Info Panel/Next Button" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Info Panel/Prev Button" to="." method="_on_prev_button_pressed"]
+[connection signal="finished" from="Light Die AudioStreamPlayer2D" to="." method="_on_light_die_audio_stream_player_2d_finished"]
+[connection signal="finished" from="WindAudioStreamPlayer2D" to="." method="_on_wind_audio_stream_player_2d_finished"]
+
+[editable path="House"]
+[editable path="Info Panel"]

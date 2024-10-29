@@ -1,0 +1,10 @@
+res://Audio/default_bus_layout.tres::a2d5e99f2d7018a01114ac95e263a287::1729710081::res://.godot/exported/133200997/export-95e364f0e42a1b0483cfb831d036a524-default_bus_layout.res
+res://Scenes/UI Scenes/main_menu.tscn::0c6732df4a87472ad9d1a4562b4c893b::1729713592::res://.godot/exported/133200997/export-961b4419e538f1797dc7b775a2914dbd-main_menu.scn
+res://Scenes/game.tscn::f66490ccbabd2e955a22f993097c87fa::1729713592::res://.godot/exported/133200997/export-d45e16ca8d170891778b9dcfa9c69e68-game.scn
+res://Scenes/house.tscn::5df2fe5228dd88288e9390a48667ff62::1729713592::res://.godot/exported/133200997/export-ff0def6f35b7b70a9eb7536ce7a054f3-house.scn
+res://Scenes/info_panel.tscn::ab3e1a99cd7f2192cadec183e0884a76::1729713592::res://.godot/exported/133200997/export-7d096ed1e693a4d98cc28450e1762dab-info_panel.scn
+res://Scenes/main_device.tscn::2ad4eb4f5e5c813c0d4638764edcee55::1729427659::res://.godot/exported/133200997/export-368ea4a91283e666c220ee079c477ec0-main_device.scn
+res://Scenes/mannequin.tscn::3c09826b518f9c79b8017b4e865c1ba0::1729713593::res://.godot/exported/133200997/export-8ab284ebd91c3f5149ea068e711006d9-mannequin.scn
+res://Scenes/player.tscn::b3d8821a792507a151f9bac5f8c2b720::1729713592::res://.godot/exported/133200997/export-1753c997600d68ab5d20ae99fddb15c6-player.scn
+res://Scenes/power_generator.tscn::7e5f75d43a584060ed021e6e083f09cc::1729713592::res://.godot/exported/133200997/export-1efedd845c1661efc68fe7484eafa854-power_generator.scn
+res://Scenes/power_generator_container.tscn::4365c73977379a801c73030b11708a41::1729713592::res://.godot/exported/133200997/export-28827b650c96b4d7522a5de197e76ae4-power_generator_container.scn

@@ -1,0 +1,14 @@
+AudioStreamPlayer2D
+AudioListener2D
+Sprite2D
+Control
+Button
+VBoxContainer
+NavigationObstacle2D
+HBoxContainer
+Label
+Node2D
+Node
+Panel
+Line2D
+Marker2D

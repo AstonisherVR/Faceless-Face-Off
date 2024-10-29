@@ -12,10 +12,10 @@ config_version=5
 
 config/name="Faceless Face Off"
 config/version="0.1"
-run/main_scene="res://Scenes/UI Scenes/main_menu.tscn"
+run/main_scene="res://Legacy/Scenes/UI Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://Icon.ico"
-config/windows_native_icon="res://Icon.ico"
+config/icon="res://Legacy/Icon.png"
+config/windows_native_icon="res://Legacy/Icon.ico"
 
 [audio]
 
@@ -23,8 +23,8 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
-MouseMovementGlobal="*res://Scripts/MouseMovementGlobal.gd"
-Globals="*res://Scripts/Globals.gd"
+OldGlobals="*res://Legacy/Scripts/OLD_Globals.gd"
+OldMouseMovementGlobal="*res://Legacy/Scripts/OldMouseMovementGlobal.gd"
 
 [display]
 
@@ -37,7 +37,7 @@ window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
-mouse_cursor/custom_image="res://2D Sprites/Player & Items Sprites/Mouse Cursor White Dot.png"
+mouse_cursor/custom_image="res://Legacy/2D Sprites/Player & Items Sprites/Mouse Cursor White Dot.png"
 
 [editor]
 

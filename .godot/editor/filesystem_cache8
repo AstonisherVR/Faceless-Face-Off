@@ -1,0 +1,102 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1730206072
+::res://Legacy/::1729858338
+export_presets.cfg::TextFile::-1::1729711542::0::1::::<><>::
+Icon.png::CompressedTexture2D::5680936087674375532::1729693156::1730206077::1::::<><>::
+::res://Legacy/2D Sprites/::1729858338
+Cabin Interiror 1 - With Closed Door.png::CompressedTexture2D::5696972006814569178::1729671378::1730206077::1::::<><>::
+Cabin Interiror 2 - With Closed Broken Door Stage 1.png::CompressedTexture2D::1865905966802355883::1729671378::1730206077::1::::<><>::
+Cabin Interiror 3 - With Closed Broken Door Stage 2.png::CompressedTexture2D::1524430794020831928::1729671378::1730206077::1::::<><>::
+Cabin Interiror 4 - Broken Down Door.png::CompressedTexture2D::1693590805689215292::1729671378::1730206077::1::::<><>::
+gameplay switch to machine button.png::CompressedTexture2D::1276711065320586285::1729671379::1730206077::1::::<><>::
+Lamp.png::CompressedTexture2D::1841873326661105010::1729671378::1730206077::1::::<><>::
+::res://Legacy/2D Sprites/Enemy Sprites/::1729858338
+Mannequin Creature Front.png::CompressedTexture2D::4342601006011459184::1729623681::1730206077::1::::<><>::
+Mannequin Creature Stand.png::CompressedTexture2D::5018091449363751516::1729149543::1730206077::1::::<><>::
+::res://Legacy/2D Sprites/Enemy Sprites/Masks/::1729858338
+Happy Mask Smol.png::CompressedTexture2D::2906463552543025819::1729273808::1730206077::1::::<><>::
+Happy Mask.png::CompressedTexture2D::8755080049547741747::1729270445::1730206077::1::::<><>::
+Neutral Mask Smol.png::CompressedTexture2D::720280589753372501::1729336153::1730206077::1::::<><>::
+Neutral Mask.png::CompressedTexture2D::1215803019298947585::1729356722::1730206077::1::::<><>::
+Sad Clown Mask Smol.png::CompressedTexture2D::979937370469174376::1729338085::1730206077::1::::<><>::
+Sad Clown Mask.png::CompressedTexture2D::8858910935418857039::1729337923::1730206077::1::::<><>::
+Wolf Mask Smol.png::CompressedTexture2D::3107598205613141652::1729340859::1730206077::1::::<><>::
+Wolf Mask.png::CompressedTexture2D::6570526445952079877::1729340533::1730206077::1::::<><>::
+::res://Legacy/2D Sprites/Player & Items Sprites/::1729858338
+Dog Whistle.png::CompressedTexture2D::8881137770156946076::1729366170::1730206077::1::::<><>::
+Hammer.png::CompressedTexture2D::7668535086554704682::1729363240::1730206077::1::::<><>::
+Lever.png::CompressedTexture2D::3612234993083152170::1729675450::1730206077::1::::<><>::
+Light Point.png::CompressedTexture2D::6480804429661473607::1729159782::1730206077::1::::<><>::
+Mirror.png::CompressedTexture2D::8249595904332398255::1729363210::1730206077::1::::<><>::
+Mouse Cursor White Dot.png::CompressedTexture2D::5587702608171585494::1729159651::1730206077::1::::<><>::
+OLD Device.png::CompressedTexture2D::4961088578749876910::1729226822::1730206077::1::::<><>::
+Power Generator Panel Green1.png::CompressedTexture2D::424065162970672887::1729671379::1730206077::1::::<><>::
+Power Generator Panel Green Animation.png::CompressedTexture2D::2795540071763961307::1729671379::1730206077::1::::<><>::
+Power Generator Panel Neutral1.png::CompressedTexture2D::39184660016997242::1729671379::1730206077::1::::<><>::
+Power Generator Panel Red1.png::CompressedTexture2D::5332085936703725057::1729671379::1730206077::1::::<><>::
+::res://Legacy/Audio/::1729860135
+default_bus_layout.tres::AudioBusLayout::304449830664945043::1729860135::0::1::::<><>::
+::res://Legacy/Audio/Music/::1729858339
+MUS_Action.wav::AudioStreamWAV::2935275602182709916::1729671379::1730206078::1::::<><>::
+MUS_Calm.wav::AudioStreamWAV::3827105867541881428::1729671379::1730206077::1::::<><>::
+Wind2_LP.wav::AudioStreamWAV::2297874695353453206::1729671379::1730206077::1::::<><>::
+Wind_LP.wav::AudioStreamWAV::6638588637644122661::1729671379::1730206077::1::::<><>::
+::res://Legacy/Audio/SFX/::1729858338
+Dog Whistle.wav::AudioStreamWAV::2141862986020910353::1729671379::1730206077::1::::<><>::
+Door_Close.wav::AudioStreamWAV::6148874142690458956::1729671379::1730206077::1::::<><>::
+Door_Far.wav::AudioStreamWAV::323173813935147484::1729671379::1730206077::1::::<><>::
+Door_Near.wav::AudioStreamWAV::5287051412574336848::1729671379::1730206077::1::::<><>::
+Drone_1.wav::AudioStreamWAV::891466226766841078::1729671379::1730206077::1::::<><>::
+Flashlight_1.wav::AudioStreamWAV::2438440089126102995::1729671379::1730206077::1::::<><>::
+Flashlight_2.wav::AudioStreamWAV::8631068353959992882::1729671379::1730206077::1::::<><>::
+Hammer_1.wav::AudioStreamWAV::9112007613058407216::1729653371::1730206077::1::::<><>::
+Hammer_2.wav::AudioStreamWAV::8600965910961111976::1729653374::1730206077::1::::<><>::
+Hammer_3.wav::AudioStreamWAV::5829374016044417345::1729653376::1730206077::1::::<><>::
+Light_Buzzing_Loop.wav::AudioStreamWAV::1157263408953142015::1729653378::1730206077::1::::<><>::
+Light_Dying.wav::AudioStreamWAV::6949689399769487174::1729653381::1730206077::1::::<><>::
+Miss_1.wav::AudioStreamWAV::617918629992934475::1729748784::1730206077::1::::<><>::
+Miss_2.wav::AudioStreamWAV::8084200801458756603::1729748785::1730206077::1::::<><>::
+Stinger_Music.wav::AudioStreamWAV::2145466735551848117::1729671379::1730206077::1::::<><>::
+::res://Legacy/Audio/SFX/Footsteps/::1729858338
+Ftsp_1.wav::AudioStreamWAV::4891052365619806409::1729671379::1730206077::1::::<><>::
+Ftsp_2.wav::AudioStreamWAV::1593177948809221936::1729671379::1730206077::1::::<><>::
+Ftsp_3.wav::AudioStreamWAV::1857906985507925564::1729671379::1730206077::1::::<><>::
+Ftsp_4.wav::AudioStreamWAV::5867061193024633568::1729671379::1730206077::1::::<><>::
+Ftsp_5.wav::AudioStreamWAV::2635603713507561608::1729671379::1730206077::1::::<><>::
+Ftsp_6.wav::AudioStreamWAV::6236173897452282894::1729671379::1730206077::1::::<><>::
+Ftsp_7.wav::AudioStreamWAV::4401603010583155292::1729671379::1730206077::1::::<><>::
+Ftsp_8.wav::AudioStreamWAV::7646135373801593327::1729671379::1730206077::1::::<><>::
+Ftsp_9.wav::AudioStreamWAV::4756943013202319275::1729671379::1730206077::1::::<><>::
+Ftsp_10.wav::AudioStreamWAV::4707443411334331447::1729671379::1730206077::1::::<><>::
+Ftsp_11.wav::AudioStreamWAV::5684097615308690682::1729671379::1730206077::1::::<><>::
+Ftsp_12.wav::AudioStreamWAV::1329079205854773959::1729671379::1730206077::1::::<><>::
+Ftsp_13.wav::AudioStreamWAV::8234393581793689859::1729671379::1730206077::1::::<><>::
+Ftsp_14.wav::AudioStreamWAV::4069748186587446846::1729671379::1730206077::1::::<><>::
+Ftsp_15.wav::AudioStreamWAV::8758630967809443948::1729671379::1730206077::1::::<><>::
+Ftsp_16.wav::AudioStreamWAV::2134624919750260180::1729671379::1730206077::1::::<><>::
+Thump_Close.wav::AudioStreamWAV::3935698759248568081::1729671379::1730206077::1::::<><>::
+Thump_Far.wav::AudioStreamWAV::4832461943833365578::1729671379::1730206077::1::::<><>::
+Thump_Near.wav::AudioStreamWAV::953663839961601134::1729671379::1730206077::1::::<><>::
+::res://Legacy/Scenes/::1729860908
+game.tscn::PackedScene::2798723263161447108::1729860799::0::1::::<><>::uid://cjkpk06h3i6m2::::res://Legacy/Scenes/house.tscn<>uid://de2qdde6jaqf1::::res://Legacy/Scenes/power_generator_container.tscn<>uid://cicfopi26jdj::::res://Legacy/Scenes/player.tscn<>uid://d04408vvn85lb::::res://Legacy/Scenes/mannequin.tscn<>res://Legacy/Scripts/power_generator.gd
+house.tscn::PackedScene::5426114711828143823::1729860799::0::1::::<><>::res://Legacy/Scripts/house.gd<>uid://cnfwkc5eil8li::::res://Legacy/2D Sprites/Cabin Interiror 1 - With Closed Door.png<>uid://1t4g0wf2akyd::::res://Legacy/2D Sprites/Cabin Interiror 2 - With Closed Broken Door Stage 1.png<>uid://vypfgidvudvs::::res://Legacy/2D Sprites/Cabin Interiror 3 - With Closed Broken Door Stage 2.png<>uid://yengti5tgyym::::res://Legacy/2D Sprites/Cabin Interiror 4 - Broken Down Door.png<>uid://bur44y6aeypvo::::res://Legacy/Audio/Music/MUS_Calm.wav<>uid://bh24tby1haobs::::res://Legacy/Audio/Music/MUS_Action.wav<>res://Legacy/Scripts/Shaders/distortion_&_blur.gdshader<>uid://c1t1t5g7q46jp::::res://Legacy/Audio/Music/Wind_LP.wav<>uid://70dwpsvwlhba::::res://Legacy/Audio/Music/Wind2_LP.wav<>uid://mx3k3gync6es::::res://Legacy/Audio/SFX/Drone_1.wav
+info_panel.tscn::PackedScene::1070550318894102377::1729771620::0::1::::<><>::uid://cyll5w3dtisbn::::res://2D Sprites/Player & Items Sprites/Light Point.png<>uid://dhixwgjn7kc4y::::res://2D Sprites/Player & Items Sprites/Hammer.png<>uid://dpsfvy8utqso2::::res://2D Sprites/Player & Items Sprites/Mirror.png<>uid://dysdboacbmd77::::res://2D Sprites/Player & Items Sprites/Dog Whistle.png<>uid://dw0a5iamxihkt::::res://2D Sprites/Enemy Sprites/Masks/Happy Mask.png<>uid://rk7dlnukerb2::::res://2D Sprites/Enemy Sprites/Masks/Neutral Mask.png<>uid://dyhk7663xapr8::::res://2D Sprites/Enemy Sprites/Masks/Sad Clown Mask.png<>uid://c0u2u038kb2cn::::res://2D Sprites/Enemy Sprites/Masks/Wolf Mask.png
+main_device.tscn::PackedScene::8766555505571304780::1729424059::0::1::::<><>::uid://cnqqxnad24u8t::::res://2D Sprites/Player & Items Sprites/OLD Device.png<>res://Scripts/main_device.gd
+mannequin.tscn::PackedScene::8975657301219991975::1729860799::0::1::::<><>::res://Legacy/Scripts/mannequin.gd<>uid://cdq2h6mti0lpk::::res://Legacy/2D Sprites/Enemy Sprites/Mannequin Creature Stand.png<>uid://b24uae0oocxe3::::res://Legacy/2D Sprites/Enemy Sprites/Mannequin Creature Front.png<>uid://ki56e8tipv0x::::res://Legacy/2D Sprites/Enemy Sprites/Masks/Neutral Mask Smol.png<>uid://bhn6ba05vaq5p::::res://Legacy/2D Sprites/Enemy Sprites/Masks/Happy Mask Smol.png<>uid://n7xopw20k6i3::::res://Legacy/2D Sprites/Enemy Sprites/Masks/Sad Clown Mask Smol.png<>uid://bkjlxn2xk7yk7::::res://Legacy/2D Sprites/Enemy Sprites/Masks/Wolf Mask Smol.png<>uid://rk7dlnukerb2::::res://Legacy/2D Sprites/Enemy Sprites/Masks/Neutral Mask.png<>uid://dyhk7663xapr8::::res://Legacy/2D Sprites/Enemy Sprites/Masks/Sad Clown Mask.png<>uid://dw0a5iamxihkt::::res://Legacy/2D Sprites/Enemy Sprites/Masks/Happy Mask.png<>uid://c0u2u038kb2cn::::res://Legacy/2D Sprites/Enemy Sprites/Masks/Wolf Mask.png<>uid://5oa7wnxey17m::::res://Legacy/Audio/SFX/Footsteps/Ftsp_16.wav<>uid://cbxi6hb72s6gb::::res://Legacy/Audio/SFX/Footsteps/Ftsp_1.wav<>uid://wx0n4ya2q881::::res://Legacy/Audio/SFX/Footsteps/Ftsp_2.wav<>uid://1p8pr3rk2o8k::::res://Legacy/Audio/SFX/Footsteps/Ftsp_3.wav<>uid://cpubv1usayg3q::::res://Legacy/Audio/SFX/Footsteps/Ftsp_4.wav<>uid://bdsyajmftnii7::::res://Legacy/Audio/SFX/Footsteps/Ftsp_5.wav<>uid://cu334xfnopth3::::res://Legacy/Audio/SFX/Footsteps/Ftsp_6.wav<>uid://b3yf013fusq2w::::res://Legacy/Audio/SFX/Footsteps/Ftsp_7.wav<>uid://dg63y504vtk1l::::res://Legacy/Audio/SFX/Footsteps/Ftsp_8.wav<>uid://b81kfk3kg0w00::::res://Legacy/Audio/SFX/Footsteps/Ftsp_9.wav<>uid://b8ck51oygkdlf::::res://Legacy/Audio/SFX/Footsteps/Ftsp_10.wav<>uid://cm8oi0nvi3kas::::res://Legacy/Audio/SFX/Footsteps/Ftsp_11.wav<>uid://s620f3kmjclb::::res://Legacy/Audio/SFX/Footsteps/Ftsp_12.wav<>uid://dpk2i2w4kf2bn::::res://Legacy/Audio/SFX/Footsteps/Ftsp_13.wav<>uid://bx8ofmxopnpx3::::res://Legacy/Audio/SFX/Footsteps/Ftsp_14.wav<>uid://dw10mwqliulyq::::res://Legacy/Audio/SFX/Footsteps/Ftsp_15.wav<>uid://ca347bftux0ve::::res://Legacy/Audio/SFX/Footsteps/Thump_Far.wav<>uid://nt7x67onqkm5::::res://Legacy/Audio/SFX/Footsteps/Thump_Near.wav<>uid://bwcqnbnenrpyn::::res://Legacy/Audio/SFX/Footsteps/Thump_Close.wav<>uid://5tjr2mvwuucb::::res://Legacy/Audio/SFX/Stinger_Music.wav
+player.tscn::PackedScene::157023831163362043::1729860799::0::1::::<><>::res://Legacy/Scripts/player.gd<>uid://cyll5w3dtisbn::::res://Legacy/2D Sprites/Player & Items Sprites/Light Point.png<>uid://ba0g0tk5q4e2f::::res://Legacy/Audio/SFX/Flashlight_1.wav<>uid://dhixwgjn7kc4y::::res://Legacy/2D Sprites/Player & Items Sprites/Hammer.png<>uid://du77o1unj127g::::res://Legacy/Audio/SFX/Flashlight_2.wav<>uid://dpsfvy8utqso2::::res://Legacy/2D Sprites/Player & Items Sprites/Mirror.png<>uid://dysdboacbmd77::::res://Legacy/2D Sprites/Player & Items Sprites/Dog Whistle.png<>uid://5rsf2bma3pqv::::res://Legacy/Audio/SFX/Dog Whistle.wav<>uid://d226o03duwkjg::::res://Legacy/Audio/SFX/Hammer_1.wav<>uid://dusmwfvypvnxo::::res://Legacy/Audio/SFX/Hammer_2.wav<>uid://cpb1650m8tdvd::::res://Legacy/Audio/SFX/Hammer_3.wav
+power_generator.tscn::PackedScene::6039096568735079743::1729860799::0::1::::<><>::res://Legacy/Scripts/power_generator.gd<>uid://s8mowss7r35::::res://Legacy/2D Sprites/Player & Items Sprites/Power Generator Panel Neutral1.png<>uid://gboj5ymruem6::::res://Legacy/2D Sprites/Player & Items Sprites/Power Generator Panel Green1.png<>uid://ch75w84i4jhan::::res://Legacy/2D Sprites/Player & Items Sprites/Power Generator Panel Red1.png<>uid://cyll5w3dtisbn::::res://Legacy/2D Sprites/Player & Items Sprites/Light Point.png<>uid://brp18n4nvfmmk::::res://Legacy/2D Sprites/Player & Items Sprites/Lever.png
+power_generator_container.tscn::PackedScene::7496732619426836724::1729860908::0::1::::<><>::res://Legacy/Scripts/power_generator_container.gd<>uid://csbnbkd87iepr::::res://Legacy/Scenes/power_generator.tscn<>uid://sgpik5k2vmc8::::res://Legacy/2D Sprites/gameplay switch to machine button.png<>uid://bf3gev35udthj::::res://Legacy/2D Sprites/Player & Items Sprites/Power Generator Panel Green Animation.png
+::res://Legacy/Scenes/UI Scenes/::1729860799
+main_menu.tscn::PackedScene::6185055348009867006::1729860799::0::1::::<><>::res://Legacy/Scripts/UI Scripts/main_menu.gd<>uid://cjkpk06h3i6m2::::res://Legacy/Scenes/house.tscn<>uid://1ihnct5gpbig::::res://Legacy/2D Sprites/Lamp.png<>uid://d04408vvn85lb::::res://Legacy/Scenes/mannequin.tscn<>uid://pit2pj2jwc5f::::res://Legacy/Scenes/info_panel.tscn<>uid://qqt7u6bicdad::::res://Legacy/Audio/SFX/Light_Buzzing_Loop.wav<>uid://c6aqmsvhkob15::::res://Legacy/Audio/SFX/Light_Dying.wav<>uid://70dwpsvwlhba::::res://Legacy/Audio/Music/Wind2_LP.wav
+::res://Legacy/Scripts/::1729860908
+house.gd::GDScript::-1::1729859990::0::1::::<>Node2D<>::
+mannequin.gd::GDScript::-1::1729860908::0::1::::<>CharacterBody2D<>::
+OldMouseMovementGlobal.gd::GDScript::-1::1729688115::0::1::::MouseInput<>Node<>::
+OLD_Globals.gd::GDScript::-1::1729859980::0::1::::<>Node<>::
+player.gd::GDScript::-1::1729706128::0::1::::<>CharacterBody2D<>::
+power_generator.gd::GDScript::-1::1729860576::0::1::::<>Node2D<>::
+power_generator_container.gd::GDScript::-1::1729860102::0::1::::<>Node2D<>::
+::res://Legacy/Scripts/Shaders/::1729773384
+distortion_&_blur.gdshader::Shader::-1::1729773384::0::1::::<><>::
+::res://Legacy/Scripts/UI Scripts/::1729860506
+main_menu.gd::GDScript::-1::1729860506::0::1::::<>Control<>::
