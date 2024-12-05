@@ -36,7 +36,6 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
-window/vsync/vsync_mode=0
 mouse_cursor/custom_image="res://Legacy/2D Sprites/Player & Items Sprites/Mouse Cursor White Dot.png"
 
 [editor]
