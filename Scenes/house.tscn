@@ -1,0 +1,133 @@
+[gd_scene load_steps=16 format=3 uid="uid://cjkpk06h3i6m2"]
+
+[ext_resource type="Script" uid="uid://dcex453qgr72v" path="res://Scripts/house.gd" id="1_q52gg"]
+[ext_resource type="Texture2D" uid="uid://cnfwkc5eil8li" path="res://2D Sprites/Cabin Interiror 1 - With Closed Door.png" id="2_d87f7"]
+[ext_resource type="Texture2D" uid="uid://1t4g0wf2akyd" path="res://2D Sprites/Cabin Interiror 2 - With Closed Broken Door Stage 1.png" id="3_rb87h"]
+[ext_resource type="Texture2D" uid="uid://vypfgidvudvs" path="res://2D Sprites/Cabin Interiror 3 - With Closed Broken Door Stage 2.png" id="4_r0akj"]
+[ext_resource type="Texture2D" uid="uid://yengti5tgyym" path="res://2D Sprites/Cabin Interiror 4 - Broken Down Door.png" id="5_e5scp"]
+[ext_resource type="AudioStream" uid="uid://bur44y6aeypvo" path="res://Audio/Music/MUS_Calm.wav" id="6_ruak8"]
+[ext_resource type="AudioStream" uid="uid://bh24tby1haobs" path="res://Audio/Music/MUS_Action.wav" id="7_kp1ig"]
+[ext_resource type="Shader" uid="uid://70ltba0221kc" path="res://Scripts/Shaders/distortion_&_blur.gdshader" id="8_ocx1o"]
+[ext_resource type="AudioStream" uid="uid://c1t1t5g7q46jp" path="res://Audio/Music/Wind_LP.wav" id="9_npkpn"]
+[ext_resource type="AudioStream" uid="uid://70dwpsvwlhba" path="res://Audio/Music/Wind2_LP.wav" id="10_311ns"]
+[ext_resource type="AudioStream" uid="uid://mx3k3gync6es" path="res://Audio/SFX/Drone_1.wav" id="12_pe5bp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uylrn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d87f7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rb87h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r0akj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e5scp")
+}],
+"loop": true,
+"name": &"Door",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_jycvv"]
+offsets = PackedFloat32Array(0.402597, 0.785714, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.143139, 0.143139, 0.143139, 1, 0.337662, 0.337662, 0.337662, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a50k6"]
+gradient = SubResource("Gradient_jycvv")
+width = 256
+height = 192
+use_hdr = true
+fill_from = Vector2(0.834862, 0.752294)
+fill_to = Vector2(0.779817, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ybf6"]
+shader = ExtResource("8_ocx1o")
+shader_parameter/yaxis = 0.03
+shader_parameter/fov = Vector2(0.25, 0.33)
+shader_parameter/stretch = Vector2(41, 28)
+shader_parameter/blur_amount = 0.0
+
+[node name="House" type="Node2D" node_paths=PackedStringArray("music_calm", "music_intense", "drone_timer", "house_animated_sprite_2d")]
+script = ExtResource("1_q52gg")
+music_calm = NodePath("Music Calm")
+music_intense = NodePath("Music Intense")
+drone_timer = NodePath("Drone Timer")
+house_animated_sprite_2d = NodePath("HouseAnimatedSprite2D")
+
+[node name="Door" type="Node2D" parent="."]
+
+[node name="Window 1" type="Node2D" parent="."]
+
+[node name="Window 2" type="Node2D" parent="."]
+
+[node name="HouseAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uylrn")
+animation = &"Door"
+frame = 3
+frame_progress = 0.45369
+
+[node name="Device" type="Node2D" parent="."]
+
+[node name="Backlight" type="Sprite2D" parent="."]
+z_index = -3
+texture = SubResource("GradientTexture2D_a50k6")
+
+[node name="Point 0" type="Marker2D" parent="."]
+position = Vector2(256, 0)
+
+[node name="Point 1" type="Marker2D" parent="."]
+position = Vector2(-80, 50)
+
+[node name="Point 2" type="Marker2D" parent="."]
+position = Vector2(81, 41)
+
+[node name="Point 3" type="Marker2D" parent="."]
+position = Vector2(0, 28)
+
+[node name="Point 4" type="Marker2D" parent="."]
+position = Vector2(0, 23)
+
+[node name="Music Calm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ruak8")
+volume_db = -4.0
+
+[node name="Music Intense" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_kp1ig")
+
+[node name="Distortion & Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8ybf6")
+offset_left = -150.0
+offset_top = -110.0
+offset_right = 150.0
+offset_bottom = 110.0
+mouse_filter = 2
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="Wind 1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_npkpn")
+
+[node name="Wind 2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_311ns")
+
+[node name="Drone" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_pe5bp")
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AudioStreamPlayer2D6" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Drone Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Drone Timer" to="." method="_on_drone_timer_timeout"]

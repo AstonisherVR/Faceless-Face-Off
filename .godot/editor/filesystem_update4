@@ -1,7 +1,5 @@
-res://Legacy/Scenes/game.tscn
-res://Legacy/Scenes/mannequin.tscn
-res://Legacy/Scenes/player.tscn
-res://Legacy/Scenes/house.tscn
-res://Legacy/Scenes/power_generator_container.tscn
-res://Legacy/Scenes/power_generator.tscn
-res://Legacy/Scenes/UI Scenes/main_menu.tscn
+res://Scenes/info_panel.tscn
+res://Scripts/Shaders/distortion_&_blur.gdshader
+res://Scenes/player.tscn
+res://Scenes/house.tscn
+res://Scenes/game.tscn
